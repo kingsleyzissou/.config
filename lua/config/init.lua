@@ -1,0 +1,6 @@
+require('config.options')
+require('config.packer')
+require('config.diagnostics')
+require('config.lsp')
+require('config.keymap')
+require('config.autocommands')
