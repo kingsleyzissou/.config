@@ -1,5 +1,6 @@
 require('config.options')
 require('config.packer')
+require('config.color')
 require('config.diagnostics')
 require('config.lsp')
 require('config.keymap')
