@@ -1,7 +1,5 @@
--- extend the options to add
--- globals for the diagnostics
-return function(opts, register)
-    register({
+return function(opts)
+    return {
         settings = {
             Lua = {
                 runtime = {
@@ -10,22 +8,21 @@ return function(opts, register)
                 diagnostics = {
                     globals = { 'use', 'vim' },
                 },
-                format = {
-                    enable = false,
+                completion = {
+                    callSnippet = 'Replace',
                 },
-
                 workspace = {
                     library = vim.api.nvim_get_runtime_file('', true),
                 },
                 telemetry = {
                     enable = false,
                 },
+                format = {
+                    enabled = false,
+                },
             },
         },
         capabilities = opts.capabilities,
-        on_attach = function(client, bfnr)
-            client.resolved_capabilities.document_formatting = false
-            opts.on_attach(client, bfnr)
-        end,
-    })
+        on_attach = opts.on_attach,
+    }
 end
