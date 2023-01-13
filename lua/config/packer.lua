@@ -17,6 +17,8 @@ return require('packer').startup(function()
     -- color schemes
     use('ntk148v/vim-horizon')
     use('folke/tokyonight.nvim')
+    use('catppuccin/nvim')
+    use('xiyaowong/nvim-transparent')
 
     -- highlighting
     use('RRethy/vim-illuminate')
