@@ -72,8 +72,6 @@ telescope.setup({
 
 -- extensions
 telescope.load_extension('frecency')
-telescope.load_extension('projects')
-telescope.load_extension('session-lens')
 
 -- keybindings
 local map = vim.keymap.set
