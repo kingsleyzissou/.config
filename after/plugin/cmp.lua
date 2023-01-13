@@ -6,12 +6,7 @@ require('luasnip.loaders.from_vscode').lazy_load()
 
 local function has_words_before()
     local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-    return col ~= 0
-        and vim.api
-                .nvim_buf_get_lines(0, line - 1, line, true)[1]
-                :sub(col, col)
-                :match('%s')
-            == nil
+    return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
 end
 
 local function super_tab(fallback)
@@ -20,7 +15,7 @@ local function super_tab(fallback)
         return
     end
     if luasnip.expandable() then
-        luasnip.expand()
+        luasnip.expand({})
         return
     end
     if luasnip.expand_or_jumpable() then
@@ -39,7 +34,7 @@ local mapping = cmp.mapping.preset.insert({
     ['<C-k>'] = cmp.mapping.select_prev_item(),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.abort(),
-    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+    ['<C-y>'] = cmp.mapping.confirm({ select = true }),
     ['<Tab>'] = cmp.mapping(super_tab),
 })
 
