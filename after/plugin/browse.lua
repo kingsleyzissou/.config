@@ -1,7 +1,5 @@
 local browse = require('browse')
 
-browse.setup()
-
 local bookmarks = {
     'https://github.com/osbuild/osbuild-composer',
     'https://github.com/osbuild/osbuild',
