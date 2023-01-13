@@ -1,5 +1,5 @@
-return function(opts, register)
-    register({
+return function(opts)
+    return {
         yaml = {
             format = {
                 singleQuote = false,
@@ -12,9 +12,6 @@ return function(opts, register)
             },
         },
         capabilities = opts.capabilities,
-        on_attach = function(client, bfnr)
-            -- client.resolved_capabilities.document_formatting = false
-            opts.on_attach(client, bfnr)
-        end,
-    })
+        on_attach = opts.on_attach,
+    }
 end
