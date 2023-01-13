@@ -11,7 +11,7 @@
     "javascript": "jsx" 
   },
   "emmet.includeLanguages": {
-      "javascript": "javascriptreact",
+      "javascript": "javascriptreact"
   },
   "diffEditor.ignoreTrimWhitespace": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
