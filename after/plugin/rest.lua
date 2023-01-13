@@ -6,4 +6,4 @@ rest.setup()
 local map = vim.keymap.set
 map('n', '<leader>rr', '<Plug>RestNvim', { desc = 'Rest request' })
 map('n', '<leader>rp', '<Plug>RestNvimPreview', { desc = 'Rest preview' })
-map('n', '<leader>rp', '<Plug>RestNvimLast', { desc = 'Rest re-run' })
+map('n', '<leader>rl', '<Plug>RestNvimLast', { desc = 'Rest re-run' })

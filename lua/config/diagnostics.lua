@@ -13,7 +13,7 @@ for _, sign in ipairs(signs) do
     })
 end
 
-local config = {
+vim.diagnostic.config({
     virtual_lines = true,
     virtual_text = true,
     signs = {
@@ -30,6 +30,4 @@ local config = {
         header = '',
         prefix = '',
     },
-}
-
-vim.diagnostic.config(config)
+})

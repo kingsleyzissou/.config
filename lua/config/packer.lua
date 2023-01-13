@@ -1,5 +1,11 @@
--- Only required if you have packer configured as `opt`
+-- Only resettingsqsettingsusettingsired if you have packer configured as `opt`
 vim.cmd([[packadd packer.nvim]])
+
+-- packer
+vim.keymap.set('n', '<leader>pi', require('packer').install, { desc = 'Packer Install' })
+vim.keymap.set('n', '<leader>pc', require('packer').clean, { desc = 'Packer Clean' })
+vim.keymap.set('n', '<leader>ps', require('packer').sync, { desc = 'Packer Sync' })
+vim.keymap.set('n', '<leader>pu', require('packer').update, { desc = 'Packer Update' })
 
 return require('packer').startup(function()
     -- Packer plugin manager
@@ -14,27 +20,20 @@ return require('packer').startup(function()
 
     -- highlighting
     use('RRethy/vim-illuminate')
-    use('rktjmp/highlight-current-n.nvim')
 
     -- Some vim utilities
+    use('folke/neodev.nvim')
     use('nvim-lua/plenary.nvim')
     use('tami5/sqlite.lua')
     use('tpope/vim-commentary')
     use('tpope/vim-endwise')
     use('kylechui/nvim-surround')
-    use('justinmk/vim-sneak')
     use('windwp/nvim-autopairs')
     use('folke/zen-mode.nvim')
     use('folke/which-key.nvim')
-    use('folke/todo-comments.nvim')
-    use('kikito/inspect.lua')
-    use('nvim-pack/nvim-spectre')
+    use('kikito/inspect.lua') -- I think this is a dependency
     use('monaqa/dial.nvim')
     use('gaborvecsei/memento.nvim')
-    use('nacro90/numb.nvim')
-
-    -- copy/cut/paste
-    use('gbprod/yanky.nvim')
 
     -- telescope
     use('nvim-telescope/telescope.nvim')
@@ -42,11 +41,9 @@ return require('packer').startup(function()
     use('nvim-telescope/telescope-frecency.nvim')
     use('ThePrimeagen/harpoon')
 
-    -- project & session
-    use('ahmedkhalf/project.nvim')
-    use('Pocco81/auto-save.nvim')
-    use('rmagatti/auto-session')
-    use({ 'rmagatti/session-lens', commit = '4c1754bf5c2372d0a6265d40fb8f713bc27c8018' })
+    -- trouble
+    use('folke/trouble.nvim')
+    use('folke/todo-comments.nvim')
 
     -- caching
     use('lewis6991/impatient.nvim')
@@ -60,7 +57,7 @@ return require('packer').startup(function()
     use('kdheepak/lazygit.nvim')
     use('akinsho/git-conflict.nvim')
 
-    -- treesitter (you cant run from it)
+    -- treesitter
     use('nvim-treesitter/nvim-treesitter')
 
     -- icons
@@ -78,25 +75,29 @@ return require('packer').startup(function()
     -- lualine
     use('nvim-lualine/lualine.nvim')
 
-    -- lsp stuff
+    -- undo tree
+    use('mbbill/undotree')
+
+    -- -- lsp stuff
     use('neovim/nvim-lspconfig')
-    use('williamboman/nvim-lsp-installer')
     use('williamboman/mason.nvim')
+    use('williamboman/mason-lspconfig.nvim')
     use('jose-elias-alvarez/null-ls.nvim')
-    use('folke/trouble.nvim')
-    use('simrat39/symbols-outline.nvim')
     use('onsails/lspkind-nvim')
+    use('simrat39/symbols-outline.nvim')
+
+    -- progress tracker for lsp server
     use('j-hui/fidget.nvim')
 
-    -- completion
+    --completion
     use('christianchiarulli/nvim-cmp')
     use('hrsh7th/cmp-path')
     use('hrsh7th/cmp-buffer')
-    use('hrsh7th/cmp-nvim-lsp')
     use('hrsh7th/cmp-emoji')
+    use('hrsh7th/cmp-nvim-lsp')
     use('hrsh7th/cmp-nvim-lua')
     use('saadparwaiz1/cmp_luasnip')
-    -- use('github/copilot.vim')
+    use('github/copilot.vim')
     use({
         'tzachar/cmp-tabnine',
         run = './install.sh',
@@ -105,6 +106,9 @@ return require('packer').startup(function()
     -- snippets
     use('L3MON4D3/LuaSnip')
     use('rafamadriz/friendly-snippets')
+
+    -- formatting
+    use('mhartington/formatter.nvim')
 
     -- toggle term
     use('akinsho/toggleterm.nvim')

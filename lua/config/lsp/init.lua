@@ -1,41 +1,60 @@
+local lspconfig = require('lspconfig')
+local mason = require('mason-lspconfig')
 local on_attach = require('config.lsp.on_attach')
 local capabilities = require('config.lsp.capabilities')
 local close_tree = require('utilities.close_tree')
 
--- TODO: yaml diagnostics
+-- setup mason
+require('mason').setup()
+require('mason-lspconfig').setup()
+
 local servers = {
     'golangci_lint_ls',
     'gopls',
     'jedi_language_server',
+    'null-ls',
+    'rust_analyzer',
     'sumneko_lua',
-    -- 'yamlls',
+    'tsserver',
+    'yamlls',
 }
 
-local function register(server)
-    return function(options)
-        require('lspconfig')[server].setup(options)
+local ensure_installed = {}
+
+local function configure(server_name, options)
+    if server_name == 'null-ls' then
+        require('null-ls').setup(options)
+        return
     end
+    table.insert(ensure_installed, server_name)
+    lspconfig[server_name].setup(options)
 end
 
-for _, server in pairs(servers) do
-    local path = 'config.lsp.server.' .. server
-    local ok, lsp = pcall(require, path)
+for _, server_name in pairs(servers) do
+    local path = 'config.lsp.server.' .. server_name
+    local ok, settings = pcall(require, path)
     if not ok then
         local notify = require('notify')
-        notify('Error setting up lsp server: ' .. server, 'error')
+        notify('Error setting up lsp server: ' .. server_name, 'error')
         return
     end
 
-    local opts = {
-        capabilities = capabilities,
-        on_attach = on_attach,
-    }
-
-    -- use a callback to register the lsp server
-    lsp(opts, register(server))
+    -- use a callback to configure the lsp server
+    configure(
+        server_name,
+        settings({
+            capabilities = capabilities,
+            on_attach = on_attach,
+        })
+    )
 end
 
--- keybindings
+-- ensure that the lsp servers are installed
+-- remove null-ls as this behaves differently
+-- to the other servers
+mason.setup({ ensure_installed = ensure_installed })
+
+-- set key remaps
 local map = vim.keymap.set
 map('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code action' })
 map('n', '<leader>lp', vim.diagnostic.open_float, { desc = 'View diagnostics' })

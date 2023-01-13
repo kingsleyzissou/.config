@@ -11,7 +11,7 @@ jaq.setup({
             typescript = 'deno run %',
             javascript = 'node %',
             -- markdown = "glow %",
-            python = 'python %',
+            python = 'python3 %',
             -- rust = "rustc % && ./$fileBase && rm $fileBase",
             rust = 'cargo run',
             cpp = 'g++ % -o $fileBase && ./$fileBase',
