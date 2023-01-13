@@ -35,6 +35,10 @@ vim.opt.undofile = true
 vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
 vim.opt.signcolumn = 'yes' -- set the sign column permanently
 
+-- color support
+vim.opt.termguicolors = true
+vim.opt.background = 'dark'
+
 vim.g.mapleader = ' '
 
 vim.g.Illuminate_ftblacklist = { 'alpha', 'NvimTree', 'harpoon' }
