@@ -40,10 +40,11 @@ auto({ 'FileType' }, {
 })
 
 auto({ 'BufEnter' }, {
-    pattern = { '' },
+    pattern = { '*' },
     callback = function()
         local get_project_dir = function()
             local cwd = vim.fn.getcwd()
+            ---@diagnostic disable-next-line: missing-parameter
             local project_dir = vim.split(cwd, '/')
             local project_name = project_dir[#project_dir]
             return project_name
@@ -61,13 +62,11 @@ auto({ 'BufEnter' }, {
     end,
 })
 
--- auto({ 'BufEnter' })
-
 auto({ 'FileType' }, {
     pattern = { 'gitcommit', 'markdown' },
     callback = function()
         vim.opt_local.wrap = true
-        vim.opt_local.spell = true
+        -- vim.opt_local.spell = true
     end,
 })
 
@@ -79,5 +78,23 @@ auto('User', {
         -- engage.conflict_buster()
         -- create_buffer_local_mappings()
         -- end)
+    end,
+})
+
+auto({ 'BufWritePre' }, {
+    pattern = { '*' },
+    callback = function()
+        -- if format fails, don't complain
+        vim.cmd('silent! lua vim.lsp.buf.format()')
+    end,
+})
+
+-- autosave
+auto({ 'FocusLost', 'BufLeave', 'VimLeave' }, {
+    pattern = { '*' },
+    callback = function()
+        -- write - which then triggers
+        -- formatting
+        vim.cmd('silent! w')
     end,
 })
