@@ -39,16 +39,20 @@ auto({ 'FileType' }, {
   end,
 })
 
+local get_project_dir = function()
+  local cwd = vim.fn.getcwd()
+  local project_dir = vim.split(cwd, '/')
+  local project_name = project_dir[#project_dir]
+  if project_name == 'nvim' then
+    return 'neovim'
+  end
+  return project_name
+end
+
 auto({ 'BufEnter' }, {
-  pattern = { '*' },
+  pattern = { '' },
   callback = function()
-    local get_project_dir = function()
-      local cwd = vim.fn.getcwd()
-      ---@diagnostic disable-next-line: missing-parameter
-      local project_dir = vim.split(cwd, '/')
-      local project_name = project_dir[#project_dir]
-      return project_name
-    end
+    vim.opt.title = true
     vim.opt.titlestring = get_project_dir()
   end,
 })
