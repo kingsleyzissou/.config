@@ -4,6 +4,9 @@ local on_attach = require('config.lsp.on_attach')
 local capabilities = require('config.lsp.capabilities')
 local close_tree = require('utilities.close_tree')
 
+-- stuff I don't understand
+require('neodev').setup()
+
 -- setup mason
 require('mason').setup()
 require('mason-lspconfig').setup()
