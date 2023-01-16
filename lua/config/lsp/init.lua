@@ -57,6 +57,15 @@ end
 -- to the other servers
 mason.setup({ ensure_installed = ensure_installed })
 
+-- load ufo after lspconfig this resolves some
+-- weird issues with the lsp servers
+require('ufo').setup({
+  ---@diagnostic disable-next-line: unused-local
+  provider_selector = function(bufnr, filetype, buftype)
+    return { 'treesitter', 'indent' }
+  end,
+})
+
 -- set key remaps
 vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover' })
 vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code action' })
