@@ -55,6 +55,7 @@ end
 mason.setup({ ensure_installed = ensure_installed })
 
 -- set key remaps
+vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = 'Hover' })
 vim.keymap.set('n', '<leader>la', vim.lsp.buf.code_action, { desc = 'Code action' })
 vim.keymap.set('n', '<leader>lp', vim.diagnostic.open_float, { desc = 'View diagnostics' })
 vim.keymap.set('n', '<leader>ll', vim.lsp.codelens.run, { desc = 'Codelens' })
