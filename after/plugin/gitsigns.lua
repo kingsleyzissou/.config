@@ -1,19 +1,19 @@
 local signs = require('gitsigns')
 
 local function blame_line()
-    return function()
-        signs.blame_line({ full = true })
-    end
+  return function()
+    signs.blame_line({ full = true })
+  end
 end
 
 local function toggle_blame()
-    return signs.toggle_current_line_blame()
+  return signs.toggle_current_line_blame()
 end
 
 local function diffthis()
-    return function()
-        signs.diffthis('~')
-    end
+  return function()
+    signs.diffthis('~')
+  end
 end
 -- keybindings
 local map = vim.keymap.set
@@ -31,11 +31,11 @@ map('n', '<leader>gd', signs.diffthis, { desc = 'Diff this' })
 map('n', '<leader>gD', diffthis, { desc = 'Diff this' })
 
 signs.setup({
-    preview_config = {
-        border = 'single',
-        style = 'minimal',
-        relative = 'cursor',
-        row = 0,
-        col = 1,
-    },
+  preview_config = {
+    border = 'single',
+    style = 'minimal',
+    relative = 'cursor',
+    row = 0,
+    col = 1,
+  },
 })

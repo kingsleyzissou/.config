@@ -13,9 +13,9 @@ map('n', '<leader>mm', ui.toggle_quick_menu, { desc = 'View marks' })
 map('n', '<leader>mb', '<cmd>TelescopeBuffers<cr>', { desc = 'View buffers' })
 
 local navigate = function(id)
-    return function()
-        ui.nav_file(id)
-    end
+  return function()
+    ui.nav_file(id)
+  end
 end
 -- navigate to marks
 map('n', '<leader>m1', navigate(1), { desc = 'Navigate to mark 1' })

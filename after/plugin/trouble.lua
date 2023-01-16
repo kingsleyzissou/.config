@@ -1,18 +1,18 @@
 local trouble = require('trouble')
 
 trouble.setup({
-    position = 'bottom',
-    use_diagnostic_signs = false,
+  position = 'bottom',
+  use_diagnostic_signs = false,
 })
 
 local function trouble_action(mode)
-    return function()
-        trouble.toggle({
-            opts = {
-                mode = mode,
-            },
-        })
-    end
+  return function()
+    trouble.toggle({
+      opts = {
+        mode = mode,
+      },
+    })
+  end
 end
 
 -- keybindings
