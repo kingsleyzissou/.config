@@ -32,6 +32,14 @@ tree.setup({
       quit_on_open = true,
     },
   },
+  filters = {
+    dotfiles = true,
+    custom = {
+      ['node_modules'] = true,
+      ['__pycache__'] = true,
+      ['.git'] = true,
+    },
+  },
   renderer = {
     highlight_opened_files = 'name',
     -- symbols from: https://github.com/iamcco/dotfiles
@@ -58,9 +66,3 @@ tree.setup({
 
 -- basic config
 vim.g.lua_tree_width = '30'
-vim.g.lua_tree_ignore = { '.git', 'node_modules', 'vendor' }
-
-vim.cmd([[
-    command! TreeToggle lua require('utilities.treefocus').toggle()
-    command! TreeFocus lua require('utilities.treefocus').focus()
-]])
