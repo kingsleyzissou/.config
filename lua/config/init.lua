@@ -1,4 +1,4 @@
-require('config.options')
+require('config.base')
 require('config.packer')
 require('config.theme')
 require('config.diagnostics')

@@ -4,7 +4,6 @@ local palette = require('config.theme.palette')
 local M = {}
 
 local function theme()
-  print(palette)
   local colors = palette.colors()
   return {
     inactive = {

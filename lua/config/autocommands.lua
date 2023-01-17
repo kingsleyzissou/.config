@@ -39,21 +39,11 @@ auto({ 'FileType' }, {
   end,
 })
 
-local get_project_dir = function()
-  local cwd = vim.fn.getcwd()
-  local project_dir = vim.split(cwd, '/')
-  local project_name = project_dir[#project_dir]
-  if project_name == 'nvim' then
-    return 'neovim'
-  end
-  return project_name
-end
-
 auto({ 'BufEnter' }, {
   pattern = { '' },
   callback = function()
     vim.opt.title = true
-    vim.opt.titlestring = get_project_dir()
+    vim.opt.titlestring = require('utilities.project').getName()
   end,
 })
 
@@ -70,17 +60,6 @@ auto({ 'FileType' }, {
   callback = function()
     vim.opt_local.wrap = true
     -- vim.opt_local.spell = true
-  end,
-})
-
-auto('User', {
-  pattern = 'GitConflictDetected',
-  callback = function()
-    vim.notify('Conflict detected in ' .. vim.fn.expand('<afile>'))
-    -- vim.keymap.set('n', 'cww', function()
-    -- engage.conflict_buster()
-    -- create_buffer_local_mappings()
-    -- end)
   end,
 })
 

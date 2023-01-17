@@ -1,6 +1,5 @@
 local telescope = require('telescope')
 local actions = require('telescope.actions')
-local close_tree = require('utilities.close_tree')
 
 -- fuzzy finder should ignore certain folders
 telescope.setup({
@@ -74,15 +73,14 @@ telescope.setup({
 telescope.load_extension('frecency')
 
 -- keybindings
-local map = vim.keymap.set
-map('n', '<leader>ff', close_tree('find_files'), { desc = 'Find files' })
-map('n', '<leader>fe', close_tree('symbols'), { desc = 'Find emoji' })
-map('n', '<leader>ft', close_tree('live_grep'), { desc = 'Find text' })
-map('n', '<leader>fs', close_tree('grep_string'), { desc = 'Find string' })
-map('n', '<leader>fm', close_tree('man_pages'), { desc = 'Find man pages' })
-map('n', '<leader>fk', close_tree('keymaps'), { desc = 'Find keymaps' })
-map('n', '<leader>fr', close_tree('oldfiles'), { desc = 'Find recent' })
-map('n', '<leader>fT', '<cmd>NvimTreeClose | TodoTelescope<cr>', { desc = 'Find todos' })
-map('n', '<leader>fb', '<cmd>NvimTreeClose | BrowseBookmarks<cr>', { desc = 'Find bookmark' })
-map('n', '<leader>fw', '<cmd>NvimTreeClose | BrowseInputSearch<cr>', { desc = 'Find online' })
-map('n', '<leader>fp', '<cmd>NvimTreeClose | Telescope projects<cr>', { desc = 'Find projects' })
+vim.keymap.set('n', '<leader>ff', '<cmd>Telescope find_files<cr>', { desc = 'Find files' })
+vim.keymap.set('n', '<leader>fe', '<cmd>Telescope symbols<cr>', { desc = 'Find emoji' })
+vim.keymap.set('n', '<leader>ft', '<cmd>Telescope live_grep<cr>', { desc = 'Find text' })
+vim.keymap.set('n', '<leader>fs', '<cmd>Telescope grep_string<cr>', { desc = 'Find string' })
+vim.keymap.set('n', '<leader>fm', '<cmd>Telescope man_pages<cr>', { desc = 'Find man pages' })
+vim.keymap.set('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', { desc = 'Find keymaps' })
+vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'Find recent' })
+vim.keymap.set('n', '<leader>fT', '<cmd>TodoTelescope<cr>', { desc = 'Find todos' })
+vim.keymap.set('n', '<leader>fb', '<cmd>BrowseBookmarks<cr>', { desc = 'Find bookmark' })
+vim.keymap.set('n', '<leader>fw', '<cmd>BrowseInputSearch<cr>', { desc = 'Find online' })
+vim.keymap.set('n', '<leader>fp', '<cmd>Telescope projects<cr>', { desc = 'Find projects' })
