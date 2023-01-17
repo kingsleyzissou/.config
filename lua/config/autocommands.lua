@@ -39,21 +39,11 @@ auto({ 'FileType' }, {
   end,
 })
 
-local get_project_dir = function()
-  local cwd = vim.fn.getcwd()
-  local project_dir = vim.split(cwd, '/')
-  local project_name = project_dir[#project_dir]
-  if project_name == 'nvim' then
-    return 'neovim'
-  end
-  return project_name
-end
-
 auto({ 'BufEnter' }, {
   pattern = { '' },
   callback = function()
     vim.opt.title = true
-    vim.opt.titlestring = get_project_dir()
+    vim.opt.titlestring = require('utilities.project').getName()
   end,
 })
 
