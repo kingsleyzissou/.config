@@ -1,8 +1,5 @@
 vim.opt.encoding = 'utf8'
 
--- vim.g.loaded_netrw = 1
--- vim.g.loaded_netrwPlugin = 1
-
 vim.opt.number = true -- set numbers
 vim.opt.numberwidth = 4 -- set number width
 vim.opt.relativenumber = true -- set relative number lines
