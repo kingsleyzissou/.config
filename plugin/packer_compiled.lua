@@ -79,11 +79,6 @@ _G.packer_plugins = {
     path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/LuaSnip",
     url = "https://github.com/L3MON4D3/LuaSnip"
   },
-  ["alpha-nvim"] = {
-    loaded = true,
-    path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/alpha-nvim",
-    url = "https://github.com/goolord/alpha-nvim"
-  },
   ["browse.nvim"] = {
     loaded = true,
     path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/browse.nvim",
@@ -148,11 +143,6 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/friendly-snippets",
     url = "https://github.com/rafamadriz/friendly-snippets"
-  },
-  ["git-conflict.nvim"] = {
-    loaded = true,
-    path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/git-conflict.nvim",
-    url = "https://github.com/akinsho/git-conflict.nvim"
   },
   ["gitsigns.nvim"] = {
     loaded = true,
@@ -223,6 +213,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
+  },
+  ["noice.nvim"] = {
+    loaded = true,
+    path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/noice.nvim",
+    url = "https://github.com/folke/noice.nvim"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
   },
   ["null-ls.nvim"] = {
     loaded = true,
@@ -303,6 +303,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/rest.nvim",
     url = "https://github.com/rest-nvim/rest.nvim"
+  },
+  ["sideways.vim"] = {
+    loaded = true,
+    path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/sideways.vim",
+    url = "https://github.com/AndrewRadev/sideways.vim"
   },
   ["sqlite.lua"] = {
     loaded = true,
@@ -388,6 +393,16 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/vim-illuminate",
     url = "https://github.com/RRethy/vim-illuminate"
+  },
+  ["vim-obsession"] = {
+    loaded = true,
+    path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/vim-obsession",
+    url = "https://github.com/tpope/vim-obsession"
+  },
+  ["vim-prosession"] = {
+    loaded = true,
+    path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/vim-prosession",
+    url = "https://github.com/dhruvasagar/vim-prosession"
   },
   ["which-key.nvim"] = {
     loaded = true,

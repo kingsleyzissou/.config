@@ -11,9 +11,6 @@ return require('packer').startup(function()
   -- Packer plugin manager
   use('wbthomason/packer.nvim')
 
-  -- Dashboard theme
-  use('goolord/alpha-nvim')
-
   -- color schemes
   use('ntk148v/vim-horizon')
   use('folke/tokyonight.nvim')
@@ -36,6 +33,8 @@ return require('packer').startup(function()
   use('kikito/inspect.lua') -- I think this is a dependency
   use('monaqa/dial.nvim')
   use('gaborvecsei/memento.nvim')
+  use('is0n/jaq-nvim')
+  use('AndrewRadev/sideways.vim')
 
   -- telescope
   use('nvim-telescope/telescope.nvim')
@@ -52,12 +51,13 @@ return require('packer').startup(function()
 
   -- notify
   use('rcarriga/nvim-notify')
+  use('MunifTanjim/nui.nvim')
+  use('folke/noice.nvim')
 
   -- git plugins
   use('tpope/vim-fugitive')
   use('lewis6991/gitsigns.nvim')
   use('kdheepak/lazygit.nvim')
-  use('akinsho/git-conflict.nvim')
 
   -- treesitter
   use('nvim-treesitter/nvim-treesitter')
@@ -105,6 +105,10 @@ return require('packer').startup(function()
     run = './install.sh',
   })
 
+  -- session
+  use('tpope/vim-obsession')
+  use('dhruvasagar/vim-prosession')
+
   -- snippets
   use('L3MON4D3/LuaSnip')
   use('rafamadriz/friendly-snippets')
@@ -118,7 +122,6 @@ return require('packer').startup(function()
 
   -- toggle term
   use('akinsho/toggleterm.nvim')
-  use('is0n/jaq-nvim')
 
   -- markdown
   use('ellisonleao/glow.nvim') -- keep this because opens in nvim
