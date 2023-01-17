@@ -2,7 +2,6 @@ local lspconfig = require('lspconfig')
 local mason = require('mason-lspconfig')
 local on_attach = require('config.lsp.on_attach')
 local capabilities = require('config.lsp.capabilities')
-local close_tree = require('utilities.close_tree')
 
 -- stuff I don't understand
 require('neodev').setup()
@@ -78,5 +77,5 @@ vim.keymap.set('n', '<leader>lk', vim.diagnostic.goto_prev, { desc = 'Previous i
 vim.keymap.set('n', '<leader>li', '<cmd>LspInfo<cr>', { desc = 'Lsp info' })
 vim.keymap.set('n', '<leader>lI', '<cmd>LspInstallInfo<cr>', { desc = 'Lsp install info' })
 vim.keymap.set('n', '<leader>lo', '<cmd>SymbolsOutline<cr>', { desc = 'Symbol outlines' })
-vim.keymap.set('n', '<leader>ls', close_tree('lsp_document_symbols'), { desc = 'Document symbols' })
-vim.keymap.set('n', '<leader>lS', close_tree('lsp_dynamic_workspace_symbols'), { desc = 'Workspace symbols' })
+vim.keymap.set('n', '<leader>ls', '<cmd>Telescope lsp_document_symbols<cr>', { desc = 'Document symbols' })
+vim.keymap.set('n', '<leader>lS', '<cmd>Telescpe lsp_dynamic_workspace_symbols<cr>', { desc = 'Workspace symbols' })
