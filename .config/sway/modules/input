@@ -1,0 +1,43 @@
+# swayconfig:
+# Input configuration
+
+# special media control
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym End exec brightnessctl set 5%-
+bindsym Next exec brightnessctl set 5%+
+bindsym XF86AudioNext exec playerctl --player="spotify,%any" next
+bindsym XF86AudioPrev exec playerctl --player="spotify,%any" previous
+bindsym XF86AudioPlay exec playerctl --player="spotify,%any" play-pause
+bindsym XF86AudioPause exec playerctl play-pause
+bindsym XF86Search exec $menu
+bindsym --locked XF86AudioPlay exec playerctl --all-players pause
+
+# screenshot controls
+bindsym Print exec grim -g "$(slurp)" - | wl-copy
+bindsym Shift+Print exec "grim ${HOME}/Pictures/screenshots/Screenshot-$(date -Iseconds | cut -d'+' -f1).png"
+bindsym $mod+Shift+Print exec "wf-recorder -a -o eDP-1 -f ${HOME}/Videos/Screencasts/Screenstream-$(date -Iseconds | cut -d'+' -f1).mp4"
+
+# autofocus
+focus_follows_mouse always
+
+# keyboard layout
+# laptop keyboard
+input "6058:20564:ThinkPad_Extra_Buttons" {
+    xkb_layout gb
+    xkb_options caps:hyper
+}
+
+# external keyboard
+input "2652:17666:Kemove61M_Keyboard" {
+    xkb_layout us
+    # map menu to compose key
+    # to get that € symbol
+    xkb_options "caps:hyper,compose:menu"
+}
+
+input "type:keyboard" {
+    # map caps to hyper
+    xkb_options "caps:hyper"

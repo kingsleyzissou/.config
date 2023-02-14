@@ -1,0 +1,9 @@
+# swayconfig:
+# applets
+
+exec mako &
+exec nm-applet --indicator &
+exec blueman-applet &
+exec /usr/libexec/polkit-gnome-authentication-agent-1
+# just because
+exec export EDITOR=neovim 
