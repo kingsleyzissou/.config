@@ -1,5 +1,6 @@
--- Only resettingsqsettingsusettingsired if you have packer configured as `opt`
-vim.cmd([[packadd packer.nvim]])
+-- ensure packer is installed
+local bootstrap = require('config.bootstrap')
+bootstrap.setup()
 
 -- packer
 vim.keymap.set('n', '<leader>pi', require('packer').install, { desc = 'Packer Install' })
