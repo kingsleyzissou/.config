@@ -1,9 +1,0 @@
-ftplugin
-lua
-stylua
-nvim
-keymap
-nmap
-imap
-vmap
-tmap
