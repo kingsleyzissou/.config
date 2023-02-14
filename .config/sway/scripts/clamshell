@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+LAPTOP="eDP-1"
+STATE=$(cat /proc/acpi/button/lid/LID/state | grep open -c)
+if [ "$STATE" -eq 1 ]; then
+    swaymsg output "$LAPTOP" enable
+else
+    swaymsg output "$LAPTOP" disable
+fi
