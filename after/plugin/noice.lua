@@ -1,3 +1,7 @@
 local noice = require('noice')
 
-noice.setup()
+noice.setup({
+  messages = {
+    enabled = false,
+  },
+})
