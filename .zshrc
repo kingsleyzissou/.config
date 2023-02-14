@@ -46,6 +46,11 @@ else
   export EDITOR='nvim'
 fi
 
+export BAT_THEME="Enki-Tokyo-Night"
+export MANPAGER="zsh -c 'col -bx | bat -l man -p'"
+export MANROFFOPT="-c"
+# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
+
 # Aliases
 alias g='git'
 alias dnfu="sudo dnf update -y"
