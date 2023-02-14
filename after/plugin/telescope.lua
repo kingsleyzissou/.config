@@ -78,6 +78,7 @@ vim.keymap.set('n', '<leader>fe', '<cmd>Telescope symbols<cr>', { desc = 'Find e
 vim.keymap.set('n', '<leader>ft', '<cmd>Telescope live_grep<cr>', { desc = 'Find text' })
 vim.keymap.set('n', '<leader>fs', '<cmd>Telescope grep_string<cr>', { desc = 'Find string' })
 vim.keymap.set('n', '<leader>fm', '<cmd>Telescope man_pages<cr>', { desc = 'Find man pages' })
+vim.keymap.set('n', '<leader>fn', '<cmd>Telescope notify<cr>', { desc = 'Find notifications' })
 vim.keymap.set('n', '<leader>fk', '<cmd>Telescope keymaps<cr>', { desc = 'Find keymaps' })
 vim.keymap.set('n', '<leader>fr', '<cmd>Telescope oldfiles<cr>', { desc = 'Find recent' })
 vim.keymap.set('n', '<leader>fT', '<cmd>TodoTelescope<cr>', { desc = 'Find todos' })
