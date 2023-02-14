@@ -1,3 +1,9 @@
 [submodule ".config/bat/themes/enki-theme"]
 	path = .config/bat/themes/enki-theme
 	url = https://github.com/enkia/enki-theme
+[submodule ".config/.config/nvim"]
+	path = .config/.config/nvim
+	url = https://github.com/kingsleyzissou/nvim
+[submodule ".config/nvim"]
+	path = .config/nvim
+	url = https://github.com/kingsleyzissou/nvim
