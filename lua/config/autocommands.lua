@@ -1,3 +1,4 @@
+-- rocket
 local auto = vim.api.nvim_create_autocmd
 
 -- https://github.com/ChristianChiarulli/nvim/blob/master/lua/user/autocommands.lua
@@ -70,5 +71,16 @@ auto({ 'FocusLost', 'BufLeave', 'VimLeave' }, {
     -- write - which then triggers
     -- formatting
     vim.cmd('silent! w')
+  end,
+})
+
+auto({ 'BufRead' }, {
+  pattern = { '*' },
+  callback = function()
+    local line = '' .. vim.fn.getline(1)
+    local search = string.find(line, 'swayconfig')
+    if search ~= nil then
+      vim.bo.filetype = 'swayconfig'
+    end
   end,
 })
