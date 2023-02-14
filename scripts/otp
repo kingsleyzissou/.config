@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+RESULT=$(op item get "Red Hat" --fields label=password,label="one-time password" --format json)
+
+PASSWORD=$(echo "$RESULT" | jq -r '.[0].value')
+OTP=$(echo "$RESULT" | jq -r '.[1].totp')
+
+echo "${PASSWORD}${OTP}"
