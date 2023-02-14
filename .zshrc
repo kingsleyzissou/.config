@@ -20,6 +20,9 @@ source ~/.env.sh
 export PATH=$PATH:/usr/local/go/bin
 export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
 
+# gpgkey
+export GPG_TTY=$(tty)
+
 # gopath
 export PATH=$PATH:/home/$USER/go/bin
 export PATH=$PATH:/home/$USER/.local/bin
