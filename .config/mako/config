@@ -1,14 +1,15 @@
 # https://github.com/coodos/sway-dots/blob/main/.config/mako/config
 anchor=top-right
 font=DroidSansMono Semibold 12
-background-color=#24283b
-text-color=#c0caf5
+background-color=#1e1e2e
+text-color=#dadae8
 width=350
 margin=10,10
 padding=10
 border-size=2
-border-color=#414868
+border-color=#94e2d5
 border-radius=5
+progress-color=over #332e41
 default-timeout=5000
 group-by=summary
 

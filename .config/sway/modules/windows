@@ -1,45 +1,53 @@
-# swayconfig:
+# ft=swayconfig
 # window management
 
 # Window rules
+for_window [workspace="1"] layout tabbed
+for_window [workspace="4"] layout tabbed
 for_window [window_role="pop-up"] floating enable
-for_window [app_id="org.gnome.(Nautilus|Weather)"] floating enable
+for_window [app_id="blueman-manager"] floating enable
+for_window [app_id="pavucontrol"] {
+  floating enable 
+  # set width & height to 100%
+  # move to top left corner
+  # then resize (this centers the item)
+  resize set height 100ppt width 100ppt 
+  move position 0 0
+  resize set height 525 px width 750 px
+}
+for_window [app_id="cava"] {
+  floating enable
+  resize set height 525 px width 750 px
+  move position 1135 490
+}
+for_window [class="Spotify"] {
+  floating enable
+  resize set height 100ppt width 100ppt
+  move position 0 0
+  resize set height 1320 px width 2350 px
+  # spotify is stubborn
+  move to workspace number 5
+}
 for_window [app_id="mpv"] {
   border none 
   floating enable
   sticky enable
 }
 
-# surfing 🏄
+# assignments
 assign [app_id="brave-browser"] workspace number 1
-# for_window [app_id="brave-browser"] move to workspace number 1
-
-# assign [app_id="kitty"] 2
-# don't want to assign because we want to be able 
-# to open multiple terminals in multiple workspaces
-
-# https://github.com/swaywm/sway/issues/4045#issuecomment-482823035
-set $AUTO 0
-for_window [app_id="kitty"] mark --add "type_$$AUTO" ; set $$AUTO 0
-for_window [con_mark="type_0"] mark --toggle "type_0"
-for_window [con_mark="type_1"] mark --toggle "type_1"; move to workspace number 2; focus
-for_window [con_mark="type_2"] mark --toggle "type_2"; move to workspace number 4; focus
-
-# set chat
-assign [class="Ferdium"] workspace number 3
-# for_window [class="Ferdium"] move to workspace number 3
-
-# set music - spotify is a bit stubborn
+assign [app_id="work"] workspace number 2
+assign [app_id="config"] workspace number 3
+assign [class="Ferdium"] workspace number 4
+assign [app_id="neomutt"] workspace number 4
+assign [app_id="cava"] workspace number 5
 assign [class="Spotify"] workspace number 5
-for_window [class="Spotify"] move to workspace number 5
-
-# set password manager
-assign [class="1Password"] workspace number 6
+assign [class="1Password"] workspace number 7
 
 # Autostart programs (after assignment - duh!)
 exec brave-browser &
 exec kitty &
-exec spotify &
+exec flatpak run com.spotify.Client &
 exec 1password &
 exec ferdium \
   --auth-server-whitelist '*.redhat.com' \

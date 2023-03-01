@@ -1,4 +1,4 @@
-# swayconfig:
+# ft=swayconfig
 # output configuration
 
 output * bg "${HOME}/Pictures/Wallpapers/62e3d21226fb5.png" fill

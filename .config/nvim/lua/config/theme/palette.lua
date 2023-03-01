@@ -2,15 +2,28 @@ M = {}
 
 -- default color palette
 local default = {
-  none = nil,
-  black = '#24283b',
-  white = '#c0caf5',
-  dark = '#24283b',
-  normal = '#7aa2f7',
-  insert = '#9ece6a',
-  visual = '#e0af68',
-  replace = '#f7768e',
-  command = '#9d7cd8',
+  tokyonight = {
+    none = nil,
+    black = '#24283b',
+    white = '#c0caf5',
+    dark = '#24283b',
+    normal = '#7aa2f7',
+    insert = '#9ece6a',
+    visual = '#e0af68',
+    replace = '#f7768e',
+    command = '#9d7cd8',
+  },
+  catppuccin = {
+    none = nil,
+    black = '#1e1e2e',
+    white = '#b4befe',
+    dark = '#313244',
+    normal = '#94e2d5',
+    insert = '#a6e3a1',
+    visual = '#f2cdcd',
+    replace = '#f38ba8',
+    command = '#cba6f7',
+  },
 }
 
 local function colors()
@@ -32,17 +45,17 @@ local function colors()
     local palette = require('catppuccin.palettes').get_palette('mocha')
     return {
       none = nil,
-      black = palette.crust,
+      black = palette.base,
       white = palette.text,
-      dark = palette.base,
-      normal = palette.blue,
+      dark = palette.surface0,
+      normal = palette.teal,
       insert = palette.green,
-      visual = palette.yellow,
+      visual = palette.flamingo,
       replace = palette.red,
       command = palette.mauve,
     }
   end
-  return default
+  return default.catppuccin
 end
 
 M.colors = colors

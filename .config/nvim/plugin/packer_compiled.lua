@@ -214,16 +214,6 @@ _G.packer_plugins = {
     path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/neodev.nvim",
     url = "https://github.com/folke/neodev.nvim"
   },
-  ["noice.nvim"] = {
-    loaded = true,
-    path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/noice.nvim",
-    url = "https://github.com/folke/noice.nvim"
-  },
-  ["nui.nvim"] = {
-    loaded = true,
-    path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/nui.nvim",
-    url = "https://github.com/MunifTanjim/nui.nvim"
-  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -243,6 +233,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/nvim-cmp",
     url = "https://github.com/christianchiarulli/nvim-cmp"
+  },
+  ["nvim-colorizer.lua"] = {
+    loaded = true,
+    path = "/home/kingsley/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua",
+    url = "https://github.com/norcalli/nvim-colorizer.lua"
   },
   ["nvim-lspconfig"] = {
     loaded = true,

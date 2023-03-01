@@ -1,27 +1,24 @@
-# swayconfig
+# ft=swayconfig
 # appearances
 
-font pango: DroidSansMono Nerd Font 14
+font pango: DroidSansMono Nerd Font 0
+# hack to remove tab titles
+titlebar_border_thickness 0
+titlebar_padding 0
 
 # Colors:
-client.focused          #7aa2f7 #414868 #c0caf5 #7dcfff   #7aa2f7
-client.focused_inactive #7aa2f7 #414868 #c0caf5 #7dcfff   #7aa2f7
-client.unfocused        #414868 #24283b #a9b1d6 #7dcfff   #414868
-client.urgent           #e0af68 #e0af68 #1d202f #7dcfff   #e0af68
+client.focused          #94e2d5 #332E41 #E5B4E2 #DADAE8 #94e2d5
+client.focused_inactive #94e2d5 #332E41 #E5B4E2 #DADAE8 #94e2d5
+client.unfocused        #94e2d5 #1E1E28 #DADAE8 #DADAE8 #575268
+client.urgent           #94e2d5 #575268 #EBDDAA #DADAE8 #EBDDAA
 
 # Borders:
 # Also removes all title bars
 for_window [class="^.*"] border pixel 3
 default_border pixel 2
 
-# Hide borders at the edge of the screen
-hide_edge_borders smart
-
 # Gaps:
 gaps inner 5
-gaps outer 1
-gaps top 1
-gaps bottom 1
-
-# Hide gaps when there is only 1 window
-smart_gaps on
+gaps outer 5
+gaps top 5
+gaps bottom 5

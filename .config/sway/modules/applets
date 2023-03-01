@@ -1,9 +1,10 @@
-# swayconfig:
+# ft=swayconfig
 # applets
 
-exec mako &
-exec nm-applet --indicator &
-exec blueman-applet &
+exec mako
+exec autotiling
+exec blueman-applet
+exec nm-applet --indicator
 exec /usr/libexec/polkit-gnome-authentication-agent-1
 # just because
 exec export EDITOR=neovim 

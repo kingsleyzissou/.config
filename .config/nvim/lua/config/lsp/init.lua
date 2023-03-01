@@ -16,7 +16,7 @@ local servers = {
   'jedi_language_server',
   'null-ls',
   'rust_analyzer',
-  'sumneko_lua',
+  'lua_ls',
   'tsserver',
   'yamlls',
 }

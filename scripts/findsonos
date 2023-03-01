@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+SINKS="$(pactl list sinks)"
+SONOS=$(paste -d\| \
+<(printf '%s' "$SINKS" | grep 'node.name' | cut -d'"' -f 2) \
+<(printf '%s' "$SINKS" | grep 'device.description' | rev | cut -d'"' -f 2 | rev) \
+| grep 'Bedroom' | head -1 | cut -d'|' -f 1)
+
+echo "$SONOS"

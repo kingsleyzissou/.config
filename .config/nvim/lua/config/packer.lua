@@ -20,6 +20,7 @@ return require('packer').startup(function()
 
   -- highlighting
   use('RRethy/vim-illuminate')
+  use('norcalli/nvim-colorizer.lua')
 
   -- Some vim utilities
   use('folke/neodev.nvim')
@@ -27,7 +28,6 @@ return require('packer').startup(function()
   use('tami5/sqlite.lua')
   use('tpope/vim-commentary')
   use('tpope/vim-endwise')
-  use('kylechui/nvim-surround')
   use('windwp/nvim-autopairs')
   use('folke/zen-mode.nvim')
   use('folke/which-key.nvim')
@@ -36,6 +36,10 @@ return require('packer').startup(function()
   use('gaborvecsei/memento.nvim')
   use('is0n/jaq-nvim')
   use('AndrewRadev/sideways.vim')
+  use({
+    'kylechui/nvim-surround',
+    tag = '*',
+  })
 
   -- telescope
   use('nvim-telescope/telescope.nvim')
@@ -52,8 +56,6 @@ return require('packer').startup(function()
 
   -- notify
   use('rcarriga/nvim-notify')
-  use('MunifTanjim/nui.nvim')
-  use('folke/noice.nvim')
 
   -- git plugins
   use('tpope/vim-fugitive')
