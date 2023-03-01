@@ -7,10 +7,10 @@ titlebar_border_thickness 0
 titlebar_padding 0
 
 # Colors:
-client.focused          #7aa2f7 #414868 #c0caf5 #7dcfff #7aa2f7
-client.focused_inactive #7aa2f7 #414868 #c0caf5 #7dcfff #7aa2f7
-client.unfocused        #414868 #24283b #a9b1d6 #7dcfff #414868
-client.urgent           #e0af68 #e0af68 #1d202f #7dcfff #e0af68
+client.focused          #94e2d5 #332E41 #E5B4E2 #DADAE8 #94e2d5
+client.focused_inactive #94e2d5 #332E41 #E5B4E2 #DADAE8 #94e2d5
+client.unfocused        #94e2d5 #1E1E28 #DADAE8 #DADAE8 #575268
+client.urgent           #94e2d5 #575268 #EBDDAA #DADAE8 #EBDDAA
 
 # Borders:
 # Also removes all title bars
