@@ -18,6 +18,7 @@ window#waybar {
   margin-left: 6px;
   border-radius: 5px;
 }
+
 #workspaces button {
   padding: 2px 8px;
   color: #fff;
@@ -36,7 +37,6 @@ window#waybar {
 }
 
 #custom-date,
-#clock,
 #battery,
 #pulseaudio,
 #network {
@@ -60,18 +60,37 @@ window#waybar {
   padding: 3px 10px;
 }
 
+#custom-media {
+  background-color: #66cc99;
+  border-radius: 5px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 5px;
+  color: #2a5c45;
+  min-width: 100px;
+  padding: 3px 10px;
+}
+
+#custom-media.custom-spotify {
+  background-color: #9ece6a;
+}
+
 #clock {
-  color: #b48ead;
-  border-radius: 0px 5px 5px 0px;
-  margin-right: 6px;
+  color: #b9f27c;
+  border-radius: 5px 5px 5px 5px;
 }
 
 #battery {
   color: #9ece6a;
+  color: #b48ead;
+  margin-right: 6px;
+  border-radius: 0px 5px 5px 0px;
 }
 
 #battery.charging {
   color: #9ece6a;
+  color: #b48ead;
 }
 
 #battery.warning:not(.charging) {
@@ -100,12 +119,10 @@ window#waybar {
 
 #disk {
   color: #b9f27c;
-  margin: 5px 0;
-  padding-right: 10px;
+  margin: 5px 3px;
+  padding: 0 10px;
   background-color: #24283b;
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-  margin-right: 3px;
+  border-radius: 5px;
 }
 
 #memory {
