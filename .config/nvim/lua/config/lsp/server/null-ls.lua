@@ -25,7 +25,7 @@ return function(opts)
       }),
       -- formatting
       formatting.autopep8,
-      formatting.prettier.with({
+      formatting.prettierd.with({
         disabled_filetypes = { 'yaml' },
         extra_args = {
           '--single-quote',

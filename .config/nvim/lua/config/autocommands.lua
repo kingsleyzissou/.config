@@ -78,7 +78,7 @@ auto({ 'BufRead' }, {
   pattern = { '*' },
   callback = function()
     local line = '' .. vim.fn.getline(1)
-    local search = string.find(line, 'swayconfig')
+    local search = string.find(line, 'ft=swayconfig')
     if search ~= nil then
       vim.bo.filetype = 'swayconfig'
     end
