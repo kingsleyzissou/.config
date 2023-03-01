@@ -20,6 +20,7 @@ return require('packer').startup(function()
 
   -- highlighting
   use('RRethy/vim-illuminate')
+  use('norcalli/nvim-colorizer.lua')
 
   -- Some vim utilities
   use('folke/neodev.nvim')
@@ -52,8 +53,6 @@ return require('packer').startup(function()
 
   -- notify
   use('rcarriga/nvim-notify')
-  use('MunifTanjim/nui.nvim')
-  use('folke/noice.nvim')
 
   -- git plugins
   use('tpope/vim-fugitive')
