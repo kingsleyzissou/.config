@@ -2,20 +2,22 @@
 export ZSH="/home/kingsley/.oh-my-zsh"
 
 # Set theme
-ZSH_THEME="typewritten"
+# ZSH_THEME="typewritten"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
+HISTFILE=~/.config/.zsh_history
 
 # Plugins
-plugins=(git docker-compose zsh-autosuggestions zsh-syntax-highlighting ssh-agent)
+plugins=(git docker-compose zsh-autosuggestions zsh-syntax-highlighting)
 
 # User configuration
 
 # Source config files
 source $ZSH/oh-my-zsh.sh
 source ~/.env.sh
+source ~/.config/.zshenv
 
 export PATH=$PATH:/usr/local/go/bin
 export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
@@ -46,20 +48,6 @@ else
   export EDITOR='nvim'
 fi
 
-export BAT_THEME="Enki-Tokyo-Night"
-export MANPAGER="zsh -c 'col -bx | bat -l man -p'"
-export MANROFFOPT="-c"
-# export MANPAGER="sh -c 'col -bx | bat -l man -p'"
-
-# Aliases
-alias g='git'
-alias dnfu="sudo dnf update -y"
-alias dnfi="sudo dnf install"
-alias vi=nvim # launch vi as nvim
-alias vim=nvim # launch vim as nvim
-alias s="kitty +kitten ssh" # launch ssh in kitty
-alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' # alias for dotfiles
-
 # Helper functions
 # File search functions
 function f() { find . -iname "*$1*" ${@:2} }
@@ -80,3 +68,7 @@ function c() {
   DIR="${@:$OPTIND:1}" 
   cd "${PARENT}/${DIR}"; 
 }
+
+# starship prompt
+eval "$(starship init zsh)"
+export PATH=$PATH:/home/kingsley/.spicetify
