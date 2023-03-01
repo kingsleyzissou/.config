@@ -1,0 +1,26 @@
+#!/usr/bin/bash
+
+# user environment variables
+# XDG Base Directories
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
+export XDG_DATA_HOME="$HOME/.local/share"
+
+# nnn
+export NNN_FIFO='/tmp/nnn.fifo'
+export NNN_EDITOR='nvim'
+export NNN_PAGER=${NNN_PAGER:-less -P?n -R}
+export NNN_TRASH='1' # use trash-cli
+export NNN_COLORS='4652' # colors for contexts
+export NNN_FCOLORS='0203040a000d0608090b0501' # file specific colors
+export NNN_BMS='p:/home/kingsley/Dev/osbuild;s:/home/kingsley/Pictures/screenshots;m:/run/media/kingsley/'
+export NNN_PLUG='p:preview-tui;o:launch'
+export NNN_TERMINAL='kitty'
+export VISUAL='nvim'
+export NNN_OPTS='ceEPp'
+export PAGER='less -RF'
+
+# keychain
+export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+
+exec sway $@
