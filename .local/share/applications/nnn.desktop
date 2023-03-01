@@ -1,0 +1,6 @@
+[Desktop Entry]
+Version=1.0
+Terminal=false
+Type=Application
+Name=Nnn
+Exec=/usr/bin/kitty --class 'nnn' /usr/bin/nnn
