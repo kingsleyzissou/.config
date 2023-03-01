@@ -19,56 +19,34 @@ source $ZSH/oh-my-zsh.sh
 source ~/.env.sh
 source ~/.config/.zshenv
 
-export PATH=$PATH:/usr/local/go/bin
-export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
+# setup fzf with keybindings
+source /usr/share/fzf/shell/key-bindings.zsh
 
-# gpgkey
-export GPG_TTY=$(tty)
-
-# gopath
-export PATH=$PATH:/home/$USER/go/bin
-export PATH=$PATH:/home/$USER/.local/bin
-
-# pnpm path
-export PNPM_HOME="/home/kingsley/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-
-# language servers
-export PATH=$PATH:/home/$USER/.local/share/nvim/lsp_servers/jedi_language_server/venv/bin
-export PATH=$PATH:/home/$USER/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin
-export PATH=$PATH:/home/$USER/.local/share/nvim/lsp_servers/yamlls/node_modules/yaml-language-server/bin
-
-# fuzzy finder
-export FZF_DEFAULT_COMMAND="fd --type f --exclude={.git,node_modules,vendor}" 
-
-# Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='nvim'
+# setup tty colors
+if [ "$TERM" = "linux" ]; then
+	printf %b '\e[40m' '\e[8]' # set default background to color 0 'moonfly-bg'
+	printf %b '\e[37m' '\e[8]' # set default foreground to color 7 'moonfly-fg'
+	printf %b '\e]P01e1e28'    # redefine 'black'          as 'moonfly-bg'
+	printf %b '\e]P8575268'    # redefine 'bright-black'   as 'moonfly-comment'
+	printf %b '\e]P1e38c8f'    # redefine 'red'            as 'moonfly-red'
+	printf %b '\e]P9e38c8f'    # redefine 'bright-red'     as '#c49ea0'
+	printf %b '\e]P2b1e3ad'    # redefine 'green'          as 'moonfly-green'
+	printf %b '\e]PAb1e3ad'    # redefine 'bright-green'   as '#9ec49f'
+	printf %b '\e]P3ebddaa'    # redefine 'brown'          as 'moonfly-yellow'
+	printf %b '\e]PBebddaa'    # redefine 'bright-brown'   as 'moonfly-orange'
+	printf %b '\e]P4a4b9ef'    # redefine 'blue'           as 'moonfly-purple'
+	printf %b '\e]PCa4b9ef'    # redefine 'bright-blue'    as '#a5b4cb'
+	printf %b '\e]P5e5b4e2'    # redefine 'magenta'        as 'moonfly-pink'
+	printf %b '\e]PDe5b4e2'    # redefine 'bright-magenta' as '#c49ec4'
+	printf %b '\e]P6bee4ed'    # redefine 'cyan'           as 'moonfly-cyan'
+	printf %b '\e]PEbee4ed'    # redefine 'bright-cyan'    as '#9ec3c4'
+	printf %b '\e]P7c3bac6'    # redefine 'white'          as 'moonfly-fg'
+	printf %b '\e]PFdadae8'    # redefine 'bright-white'   as '#f0f0f0'
+	clear
 fi
 
-# Helper functions
-# File search functions
-function f() { find . -iname "*$1*" ${@:2} }
-function r() { grep "$1" ${@:2} -R . }
-
-# Create a folder and move into it in one command
-function mkcd() { mkdir -p "$@" && cd "$_"; }
-
-# Shortcuts for common directories
-function c() { 
-  PARENT="${HOME}/Dev/osbuild" 
-  while getopts 'c' flag; do
-    case "${flag}" in
-      c) PARENT="${HOME}/.config" ;;
-      *) break ;;
-    esac
-  done
-  DIR="${@:$OPTIND:1}" 
-  cd "${PARENT}/${DIR}"; 
-}
 
 # starship prompt
 eval "$(starship init zsh)"
-export PATH=$PATH:/home/kingsley/.spicetify
+
+pfetch
