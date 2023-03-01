@@ -1,13 +1,10 @@
-# swayconfig:
+# ft=swayconfig
 # base variables
 
 # persistent clipboard:
 # recommended to be run at top of sway config
 # as per https://github.com/yory8/clipman#usage
 exec wl-paste -t text --watch clipman store --no-persist
-
-# autotiling
-exec_always "pkill -f '/usr/bin/python2 /usr/local/bin/swaymonad'; swaymonad"
 
 # modkey
 set $mod Mod3

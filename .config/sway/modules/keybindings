@@ -1,8 +1,8 @@
-# swayconfig:
+# ft=swayconfig
 # key bindings
 
 # Start a terminal
-bindsym $mod+Return exec "${HOME}/.config/sway/scripts/$term"
+bindsym $mod+Return exec $term
 
 # Kill focused window
 bindsym $mod+Shift+q kill
@@ -10,7 +10,7 @@ bindsym $mod+Shift+q kill
 # Start launcher
 bindsym $mod+d exec $menu
 
-bindsym $mod+Shift+b exec "${HOME}/.config/sway/scripts/ranger"
+bindsym $mod+Shift+b exec "/usr/bin/kitty --class='nnn' nnn"
 
 # new incognito browser
 bindsym $mod+Shift+n exec brave-browser --incognito 
@@ -31,34 +31,21 @@ bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. 
 bindsym $mod+Shift+o workspace prev
 bindsym $mod+Shift+p workspace next
 
-bindsym $mod+Tab nop promote_window
+bindsym $mod+Tab workspace back_and_forth
 
-bindsym $mod+x nop reflectx
-bindsym $mod+y nop reflecty
-bindsym $mod+t nop transpose
+bindsym $mod+f fullscreen
 
-bindsym $mod+j nop focus_next_window
-bindsym $mod+k nop focus_prev_window
-
-bindsym $mod+Shift+j nop swap_with_next_window
-bindsym $mod+Shift+k nop swap_with_prev_window
-
-bindsym $mod+f nop fullscreen
-
-bindsym $mod+Comma nop increment_masters
-bindsym $mod+Period nop decrement_masters
+# Or use $mod+[$up|$down|$left|$right]
+bindsym $mod+$left focus left
+bindsym $mod+$down focus down
+bindsym $mod+$up focus up
+bindsym $mod+$right focus right
 
 # Or use $mod+[up|down|left|right]
 bindsym $mod+Left focus left
 bindsym $mod+Down focus down
 bindsym $mod+Up focus up
 bindsym $mod+Right focus right
-
-# Move the focused window with the same, but add Shift
-bindsym $mod+Shift+Left nop move left
-bindsym $mod+Shift+Down nop move down
-bindsym $mod+Shift+Up nop move up
-bindsym $mod+Shift+Right nop move right
 
 # Switch to workspace
 bindsym $mod+1 workspace number 1
