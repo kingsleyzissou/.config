@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/env bash
 
 set -o noclobber -o noglob -o nounset -o pipefail
 IFS=$'\n'
@@ -155,7 +155,7 @@ handle_image() {
 
         ## Video
         video/*)
-            Thumbnail
+            # Thumbnail
             ffmpegthumbnailer -i "${FILE_PATH}" -o "${IMAGE_CACHE_PATH}" -s 0 && exit 6
             exit 1;;
 
