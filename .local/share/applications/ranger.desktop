@@ -2,6 +2,6 @@
 Version=1.0
 Terminal=false
 Type=Application
-Name=iPython
-Exec=/usr/bin/kitty --class 'ipython' /usr/bin/ipython
+Name=Ranger
+Exec=/usr/bin/kitty --class 'ranger' /usr/bin/ranger
 Icon=/home/kingsley/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png

@@ -4,3 +4,4 @@ Terminal=false
 Type=Application
 Name=Cava
 Exec=/usr/bin/kitty --class 'cava' /usr/bin/cava
+Icon=/home/kingsley/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png
