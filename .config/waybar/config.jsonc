@@ -1,24 +1,27 @@
 {
   "position": "top",
-  "height": 20,
+  "layer": "top",
+  "height": 50,
+  "margin-bottom": -10,
   "modules-left": [
-    "sway/workspaces",
+    "wlr/workspaces",
     "custom/media"
-  ],
-  "modules-center": [
-    "clock"
   ],
   "modules-right": [
     "network",
-    "pulseaudio",
     "battery",
-    "disk",
-    "tray"
+    "custom/disk",
+    // "cpu",
+    "custom/screenshot",
+    "custom/expand",
+    "pulseaudio",
+    "clock"
+    // "tray"
     // "custom/date",
     // "memory",
     // "cpu",
   ],
-  "sway/workspaces": {
+  "wlr/workspaces": {
     "disable-scroll": true,
     "all-outputs": true,
     "format": "{icon}",
@@ -45,7 +48,27 @@
       "8": "八",
       "9": "九",
       "10": "零"
-    }
+    },
+    "on-click": "activate"
+  },
+  // credit: https://github.com/flick0/dotfiles
+  "custom/expand":{
+    "on-click":"~/.config/waybar/custom_modules/expand_toolbar",
+    "format":"{}",
+    "tooltip-format": "",
+    "exec":"~/.config/waybar/custom_modules/dynamic_toolbar expand"
+  },
+  "custom/screenshot": {
+    "on-click":"~/.config/waybar/custom_modules/screenshot",
+    "format":"{}",
+    "tooltip-format": "",
+    "exec":"~/.config/waybar/custom_modules/dynamic_toolbar camera"
+  },
+  "custom/disk": {
+    // "on-click":"~/.config/waybar/custom_modules/screenshot",
+    "format":"{}",
+    "tooltip-format": "",
+    "exec":"~/.config/waybar/custom_modules/dynamic_toolbar disk"
   },
   "custom/date": {
     "format": "  {}",
@@ -53,8 +76,8 @@
     "exec": "$HOME/.config/waybar/custom_modules/date.sh 2> /dev/null"
   },
   "clock": {
-    "format": "{:%H:%M} ",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "format": "{:%H:%M}",
+    "tooltip-format": "",
     "format-alt": "{:%Y-%m-%d}"
   },
   "battery": {
@@ -62,41 +85,30 @@
       "warning": 30,
       "critical": 15
     },
-    "format": "{icon}  {capacity}%",
-    "format-charging": "  {capacity}%",
-    "format-plugged": "  {capacity}%",
-    "format-alt": "{time}  {icon}",
-    "format-icons": [
-      "",
-      "",
-      "",
-      "",
-      ""
-    ]
+    "format": "{icon}",
+    "format-charging": "",
+    "format-plugged": "",
+    "tooltip-format": "",
+    "format-icons": ["", "", "", "", ""]
   },
   "network": {
-    "format-wifi": "  {essid}",
-    "format-ethernet": "🖧  {ipaddr}",
-    "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "  Disconnected",
-    "tooltip-format-wifi": "Signal Strenght: {signalStrength}%",
-    "format-alt": "{ifname}: {ipaddr}/{cidr}"
+    "format-wifi": " ",
+    "format-ethernet": "🖧 ",
+    "format-linked": " ",
+    "format-disconnected": " ",
+    "format-alt": " ",
+    "tooltip-format": ""
   },
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
-    "format-bluetooth": "{icon}  {volume}%",
-    "format-muted": "  Muted",
+    "format": "{icon} ",
+    "format-bluetooth": "{icon}",
+    "format-muted": "",
     "format-icons": {
       "headphone": "",
       "car": "",
-      "default": [
-        "",
-        "",
-        "",
-        "",
-        ""
-      ]
+      "default": ["", "", ""]
     },
+    "tooltip-format": "",
     "on-click": "/usr/bin/pavucontrol"
   },
   "tray": {
@@ -105,7 +117,8 @@
   },
   "disk": {
     "interval": 30,
-    "format": "/  {percentage_free}% FREE",
+    "format": "{percentage_free}%",
+    "tooltip-format": "",
     "path": "/"
   },
   "memory": {
@@ -113,9 +126,9 @@
     "format": "RAM {used:0.1f}G/{total:0.1f}G "
   },
   "cpu": {
-    "interval": 10,
-    "format": "CPU {}% ",
-    "max-length": 20
+    "interval":1,
+    "format": "{icon0} {icon1} {icon2} {icon3}",
+    "format-icons": ["▁", "▂", "▃", "▄", "▅", "▆", "▇", "█"]
   },
   "custom/media": {
     "format": "{icon} {}",
@@ -126,6 +139,6 @@
       "default": "🎜"
     },
     "escape": true,
-    "exec": "$HOME/.config/waybar/custom_modules/mediaplayer.py --player spotify 2> /dev/null"
+    "exec": "$HOME/.config/waybar/custom_modules/mediaplayer --player spotify 2> /dev/null"
   }
 }
