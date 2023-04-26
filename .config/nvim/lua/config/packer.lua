@@ -36,6 +36,7 @@ return require('packer').startup(function()
   use('gaborvecsei/memento.nvim')
   use('is0n/jaq-nvim')
   use('AndrewRadev/sideways.vim')
+  use('andrewferrier/wrapping.nvim')
   use({
     'kylechui/nvim-surround',
     tag = '*',
