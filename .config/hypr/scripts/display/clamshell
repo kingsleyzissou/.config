@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+LAPTOP="eDP-1"
+STATE=$(cat /proc/acpi/button/lid/LID/state | grep open -c)
+if [ "$STATE" -eq 1 ]; then
+    hyprctl keyword monitor "$LAPTOP,preferred,auto,1"
+else
+    hyprctl keyword monitor "$LAPTOP,disable"
+fi

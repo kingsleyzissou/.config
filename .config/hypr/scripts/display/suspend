@@ -1,0 +1,27 @@
+#!/usr/bin/bash
+
+# simple bash script to switch displays off and on.
+# the script checks if the laptop is in clamshell mode,
+# if so, it only toggles the external display
+# ~/.config/hypr/scripts/display/clamshell
+
+LAPTOP="eDP-1"
+MONITOR="DP-1"
+STATE=$(cat /proc/acpi/button/lid/LID/state | grep open -c)
+if [[ $1 == "suspend" ]]; then
+  echo "Suspending display" >> ~/.swayidle/log
+  hyprctl keyword monitor "$MONITOR,disable" >> ~/.swayidle/log
+  if [ "$STATE" -eq 1 ]; then
+    echo "Suspending laptop" >> ~/.swayidle/log
+    hyprctl keyword monitor "$LAPTOP,disable" >> ~/.swayidle/log
+  fi
+fi
+
+if [[ $1 == "wake" ]]; then
+  echo "Waking display" >> ~/.swayidle/log
+  hyprctl keyword monitor "$MONITOR,preferred,auto,1" >> ~/.swayidle/log
+  if [ "$STATE" -eq 1 ]; then
+    echo "Waking laptop" >> ~/.swayidle/log
+    hyprctl keyword monitor "$LAPTOP,preferred,auto,1" >> ~/.swayidle/log
+  fi
+fi

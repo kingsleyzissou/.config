@@ -1,0 +1,9 @@
+#!/usr/bin/bash
+
+sleep 10
+# cleanup workspace assignments
+hyprctl keyword windowrulev2 "workspace unset,class:^(brave-browser)$"
+hyprctl keyword windowrulev2 "workspace unset,class:^(Ferdium)$"
+hyprctl keyword windowrulev2 "workspace unset,class:^(Spotify)$"
+hyprctl keyword windowrulev2 "workspace unset,class:^(caba)$"
+hyprctl keyword windowrulev2 "workspace unset,class:^(1Password)$"

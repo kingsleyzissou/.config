@@ -1,0 +1,44 @@
+#!/usr/bin/bash
+DISPLAY=$(hyprctl monitors -j | jq -r '.[] | select (.focused).name' )
+
+# https://rjzaworski.com/2018/01/taking-pretty-screenshots-on-linux
+screenshadow() {
+  MASK="$(mktemp).png"
+  TMP="$(mktemp).png"
+
+  # Adjust as needed to suit your desktop environment
+  # Defaults set for vanilla Ubuntu.
+  RADIUS=5
+  INSET=2
+
+  HEIGHT=$(identify -format '%h' "$1")
+  WIDTH=$(identify -format '%w' "$1")
+
+  # Mask the image to create round borders
+  # https://stackoverflow.com/a/18992215
+  convert -size "${WIDTH}x${HEIGHT}" xc:none -draw "roundrectangle 0,0,${WIDTH},${HEIGHT},25,25" "$MASK"
+  convert "$1" -matte "$MASK" -compose DstIn -composite "$TMP"
+
+  convert \
+    \( -size "${WIDTH}x${HEIGHT}" xc:none -fill white \
+      -draw "roundRectangle 0,0 $((WIDTH-INSET)),$((HEIGHT-INSET)) $RADIUS,$RADIUS" \
+      -draw "rectangle 0,10 $((WIDTH-INSET)),$((HEIGHT-INSET))" \
+      "$TMP" -compose SrcIn -composite \) \
+    \( -clone 0 -background \#231f20 -shadow 60x15+0+15 \) \
+    -reverse -background none -compose Over -layers merge +repage \
+    "$2" 
+
+}
+
+if [ "$1" = "save" ]; then
+    DATE=$(date -Iseconds | cut -d'+' -f1)
+    OUTPUT="$HOME/Pictures/screenshots/Screenshot-$DATE.png"
+    TMP=$(mktemp)
+    grim -o "$DISPLAY" "$TMP"
+    screenshadow "$TMP" "$OUTPUT"
+    exit
+fi
+
+TMP="$(mktemp).png"
+grim -g "$(slurp)" "$TMP" 
+screenshadow "$TMP" png:- | wl-copy
