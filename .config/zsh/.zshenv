@@ -27,6 +27,9 @@ export XDG_DATA_HOME="$HOME/.local/share"
 export PATH=$PATH:/usr/local/go/bin
 export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
 
+# append local scripts to path
+export PATH=$PATH:"$HOME/.scripts"
+
 # pfetch information 
 export PF_INFO="ascii title os kernel uptime pkgs memory editor palette"
 
@@ -52,6 +55,9 @@ export PATH=$PATH:/home/kingsley/.spicetify
 # fuzzy finder
 export FZF_DEFAULT_COMMAND="fd --type f --exclude={.git,node_modules,vendor}" 
 
+# export starship
+export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
+
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -63,9 +69,6 @@ fi
 # File search functions
 function f() { find . -iname "*$1*" ${@:2} }
 function r() { grep "$1" ${@:2} -R . }
-
-# Create a folder and move into it in one command
-function mkcd() { mkdir -p "$@" && cd "$_"; }
 
 # Shortcuts for common directories
 function c() { 
@@ -81,23 +84,9 @@ function c() {
 }
 
 # bat styles
-export BAT_THEME="Enki-Tokyo-Night"
+export BAT_THEME="Catppuccin-mocha"
 export MANPAGER="zsh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
-
-# nnn
-export NNN_FIFO='/tmp/nnn.fifo'
-export NNN_EDITOR='nvim'
-export NNN_PAGER=${NNN_PAGER:-less -P?n -R}
-export NNN_TRASH='1' # use trash-cli
-export NNN_COLORS='4652' # colors for contexts
-export NNN_FCOLORS='0203040a000d0608090b0501' # file specific colors
-export NNN_BMS='p:/home/kingsley/Dev/osbuild;s:/home/kingsley/Pictures/screenshots;m:/run/media/kingsley/'
-export NNN_PLUG='p:preview-tui;o:launch'
-export NNN_TERMINAL='kitty'
-export VISUAL='nvim'
-export NNN_OPTS='ceEPp'
-export PAGER='less -RF'
 
 # keychain
 export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh

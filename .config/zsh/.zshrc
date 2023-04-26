@@ -7,7 +7,7 @@ export ZSH="/home/kingsley/.oh-my-zsh"
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 HYPHEN_INSENSITIVE="true"
-HISTFILE=~/.config/.zsh_history
+HISTFILE=~/.config/zsh/.zsh_history
 
 # Plugins
 plugins=(git docker-compose zsh-autosuggestions zsh-syntax-highlighting)
@@ -15,9 +15,9 @@ plugins=(git docker-compose zsh-autosuggestions zsh-syntax-highlighting)
 # User configuration
 
 # Source config files
-source $ZSH/oh-my-zsh.sh
 source ~/.env.sh
-source ~/.config/.zshenv
+source $ZSH/oh-my-zsh.sh
+source ~/.config/zsh/.zshenv
 
 # setup fzf with keybindings
 source /usr/share/fzf/shell/key-bindings.zsh
