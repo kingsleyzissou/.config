@@ -1,8 +1,0 @@
-#!/usr/bin/bash
-
-WIDTH=$(swaymsg -t get_outputs | jq -r '.[] | select(.focus) | .rect.width')
-HEIGHT=$(swaymsg -t get_outputs | jq -r '.[] | select(.focus) | .rect.height'-38) # subtract 40px for waybar height
-
-# maximise floating window
-swaymsg move position 0 0
-swaymsg resize set width "${WIDTH}px" height "${HEIGHT}px"

@@ -1,5 +1,0 @@
-# ft=swayconfig
-# Status bar
-bar {
-    swaybar_command /usr/bin/waybar
-}
