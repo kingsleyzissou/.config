@@ -1,0 +1,20 @@
+#!/usr/bin/bash
+
+while true; do
+    # this could change, so run inside loop
+    CAVA=$(pw-link -o | grep -c cava:)
+    BRAVE=$(pw-link -o | grep -c Brave:)
+    SPOTIFY=$(pw-link -o | grep -c spotify:)
+
+    if [[ $CAVA -ge 2 ]]; then
+      if [[ $BRAVE -ge 2 ]]; then
+        pw-link "Brave:output_FL" cava:input_FL 2> /dev/null
+        pw-link "Brave:output_FR" cava:input_FR 2> /dev/null
+      fi
+      if [[ $SPOTIFY -ge 2 ]]; then
+        pw-link "spotify:output_FL" cava:input_FL 2> /dev/null
+        pw-link "spotify:output_FR" cava:input_FR 2> /dev/null
+      fi
+    fi
+    sleep 1
+done
