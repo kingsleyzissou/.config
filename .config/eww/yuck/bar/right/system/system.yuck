@@ -1,0 +1,38 @@
+(defwidget systembox []
+  (box 
+    :class "box"
+    :orientation "h"
+    :space-evenly false
+    :spacing 3
+    (battery_icon 
+      :status {EWW_BATTERY.BAT0.status}
+      :capacity {EWW_BATTERY.BAT0.capacity}
+    )
+    ; (disk_icon {EWW_DISK})
+  )
+)
+
+(defwidget battery_icon [status capacity]
+  (button
+    :class "button system"
+    (label 
+      :class "icon ${ capacity < 25 ? 'red' : capacity < 75 ? 'yellow' : 'green' }"
+      :text { 
+        status == "Charging" ? "󱐋" :
+          capacity < 25 ? "" :
+            capacity < 50 ? "" :
+              capacity < 75 ? "" : ""
+      }
+    )
+  )
+)
+
+(defwidget disk_icon []
+  (button
+    :class "button system"
+    (label
+      ; :class "icon"
+      :text "disk"
+    )
+  )
+)

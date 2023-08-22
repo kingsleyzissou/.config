@@ -1,0 +1,45 @@
+(defwindow side
+  :geometry (geometry
+    :x "18px"
+    :y "18px"
+    :anchor "right top"
+  )
+  :stacking "fg"
+  :wm-ignore true
+  (vbar)
+)
+
+(defwidget vbar []
+  (box
+    :orientation "v"
+    :space-evenly false
+    :spacing 12
+    (timebox)
+    (weather)
+    (media)
+    (controls)
+  )
+)
+
+(defwidget timebox []
+  (box
+    :class "sidebar-box"
+    (time)
+  )
+)
+
+(defwidget closer [window]
+  (eventbox :onclick "eww close ${window} && eww close ${window}-closer")
+)
+
+;; click-outside behaviour
+(defwindow side-closer
+  :geometry (geometry :width "100%" :height "100%")
+  :stacking "fg"
+  :focusable false
+  (closer :window "side")
+)
+
+(include "./yuck/side/weather/weather.yuck")
+(include "./yuck/side/media/media.yuck")
+(include "./yuck/side/controls/controls.yuck")

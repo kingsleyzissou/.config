@@ -1,0 +1,38 @@
+.left {
+  padding-left: 16px;
+  .box {
+    margin-right: 4px;
+  }
+}
+
+.right {
+  padding-right: 16px;
+  .box {
+    margin-left: 4px;
+  }
+}
+
+.button {
+  padding: 0px 14px;
+  margin: 6px 2px 6px 2px;
+  background-color: $base;
+  border-radius: 50px;
+  font-size: 14px;
+
+  &:hover {
+    background-color: $surface;
+  }
+}
+
+.box {
+  .event {
+    &:hover {
+      .button {
+        background-color: $surface;
+      }
+    }
+  }
+}
+
+@import "./left/left.scss";
+@import "./right/right.scss";

@@ -1,0 +1,14 @@
+(defwidget weather []
+  (box
+    :class "sidebar-box"
+    (label 
+      :style "font-size: 64px; color: ${weather.summary.color};" 
+      :text {weather.summary.icon}
+    )
+    (box
+      :orientation "v"
+      (label :text "${weather.temperature} °C")
+      (label :text {weather.summary.text})
+    )
+  )
+)

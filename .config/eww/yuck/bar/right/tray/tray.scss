@@ -1,0 +1,10 @@
+.tray {
+  .icon {
+    margin-right: 3px;
+
+    // bluetooth icon is slightly different to the rest
+    &.bluetooth {
+      margin-right: 1px;
+    }
+  }
+}
