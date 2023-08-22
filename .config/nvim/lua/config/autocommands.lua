@@ -11,7 +11,7 @@ auto({ 'FileType' }, {
     'man',
     'spectre_panel',
     'MarkDown',
-    'NvimTree',
+    'neo-tree',
     'vim',
     'toggleterm',
     'httpResult',
@@ -41,14 +41,6 @@ auto({ 'FileType' }, {
 })
 
 auto({ 'BufEnter' }, {
-  pattern = { '' },
-  callback = function()
-    vim.opt.title = true
-    vim.opt.titlestring = require('utilities.project').getName()
-  end,
-})
-
-auto({ 'BufEnter' }, {
   pattern = { 'term://*' },
   callback = function()
     vim.cmd('startinsert!')
@@ -74,13 +66,13 @@ auto({ 'FocusLost', 'BufLeave', 'VimLeave' }, {
   end,
 })
 
-auto({ 'BufRead' }, {
-  pattern = { '*' },
-  callback = function()
-    local line = '' .. vim.fn.getline(1)
-    local search = string.find(line, 'ft=swayconfig')
-    if search ~= nil then
-      vim.bo.filetype = 'swayconfig'
-    end
-  end,
-})
+-- auto({ 'BufRead' }, {
+--   pattern = { '*' },
+--   callback = function()
+--     local line = '' .. vim.fn.getline(1)
+--     local search = string.find(line, 'ft=swayconfig')
+--     if search ~= nil then
+--       vim.bo.filetype = 'swayconfig'
+--     end
+--   end,
+-- })

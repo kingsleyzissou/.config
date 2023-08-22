@@ -1,9 +1,6 @@
-local lualine = require('lualine')
 local palette = require('config.theme.palette')
 
-local M = {}
-
-local function theme()
+return function()
   local colors = palette.colors()
   return {
     inactive = {
@@ -38,13 +35,3 @@ local function theme()
     },
   }
 end
-
-M.setup = function()
-  lualine.setup({
-    options = {
-      theme = theme(),
-    },
-  })
-end
-
-return M
