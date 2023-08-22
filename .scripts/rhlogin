@@ -8,6 +8,4 @@ if [ "$VPN" -eq 0 ]; then
 fi
 
 echo "Logging in..."
-# Generate a keytab with kutil on a new system
-# save under ~/.auth directory (principal is username)
-kinit gzuccare@REDHAT.COM -k -t ~/.auth/redhat.keytab
+op item get "Red Hat" --fields label="kerberos" | kinit gzuccare@IPA.REDHAT.COM > /dev/null
