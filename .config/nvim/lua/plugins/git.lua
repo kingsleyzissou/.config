@@ -11,8 +11,12 @@ return {
         col = 1,
       },
     },
+    lazy = false, -- needed for keybindings
     keys = function()
-      local signs = require('gitsigns')
+      local ok, signs = pcall(require, 'gitsigns')
+      if not ok then
+        return {}
+      end
       return {
         { '<leader>gj', signs.next_hunk, desc = 'Next hunk' },
         { '<leader>gk', signs.prev_hunk, desc = 'Previous hunk' },
@@ -33,5 +37,11 @@ return {
     keys = {
       { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
     },
+  },
+
+  {
+    -- diffview
+    'sindrets/diffview.nvim',
+    config = true,
   },
 }

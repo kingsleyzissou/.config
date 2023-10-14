@@ -10,3 +10,4 @@ vim.cmd.colorscheme('catppuccin')
 -- end, { nargs = 1 })
 
 -- ChangeTheme()
+-- hi Comment	ctermfg=Cyan guifg=#80a0ff gui=bold

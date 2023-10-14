@@ -6,16 +6,10 @@ vim.keymap.set('n', '<leader>ww', '<cmd>w!<cr>', { desc = 'Save' })
 vim.keymap.set('n', '<leader>wq', '<cmd>wq!<cr>', { desc = 'Save & quit' })
 --
 -- lazy
-vim.keymap.set('n', '<leader>l', '<cmd>Lazy<cr>', { desc = 'Lazy' })
+vim.keymap.set('n', '<leader>i', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 -- search for word under cursor
 vim.keymap.set({ 'n', 'x' }, 'gw', '*N', { desc = 'Search word under cursor' })
-
--- better window navigation
-vim.keymap.set('n', '<c-h>', '<c-w>h', { desc = 'Window →' })
-vim.keymap.set('n', '<c-j>', '<c-w>j', { desc = 'Window ←' })
-vim.keymap.set('n', '<c-k>', '<c-w>k', { desc = 'Window ↑' })
-vim.keymap.set('n', '<c-l>', '<c-w>l', { desc = 'Window ↓' })
 
 -- splits
 vim.keymap.set('n', '<leader>h', '<cmd>split<cr>', { desc = 'Horizontal split' })
@@ -67,6 +61,9 @@ vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Jump half page down' })
 vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Jump half page up' })
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
+
+-- rest nvim
+vim.keymap.set('n', '<leader>rr', '<Plug>RestNvim', { desc = 'RestNvim' })
 
 -- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
 -- stylua: ignore

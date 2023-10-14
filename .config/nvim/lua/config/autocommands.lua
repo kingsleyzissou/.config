@@ -15,6 +15,7 @@ auto({ 'FileType' }, {
     'vim',
     'toggleterm',
     'httpResult',
+    'LazyGit',
   },
   callback = function()
     vim.cmd([[
@@ -66,13 +67,21 @@ auto({ 'FocusLost', 'BufLeave', 'VimLeave' }, {
   end,
 })
 
--- auto({ 'BufRead' }, {
---   pattern = { '*' },
---   callback = function()
---     local line = '' .. vim.fn.getline(1)
---     local search = string.find(line, 'ft=swayconfig')
---     if search ~= nil then
---       vim.bo.filetype = 'swayconfig'
---     end
---   end,
--- })
+-- Close annoying buffers
+auto({ 'QuitPre', 'ExitPre' }, {
+  pattern = { ',' },
+  callback = function()
+    vim.cmd('silent! TroubleClose')
+  end,
+})
+
+auto({ 'WinEnter', 'BufEnter' }, {
+  -- group = vim.api.nvim_create_augroup('CodewindowAutoOpen', { clear = true }),
+  callback = function()
+    if vim.bo.buftype == 'terminal' then
+      return
+    end
+
+    vim.schedule(require('codewindow').open_minimap)
+  end,
+})

@@ -27,7 +27,7 @@ end
 
 M.on_attach = function(client, buffer)
   require('lsp-format').on_attach(client)
-  require('illuminate').on_attach(client)
+  -- require('illuminate').on_attach(client)
 
   keymap(buffer, '<leader>fd', '<cmd>Telescope lsp_definitions<cr>', 'Find definition')
   keymap(buffer, '<leader>fD', '<cmd>Telescope lsp_declarations<cr>', 'Find declaration')

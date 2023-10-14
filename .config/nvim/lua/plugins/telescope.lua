@@ -1,27 +1,58 @@
+local function dropdown(title)
+  local themes = require('telescope.themes')
+  return themes.get_dropdown({
+    previewer = false,
+    initial_mode = 'normal',
+    prompt_title = title,
+  })
+end
+
 return {
   {
     -- harpoon navigation
     'ThePrimeagen/harpoon',
     keys = function()
-      local function dropdown(title)
-        local themes = require('telescope.themes')
-        return themes.get_dropdown({
-          previewer = false,
-          initial_mode = 'normal',
-          prompt_title = title,
-        })
+      local m_ok, mark = pcall(require, 'harpoon.mark')
+      local u_ok, ui = pcall(require, 'harpoon.ui')
+      if not m_ok or not u_ok then
+        return {}
       end
-      -- stylua: ignore
       return {
-        { '<leader>ma', require('harpoon.mark').add_file, desc = 'Add mark' },
-        { '<leader>m.', require('harpoon.ui').nav_next, desc = 'Next mark' },
-        { '<leader>m,', require('harpoon.ui').nav_prev, desc = 'Previous mark' },
-        { '<leader>mm', require('harpoon.ui').toggle_quick_menu, desc = 'View marks' },
-        { '<leader>m1', require('harpoon.ui').nav_file(1), desc = 'Navigate to mark 1' },
-        { '<leader>m1', require('harpoon.ui').nav_file(2), desc = 'Navigate to mark 2' },
-        { '<leader>m1', require('harpoon.ui').nav_file(3), desc = 'Navigate to mark 3' },
-        { '<leader>m1', require('harpoon.ui').nav_file(4), desc = 'Navigate to mark 4' },
-        { '<leader>mb', function() require('telescope.builtin').buffers(dropdown('Buffers')) end, desc = 'View buffers' },
+        { '<leader>ma', mark.add_file, desc = 'Add mark' },
+        { '<leader>m.', ui.nav_next, desc = 'Next mark' },
+        {
+          '<leader>m,',
+          ui.nav_prev,
+          desc = 'Previous mark',
+        },
+        { '<leader>mm', ui.toggle_quick_menu, desc = 'View marks' },
+        {
+          '<leader>m1',
+          ui.nav_file(1),
+          desc = 'Navigate to mark 1',
+        },
+        {
+          '<leader>m1',
+          ui.nav_file(2),
+          desc = 'Navigate to mark 2',
+        },
+        {
+          '<leader>m1',
+          ui.nav_file(3),
+          desc = 'Navigate to mark 3',
+        },
+        {
+          '<leader>m1',
+          ui.nav_file(4),
+          desc = 'Navigate to mark 4',
+        },
+        {
+          '<leader>mb',
+          function()
+            require('telescope.builtin').buffers(dropdown('Buffers'))
+          end,
+          desc = 'View buffers',
+        },
       }
     end,
     config = true,
@@ -90,7 +121,7 @@ return {
             preview_cutoff = 120,
           },
           file_sorter = require('telescope.sorters').get_fuzzy_file,
-          file_ignore_patterns = { 'node_modules' },
+          file_ignore_patterns = { 'node_modules', 'vendor' },
           generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
           path_display = { 'truncate' },
           winblend = 0,
@@ -110,8 +141,7 @@ return {
             },
           },
         },
-        -- extensions_list = { 'themes', 'terms', 'frecency' },
-        extensions_list = { 'frecency', 'harpoon' },
+        extensions_list = { 'frecency', 'harpoon', 'noice' },
       }
     end,
     config = function(_, options)

@@ -12,6 +12,15 @@ return {
       start_in_insert = true,
       persist_size = true,
       direction = 'horizontal',
+      highlights = {
+        NormalFloat = {
+          link = 'NormalFloat',
+        },
+        FloatBorder = {
+          guifg = '#181926',
+          guibg = '#181926',
+        },
+      },
     },
     keys = {
       { '<leader>t1', '<cmd>1ToggleTerm<cr>', desc = 'Terminal 1' },

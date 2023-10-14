@@ -31,10 +31,10 @@ return {
     },
   },
 
-  {
-    -- highlighting
-    'RRethy/vim-illuminate',
-  },
+  -- {
+  -- highlighting
+  -- 'RRethy/vim-illuminate',
+  -- },
 
   {
     -- inline hex colors
@@ -63,8 +63,19 @@ return {
       local theme = require('config.theme.lualine')
       return {
         options = {
-          disabled_filetypes = { 'neo-tree', 'toggleterm', 'trouble' },
+          disabled_filetypes = { 'neo-tree', 'toggleterm', 'trouble', 'minimap' },
+          icons_enabled = true,
+          section_separators = '',
           theme = theme(),
+        },
+        sections = {
+          lualine_x = {
+            {
+              require('noice').api.statusline.mode.get,
+              cond = require('noice').api.statusline.mode.has,
+              color = { fg = '#a5adcb' },
+            },
+          },
         },
       }
     end,
@@ -73,21 +84,6 @@ return {
   {
     -- indentation
     'lukas-reineke/indent-blankline.nvim',
-  },
-
-  {
-    -- notifications
-    'rcarriga/nvim-notify',
-    keys = function()
-      return {
-        { '<leader>nd', require('notify').dismiss, desc = 'Dismiss notifications' },
-      }
-    end,
-    config = function()
-      require('notify').setup({
-        background_colour = '#24283b',
-      })
-    end,
   },
 
   {
@@ -101,7 +97,11 @@ return {
     opts = {
       lsp = {
         progress = {
-          enabled = false,
+          enabled = true,
+          view = 'mini',
+          format = 'lsp_progress',
+          format_done = 'lsp_progress_done',
+          throttle = 1000 / 30, -- frequency to update lsp progress message
         },
         override = {
           ['vim.lsp.util.convert_input_to_markdown_lines'] = true,
@@ -123,10 +123,28 @@ return {
         },
       },
       presets = {
-        bottom_search = true,
+        -- bottom_search = true,
         command_palette = true,
         long_message_to_split = true,
-        inc_rename = true,
+        inc_rename = false,
+      },
+      views = {
+        cmdline_popup = {
+          border = {
+            style = 'none',
+            radius = 2,
+            padding = { 1, 2 },
+          },
+          filter_options = {},
+          win_options = {
+            winhighlight = 'NormalFloat:NormalFloat,FloatBorder:FloatBorder',
+          },
+        },
+        mini = {
+          win_options = {
+            winblend = 0,
+          },
+        },
       },
     },
   },
@@ -221,4 +239,6 @@ return {
       return opts
     end,
   },
+
+  --
 }

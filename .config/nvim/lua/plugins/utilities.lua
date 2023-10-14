@@ -16,10 +16,19 @@ return {
   },
 
   {
-    -- add comments
-    'numToStr/Comment.nvim',
+    'christoomey/vim-tmux-navigator',
     lazy = false,
-    config = true,
+  },
+
+  {
+    -- add comments
+    'tpope/vim-commentary',
+    lazy = false,
+  },
+
+  {
+    -- db browser
+    'tpope/vim-dadbod',
   },
 
   {
@@ -56,6 +65,42 @@ return {
         },
       },
     },
+  },
+
+  {
+    'gorbit99/codewindow.nvim',
+    event = { 'BufReadPost', 'BufNewFile' },
+    opts = {
+      exclude_filetypes = {
+        'help',
+        'startify',
+        'aerial',
+        'lazy',
+        'neogitstatus',
+        'neo-tree',
+        'Trouble',
+        'noice',
+        'qf',
+        'mason',
+        'oil',
+        -- '',
+      },
+      auto_enable = false,
+      relative = 'editor',
+      screen_bounds = 'background',
+      width_multiplier = 5,
+      window_border = '',
+      use_lsp = true,
+      use_treesitter = true,
+      use_git = true,
+    },
+  },
+
+  {
+    -- markdown preview
+    'ellisonleao/glow.nvim',
+    config = true,
+    cmd = 'Glow',
   },
 
   {
@@ -97,6 +142,10 @@ return {
       vim.keymap.set('n', '<C-x>', dial.dec_normal('custom'), { desc = 'Decrement' })
       vim.keymap.set('n', '<C-a>', dial.inc_normal('custom'), { desc = 'Increment' })
     end,
+  },
+
+  {
+    'rest-nvim/rest.nvim',
   },
 
   {
