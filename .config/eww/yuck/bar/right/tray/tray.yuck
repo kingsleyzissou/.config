@@ -1,0 +1,23 @@
+(defwidget traybox []
+  (box
+    ; weird spacing issue, so have to wrap the
+    ; eventbox in a box
+    :class "box"
+    (eventbox
+      :class "event"
+      :onclick "eww open --toggle side-closer --screen 0 && eww open --toggle side --screen 0"
+      (box
+        :class "button tray"
+        :orientation "h"
+        :space-evenly false
+        :spacing 13
+        (network_icon :network network)
+        (airplane_icon :network network :visible {!network.enabled})
+        (vpn_icon :active {network.vpn} :visible {network != {} && network.vpn})
+        (bluetooth_icon :bluetooth bluetooth)
+        (volume_icon :volume volume)
+        (dnd_icon :visible dnd)
+      )
+    )
+  )
+)

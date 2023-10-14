@@ -11,10 +11,11 @@ auto({ 'FileType' }, {
     'man',
     'spectre_panel',
     'MarkDown',
-    'NvimTree',
+    'neo-tree',
     'vim',
     'toggleterm',
     'httpResult',
+    'LazyGit',
   },
   callback = function()
     vim.cmd([[
@@ -37,14 +38,6 @@ auto({ 'FileType' }, {
           nnoremap <silent> <buffer> <c-q> :close!<cr>
           set nobuflisted
         ]])
-  end,
-})
-
-auto({ 'BufEnter' }, {
-  pattern = { '' },
-  callback = function()
-    vim.opt.title = true
-    vim.opt.titlestring = require('utilities.project').getName()
   end,
 })
 
@@ -74,13 +67,21 @@ auto({ 'FocusLost', 'BufLeave', 'VimLeave' }, {
   end,
 })
 
-auto({ 'BufRead' }, {
-  pattern = { '*' },
+-- Close annoying buffers
+auto({ 'QuitPre', 'ExitPre' }, {
+  pattern = { ',' },
   callback = function()
-    local line = '' .. vim.fn.getline(1)
-    local search = string.find(line, 'ft=swayconfig')
-    if search ~= nil then
-      vim.bo.filetype = 'swayconfig'
+    vim.cmd('silent! TroubleClose')
+  end,
+})
+
+auto({ 'WinEnter', 'BufEnter' }, {
+  -- group = vim.api.nvim_create_augroup('CodewindowAutoOpen', { clear = true }),
+  callback = function()
+    if vim.bo.buftype == 'terminal' then
+      return
     end
+
+    vim.schedule(require('codewindow').open_minimap)
   end,
 })

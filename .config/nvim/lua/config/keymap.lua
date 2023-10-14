@@ -4,12 +4,12 @@ vim.keymap.set('n', '<c-q>', '<cmd>Bdelete<cr>', { desc = 'Quit' })
 vim.keymap.set('n', '<leader>qq', '<cmd>q!<cr>', { desc = 'Quit' })
 vim.keymap.set('n', '<leader>ww', '<cmd>w!<cr>', { desc = 'Save' })
 vim.keymap.set('n', '<leader>wq', '<cmd>wq!<cr>', { desc = 'Save & quit' })
+--
+-- lazy
+vim.keymap.set('n', '<leader>i', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
--- better window navigation
-vim.keymap.set('n', '<c-h>', '<c-w>h', { desc = 'Window →' })
-vim.keymap.set('n', '<c-j>', '<c-w>j', { desc = 'Window ←' })
-vim.keymap.set('n', '<c-k>', '<c-w>k', { desc = 'Window ↑' })
-vim.keymap.set('n', '<c-l>', '<c-w>l', { desc = 'Window ↓' })
+-- search for word under cursor
+vim.keymap.set({ 'n', 'x' }, 'gw', '*N', { desc = 'Search word under cursor' })
 
 -- splits
 vim.keymap.set('n', '<leader>h', '<cmd>split<cr>', { desc = 'Horizontal split' })
@@ -40,8 +40,6 @@ vim.keymap.set('n', '<a-v>', '"+p"+Y', { desc = 'Paste from system clipboard' })
 vim.keymap.set('v', '<a-v>', 'c<ESC>"+p', { desc = 'Paste from system clipboard' })
 
 -- send deletes to the ether
-vim.keymap.set('n', '<leader>d', '"_d') -- delete into the void
-vim.keymap.set('v', '<leader>d', '"_d') -- delete into the void
 vim.keymap.set('n', 'x', '"_x') -- delete into the void
 vim.keymap.set('v', 'x', '"_x') -- delete into the void
 
@@ -64,11 +62,11 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Jump half page up' })
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
--- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
-vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set('n', '<C-X>', '<cmd>!chmod +x %<cr>', { silent = true })
+-- rest nvim
+vim.keymap.set('n', '<leader>rr', '<Plug>RestNvim', { desc = 'RestNvim' })
 
--- useful first class commands
-vim.keymap.set('n', '<leader>a', vim.lsp.buf.code_action, { desc = 'Code action' })
-vim.keymap.set('n', '<leader>e', require('nvim-tree').toggle, { desc = 'Toggle explorer' })
-vim.keymap.set('n', '<leader>b', '<cmd>TelescopeBuffers<cr>', { desc = 'View buffers' })
+-- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
+-- stylua: ignore
+local replace = [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>]]
+vim.keymap.set('n', '<leader>s', replace, { desc = 'Substitute word under cursor' })
+vim.keymap.set('n', '<a-x>', '<cmd>!chmod +x %<cr>', { silent = true, desc = 'Make executable' })

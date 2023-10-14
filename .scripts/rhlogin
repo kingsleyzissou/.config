@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+VPN=$(nmcli con show --active | grep -c vpn)
+
+if [ "$VPN" -eq 0 ]; then
+  PASSWORD=$(pass redhat/main | head -n 1)
+  OTP=$(pass otp redhat/main)
+  echo "Connecting to VPN..."
+  echo "${PASSWORD}${OTP}"| nmcli con up "Farnborough (FAB)" --ask > /dev/null
+fi
+
+echo "Logging in..."
+KERBEROS=$(pass redhat/kerberos | head -n 1)
+echo "${KERBEROS}" | kinit gzuccare@IPA.REDHAT.COM > /dev/null

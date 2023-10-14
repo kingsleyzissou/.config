@@ -1,0 +1,39 @@
+(defpoll cover :interval "1s" :initial "" `scripts/media/coverart.mjs`)
+(defwidget media []
+  (box
+    :class "sidebar-box"
+    :orientation "v"
+    :space-evenly false
+    :spacing 10
+    :visible {spotify != {} && !spotify.running && spotify.title != 'null' }
+    (box
+      :class "pic-container"
+      :orientation "v"
+      :space-evenly false
+      (box
+        :class "picbox"
+        :style "background-image: url('${cover}');"
+        :orientation "h"
+        :space-evenly true
+        (box
+          :class "left"
+          :orientation "v"
+          :space-evenly false
+          :halign "start"
+          :spacing 4
+          (label :halign "start" :text "${spotify.title}" :class "title")
+          (label :halign "start" :text "${spotify.artist}" :class "artist")
+        )
+      )
+    )
+    (box
+      :class "musiccontrolsbox"
+      :orientation "h"
+      :space-evenly false
+      :halign "center"
+      (previous :class "")
+      (play :class "")
+      (next :class "")
+    )
+  )
+)

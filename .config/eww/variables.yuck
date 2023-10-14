@@ -1,0 +1,84 @@
+; System
+(defpoll date
+  :interval "10s"
+  "date '+%H:%M'"
+)
+
+;; dbus vars
+(defvar network "{}")
+(defvar spotify "{}")
+(defvar battery "{}")
+
+(defvar dnd false)
+(defvar lid false)
+(defvar bluetooth false)
+(defvar screencasting false)
+
+;; (defpoll network
+  ;; this was getting expensive
+  ;; use systemd to handle instead
+  ;; :interval "60s"
+  ;; :initial "{ \"enabled\": false }"
+  ;; `scripts/system/network.mjs --status`
+;; )
+
+;; (defpoll bluetooth
+  ;; this doesn't change too frequently
+  ;; poll less regularly
+  ;; :interval "30s"
+  ;; :initial false
+  ;; `scripts/system/bluetooth.mjs --status`
+;; )
+
+;; (defpoll spotify
+;;   :interval "10s"
+;;   :initial "{}"
+;;   `scripts/media/mediaplayer.mjs --status --player spotify`
+;; )
+;;
+;; (defvar playing false)
+;; (defpoll playing
+;;   :interval "1s"
+;;   :initial 'Stopped'
+;;   `playerctl --player spotify status`
+;; )
+;;
+
+
+;; (defpoll vpn
+;;   ;; this was getting expensive
+;;   ;; use systemd to handle instead
+;;   :interval "60s"
+;;   :initial false
+;;   `scripts/system/vpn.mjs --status`
+;; )
+;;
+
+;; (defpoll dnd
+  ;; :interval "3s"
+  ;; :initial false
+  ;; `dunstctl is-paused`
+;; )
+
+(defpoll volume
+  ;; not super volatile, poll less frequently
+  :interval "10s"
+  :initial "{ \"muted\": false, \"bluetooth\": false, \"value\": 0 }"
+  `scripts/system/volume.mjs --status`
+)
+
+(defpoll brightness
+  ;; not super volatile, poll less frequently
+  :interval "10s"
+  :initial "0"
+  `scripts/system/brightness.mjs --status`
+)
+
+(defpoll weather
+  :interval "1h"
+  :initial "{}"
+  `scripts/weather/weather.mjs`
+)
+
+(deflisten  window      `scripts/workspaces/hyprland.mjs --window`)
+(deflisten  workspaces  `scripts/workspaces/hyprland.mjs --status`)

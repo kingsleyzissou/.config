@@ -1,0 +1,23 @@
+(defwidget previous [class]
+  (button
+    :class "button ${class}"
+    :onclick `playerctl --player spotify previous`
+    (label :class "control" :text "󰒮")
+  )
+)
+
+(defwidget play [class]
+  (button
+    :class "button ${class}"
+    :onclick `scripts/media/mediaplayer.mjs --toggle`
+    (label :class "control" :text "${!spotify.playing ? '󰐊' : '󰏤'}")
+  )
+)
+
+(defwidget next [class]
+  (button
+    :class "button ${class}"
+    :onclick `playerctl --player spotify next`
+    (label :class "control" :text "󰒭")
+  )
+)

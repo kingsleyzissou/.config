@@ -1,0 +1,43 @@
+@mixin gradient($primary, $secondary) {
+  $darker: scale-color($secondary, $lightness: -5%);
+  background-color: $primary;
+  background: linear-gradient(90deg, $primary 0%, $darker 100%);
+  background-size: 200% 200%;
+  animation: gradient 5s ease infinite;
+}
+
+.workspace {
+  // icon centering
+  padding-left: 8px;
+  &.mail,
+  &.spotify {
+    padding-left: 10px;
+  }
+  &.active,
+  &:hover {
+    &.brave {
+      @include gradient($pink, $blue);
+    }
+    &.code {
+      @include gradient($teal, $blue);
+    }
+    &.terminal {
+      @include gradient($mauve, $pink);
+    }
+    &.chat {
+      @include gradient($blue, $mauve);
+    }
+    &.mail {
+      @include gradient($flamingo, $mauve);
+    }
+    &.calendar {
+      @include gradient($teal, $mauve);
+    }
+    &.spotify {
+      @include gradient($green, $teal);
+    }
+    &.op {
+      @include gradient($red, $mauve);
+    }
+  }
+}

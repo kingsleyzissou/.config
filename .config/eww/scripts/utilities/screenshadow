@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# Adjust as needed to suit your desktop environment
+# Defaults set for vanilla Ubuntu.
+RADIUS=5
+INSET=2
+
+WIDTH=$3
+HEIGHT=$4
+
+convert \
+  \( -size "${WIDTH}x${HEIGHT}" xc:none -fill white \
+    -draw "roundRectangle 0,0 $((WIDTH-INSET)),$((HEIGHT-INSET)) $RADIUS,$RADIUS" \
+    -draw "rectangle 0,10 $((WIDTH-INSET)),$((HEIGHT-INSET))" \
+    "$1" -compose SrcIn -composite \) \
+  \( -clone 0 -background \#231f20 -shadow 60x15+0+15 \) \
+  -reverse -background none -compose Over -layers merge +repage \
+  "$2"

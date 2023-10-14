@@ -1,0 +1,33 @@
+.sidebar-box {
+  .pic-container {
+    padding-right: 10px;
+    .picbox {
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      min-height: 100px;
+      min-width: 225px;
+      border-radius: 7px;
+      padding: 10px;
+    }
+    // i've to make it hidden, so i'll translate it to the INFINITE! LMFAO
+    .hidden {
+      margin-top: -100px;
+    }
+  }
+  .musiccontrolsbox {
+    .button {
+      background-color: $mantle;
+      margin: 0px 2px;
+      .control {
+        font-size: 10px;
+        padding: 10px 0px;
+        margin: 0px;
+      }
+
+      &:hover {
+        background-color: $surface;
+      }
+    }
+  }
+}

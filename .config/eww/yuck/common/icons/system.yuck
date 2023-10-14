@@ -1,0 +1,63 @@
+(defwidget network_icon [network]
+  (label
+    :class "icon"
+    :text {
+      network == {} ? '󰖪'
+        : !network.enabled ? '󰖪'
+          : network.active != '' ? '󰖩'
+            : '󱚵'
+    }
+  )
+)
+
+(defwidget airplane_icon [network visible]
+  (label
+    :class "icon"
+    :visible visible
+    :text {
+      network == {} ? '󰀝'
+        : !(network.enabled) ? '󰀝'
+          : '󰀞'
+    }
+  )
+)
+
+(defwidget vpn_icon [active visible]
+  (label
+    :class "icon"
+    :visible visible
+    :text { active ? '' : ''}
+  )
+)
+
+
+(defwidget bluetooth_icon [bluetooth]
+  (label
+    :class "icon bluetooth"
+    :text "${
+      bluetooth == {} ?  '󰂲'
+        :bluetooth ? '󰂯'
+          : '󰂲'
+    }")
+)
+
+(defwidget volume_icon [volume]
+  (label
+    :class "icon"
+    :text {
+      volume.muted ? '󰝟'
+        : volume.bluetooth ? '󰋋'
+          : volume.value >= 66 ? '󰕾'
+            : volume.value >= 33 ? '󰖀'
+              : '󰕿'
+    }
+  )
+)
+
+(defwidget mute_icon []
+  (label :class "icon" :text '󰝟')
+)
+
+(defwidget dnd_icon [visible]
+  (label :class "icon" :text '󰪑' :visible visible)
+)

@@ -1,3 +1,6 @@
+# Dump the cache elsewhere
+export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+
 # Path to your oh-my-zsh installation.
 export ZSH="/home/kingsley/.oh-my-zsh"
 
@@ -16,11 +19,11 @@ plugins=(git docker-compose zsh-autosuggestions zsh-syntax-highlighting)
 
 # Source config files
 source ~/.env.sh
-source $ZSH/oh-my-zsh.sh
 source ~/.config/zsh/.zshenv
+source ~/.oh-my-zsh/oh-my-zsh.sh
 
 # setup fzf with keybindings
-source /usr/share/fzf/shell/key-bindings.zsh
+source /usr/share/fzf/key-bindings.zsh
 
 # setup tty colors
 if [ "$TERM" = "linux" ]; then
@@ -49,4 +52,4 @@ fi
 # starship prompt
 eval "$(starship init zsh)"
 
-pfetch
+source /home/kingsley/.config/op/plugins.sh

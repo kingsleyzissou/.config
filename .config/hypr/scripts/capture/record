@@ -2,4 +2,4 @@
 
 DISPLAY=$(hyprctl monitors -j | jq -r '.[] | select (.focused).name' )
 
-wf-recorder -a -o "$DISPLAY" -f "$HOME/Videos/Screencasts/Screen-recording-$(date -Isecond | cut -d'+' -f1).mp4"
+wf-recorder -a -o "$DISPLAY" -f "$HOME/videos/screencasts/screen-recording-$(date -Isecond | cut -d'+' -f1).mp4"

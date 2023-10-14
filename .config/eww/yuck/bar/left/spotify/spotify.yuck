@@ -1,0 +1,23 @@
+(defwidget spotifybox []
+  (eventbox
+    :class "box"
+    :visible {spotify != {}}
+    :onclick "hyprctl dispatch workspace 6"
+    (box
+      :class "button media spotify"
+      :space-evenly false
+      (trackinfo :track "${spotify.metadata.title} - ${spotify.metadata.artist}")
+      (previous :class "control")
+      (play :class "control")
+      (next :class "control")
+    )
+  )
+)
+
+(defwidget trackinfo [track]
+  (label
+    :class "track"
+    :limit-width 24
+    :text " ${track}"
+  )
+)

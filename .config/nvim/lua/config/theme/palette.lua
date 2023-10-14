@@ -42,7 +42,7 @@ local function colors()
     }
   end
   if vim.g.colors_name == 'catppuccin' then
-    local palette = require('catppuccin.palettes').get_palette('mocha')
+    local palette = require('catppuccin.palettes').get_palette('macchiato')
     return {
       none = nil,
       black = palette.base,

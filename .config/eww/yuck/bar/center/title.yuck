@@ -1,0 +1,8 @@
+(defwidget title []
+  (box
+    :class "box"
+    (label :text {
+      window == "" || window.class == "" || window.class == "null" ? "Empty" : window.class
+    })
+  )
+)

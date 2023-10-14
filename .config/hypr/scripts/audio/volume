@@ -1,0 +1,45 @@
+#!/usr/bin/bash
+
+INCREMENT=5
+
+audio() {
+  canberra-gtk-play -i audio-volume-change -d "changevolume"
+}
+
+down() {
+  pamixer -d $INCREMENT
+  # volume=$(pamixer --get-volume)
+  # dunstify -a "VOLUME" "Decreasing to $volume%" -h int:value:"$volume" \
+    # -i audio-volume-low-symbolic.symbolic -r 2593 -u normal
+  audio
+}
+
+up() {
+  pamixer -i $INCREMENT
+  # volume=$(pamixer --get-volume)
+  # dunstify -a "VOLUME" "Increasing to $volume%" -h int:value:"$volume" \
+    # -i audio-volume-high-symbolic.symbolic -r 2593 -u normal
+  audio
+}
+
+mute() {
+  pamixer -t
+  # volume=$(pamixer --get-volume)
+  muted=$(pamixer --get-mute)
+  if [[ $muted == true ]]; then
+    # dunstify -a "VOLUME" "Muted" -h int:value:"$volume" \
+      # -i audio-volume-muted-symbolic.symbolic -r 2593 -u normal
+  else
+    # dunstify -a "VOLUME" "Unmuted" -h int:value:"$volume" \
+      # -i audio-volume-medium-symbolic.symbolic -r 2593 -u normal
+  fi
+  audio
+}
+
+case "$1" in
+  up) up ;;
+  down) down ;;
+  mute) mute ;;
+esac
+
+

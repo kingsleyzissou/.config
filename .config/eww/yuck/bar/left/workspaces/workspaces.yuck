@@ -1,0 +1,26 @@
+(defwidget workspacebox []
+  (box
+    :class "box"
+    :space-evenly true
+    :orientation "h"
+    (for workspace in {workspaces.workspaces}
+      (workspace_icon
+        :id {workspace.id}
+        :active {workspace.id == workspaces.active ? "active" : ""}
+        :empty {workspace.empty ? "empty" : ""}
+        :class {workspace.class}
+      )
+    )
+  )
+)
+
+; nf-oct variants
+(defvar icons "[\"\", \"\", \"\",\"\",  \"\", \"\", \"\", \"\", \"\"]")
+(defwidget workspace_icon [id class active empty]
+  (button
+    :class "button ${active} workspace ${class} ${empty}"
+    :onclick "hyprctl dispatch workspace ${id}"
+    :visible {id != 0}
+    (label :class "icon" :text {icons[id]})
+  )
+)

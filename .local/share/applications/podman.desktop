@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=Podman
+GenericName=Podman Desktop
+Comment=Containers and Kubernetes for application developers
+TryExec=/usr/local/bin/podman-desktop
+Exec=/usr/local/bin/podman-desktop
+Icon=/home/kingsley/.local/share/podman/icons/podma

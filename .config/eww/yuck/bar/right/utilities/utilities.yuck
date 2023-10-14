@@ -1,0 +1,63 @@
+(defvar expanded false)
+(defwidget utilitiesbox []
+  (box
+    (box
+      (colorpicker)
+      (screenshot)
+      (terminal)
+      (arrow)
+    )
+  )
+)
+
+(defwidget arrow []
+  (button
+    :class "button utilities"
+    :onclick "eww update expanded=${!expanded}"
+    (label
+      :class "icon arrow"
+      :text "${expanded ? '' : ''}"
+    )
+  )
+)
+
+(defwidget screenshot []
+  (button
+    :class "button utilities"
+    :visible expanded
+    :onclick `scripts/utilities/screenshot.mjs`
+    :timeout "60s"
+    (label
+      :class "icon camera"
+      :text "󰵝"
+    )
+  )
+)
+
+(defwidget colorpicker []
+  (button
+    :class "button utilities"
+    :visible expanded
+    :onclick `scripts/utilities/colorpicker.mjs | wl-copy`
+    :timeout "60s"
+    (label
+      :class "icon picker"
+      :text "󰈊"
+    )
+  )
+)
+
+; I need a way of launching terminal with mouse when keyboard
+; is not working (or when keymods get reset)
+; - persistent keymods would be ideal, but...
+(defwidget terminal []
+  (button
+    :class "button utilities"
+    :visible expanded
+    :onclick `hyprctl dispatch exec kitty`
+    (label
+      :class "icon terminal"
+      :text ""
+    )
+  )
+)

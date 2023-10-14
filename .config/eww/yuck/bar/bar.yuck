@@ -1,0 +1,40 @@
+(defwindow bar
+  :monitor 0
+  :exclusive true
+  :stacking "fg"
+  :namespace "eww_bar"
+  :geometry (geometry 
+    :width "100%"
+    :height "3%"
+    :anchor "top center"
+  )
+  (hbar)
+)
+
+(defwidget hbar [] 
+  (centerbox
+    (box
+      :class "bar left"
+      :space-evenly false
+      (workspacebox)
+      (spotifybox)
+    )
+    (box :class "bar center"
+      (title)
+    )
+    (box 
+      :class "bar right"
+      :space-evenly false
+      :halign "end"
+      (utilitiesbox)
+      (systembox)
+      (traybox)
+      (datebox)
+      (powerbox)
+    )
+  )
+)
+
+(include "./yuck/bar/left/left.yuck")
+(include "./yuck/bar/right/right.yuck")
+(include "./yuck/bar/center/title.yuck")

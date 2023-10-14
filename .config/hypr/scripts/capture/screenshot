@@ -32,13 +32,15 @@ screenshadow() {
 
 if [ "$1" = "save" ]; then
     DATE=$(date -Iseconds | cut -d'+' -f1)
-    OUTPUT="$HOME/Pictures/screenshots/Screenshot-$DATE.png"
+    OUTPUT="$HOME/pictures/screenshots/screenshot-$DATE.png"
     TMP=$(mktemp)
     grim -o "$DISPLAY" "$TMP"
     screenshadow "$TMP" "$OUTPUT"
+    notify-send  "Screenshot saved to ${OUTPUT}"
     exit
 fi
 
 TMP="$(mktemp).png"
 grim -g "$(slurp)" "$TMP" 
 screenshadow "$TMP" png:- | wl-copy
+notify-send  "Screenshot copied to clipboard"

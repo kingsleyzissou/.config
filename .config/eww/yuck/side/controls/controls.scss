@@ -1,0 +1,83 @@
+.vol-slider {
+  padding-left: 8px;
+  & scale trough {
+    all: unset;
+    border-radius: 10px;
+    background-color: $mantle;
+    border: none;
+    min-height: 8px;
+    min-width: 250px;
+    margin-left: 6px;
+    margin-right: 12px;
+    & highlight {
+      all: unset;
+      background-color: $teal;
+      color: #000000;
+      border-radius: 10px;
+    }
+  }
+}
+
+.vol-label {
+  margin-right: 12px;
+  margin-left: 12px;
+  color: $teal;
+}
+
+.br-slider {
+  padding-left: 8px;
+  & scale trough {
+    all: unset;
+    border-radius: 10px;
+    background-color: $mantle;
+    border: none;
+    min-height: 8px;
+    min-width: 250px;
+    margin-left: 6px;
+    margin-right: 12px;
+    & highlight {
+      all: unset;
+      background-color: $yellow;
+      color: #000000;
+      border-radius: 10px;
+    }
+  }
+}
+
+.br-label {
+  margin-right: 12px;
+  margin-left: 12px;
+  color: $yellow;
+}
+
+.action {
+  .button {
+    padding: 10px 15px;
+
+    .icon {
+      margin: 2px 5px 2px 0px;
+
+      // the bluetooth icon is slightly different to the rest
+      &.bluetooth {
+        margin: 2px 2px;
+      }
+    }
+
+    &.active {
+      background-color: #fff;
+      color: $base;
+
+      &:hover {
+        background-color: $surface;
+        color: $base;
+      }
+    }
+  }
+}
+
+.sidebar-box {
+  padding: 24px 8px;
+  border-radius: 20px;
+  background-color: $base;
+  min-width: 320px;
+}

@@ -1,0 +1,20 @@
+.button {
+  &.media {
+    &.spotify {
+      background-color: $green;
+      color: $base;
+    }
+  }
+
+  &.control {
+    padding: 1px 5px;
+    background-color: $darkgreen;
+    &:hover {
+      background-color: $green;
+    }
+  }
+}
+
+.track {
+  margin-right: 6px;
+}

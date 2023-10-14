@@ -1,0 +1,120 @@
+(defwidget controls []
+  (box
+    :orientation "v"
+    :spacing 12
+    (sliders)
+    (actions)
+  )
+)
+
+(defwidget sliders []
+  (box
+    :class "sidebar-box"
+    :orientation "v"
+    :spacing 10
+    (soundctrl)
+    (brightctrl)
+  )
+)
+
+(defwidget actions []
+  (box
+    :class "sidebar-box"
+    (box
+      :space-evenly false
+      :spacing 10
+      :halign "center"
+      (airplanetoggle)
+      (dndtoggle)
+      (vpntoggle)
+      (bttoggle)
+      (mutetoggle)
+    )
+  )
+)
+
+(defwidget vpntoggle []
+  (box
+    :class "action"
+    (button
+      :class "button ${network != {} && network.vpn != {} ? 'active' : ''}"
+      (vpn_icon :active {network.vpn} :visible true)
+    )
+  )
+)
+
+ (defwidget airplanetoggle []
+  (box
+    :class "action"
+    (button
+      :onclick `scripts/system/network.mjs --toggle`
+      :class "button ${!network.enabled ? 'active' : ''}"
+      :timeout "1s"
+      (airplane_icon :network network :visible true)
+    )
+  )
+)
+
+(defwidget dndtoggle []
+  (box
+    :class "action"
+    (button
+      :onclick `scripts/system/dnd.mjs --toggle`
+      :class "button ${dnd ? 'active' : ''}"
+      :timeout "1s"
+      (dnd_icon :visible true)
+    )
+  )
+)
+
+(defwidget bttoggle []
+  (box
+    :class "action"
+    (button
+      :class "button ${bluetooth ? 'active' : ''}"
+      (bluetooth_icon :bluetooth bluetooth)
+    )
+  )
+)
+
+(defpoll muted :interval "3s" :initial false `pamixer --get-mute`)
+(defwidget mutetoggle []
+  (box
+    :class "action"
+    (button
+      :onclick `pamixer -t; eww update muted=${!muted}`
+      :class "button ${muted ? 'active' : ''}"
+      (mute_icon)
+    )
+  )
+)
+
+(defwidget soundctrl []
+  (box
+    :space-evenly false
+    :class "vol-slider"
+    (label :text "" :class "vol-label")
+    (scale
+      :min 0
+      :max 100
+      :value { volume.value }
+      :timeout "1s"
+      :onchange "scripts/system/volume.mjs --set {}"
+    )
+  )
+)
+
+(defwidget brightctrl []
+  (box
+    :space-evenly false
+    :class "br-slider"
+    (label :text "󰃟" :class "br-label")
+    (scale
+      :min 0
+      :max 100
+      :value brightness
+      :timeout "1s"
+      :onchange "scripts/system/brightness.mjs --set {}"
+    )
+  )
+)

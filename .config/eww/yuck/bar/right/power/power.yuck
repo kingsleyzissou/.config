@@ -1,0 +1,14 @@
+(defwidget powerbox []
+  (box 
+    :class "box"
+    :orientation "h"
+    :space-evenly false
+    :spacing 10
+    (button
+      :class "button power"
+      :onclick "wlogout --protocol layer-shell -b 5 -T 400 -B 400"
+      :timeout "10s"
+      (label :text "󰐥")
+    )
+  )
+)
