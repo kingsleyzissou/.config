@@ -147,13 +147,14 @@ return {
         },
       },
     },
+    config = false,
   },
 
   {
     -- zen mode!!
     'folke/zen-mode.nvim',
     keys = {
-      { '<leader>z', '<cmd>ZenMode<cr>', desc = 'Zen mode 🛕' },
+      { '<leader>z', '<cmd>ZenMode<cr>', desc = 'Zen mode' },
     },
   },
 
@@ -169,16 +170,10 @@ return {
     -- edgy
     'folke/edgy.nvim',
     event = 'VeryLazy',
+    -- stylua: ignore
     keys = {
-      {
-        '<leader>ue',
-        function()
-          require('edgy').toggle()
-        end,
-        desc = 'Edgy Toggle',
-      },
-      -- stylua: ignore
-      { "<leader>uE", function() require("edgy").select() end, desc = "Edgy Select Window" },
+      { '<leader>be', function() require('edgy').toggle() end, desc = 'Edgy Toggle' },
+      { '<leader>bE', function() require('edgy').select() end, desc = 'Edgy Select Window' },
     },
     opts = function()
       local opts = {
@@ -195,14 +190,6 @@ return {
             size = { height = 0.4 },
             filter = function(_, win)
               return vim.api.nvim_win_get_config(win).relative == ''
-            end,
-          },
-          {
-            ft = 'lazyterm',
-            title = 'LazyTerm',
-            size = { height = 0.4 },
-            filter = function(buf)
-              return not vim.b[buf].lazyterm_cmd
             end,
           },
           'Trouble',
@@ -239,6 +226,4 @@ return {
       return opts
     end,
   },
-
-  --
 }

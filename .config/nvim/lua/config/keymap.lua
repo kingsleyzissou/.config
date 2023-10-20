@@ -4,16 +4,15 @@ vim.keymap.set('n', '<c-q>', '<cmd>Bdelete<cr>', { desc = 'Quit' })
 vim.keymap.set('n', '<leader>qq', '<cmd>q!<cr>', { desc = 'Quit' })
 vim.keymap.set('n', '<leader>ww', '<cmd>w!<cr>', { desc = 'Save' })
 vim.keymap.set('n', '<leader>wq', '<cmd>wq!<cr>', { desc = 'Save & quit' })
---
+
 -- lazy
 vim.keymap.set('n', '<leader>i', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
+-- shift-k // split line at cursor
+vim.keymap.set('n', '<s-k>', 'i<cr><esc>', { desc = 'Split line at cursor' })
+
 -- search for word under cursor
 vim.keymap.set({ 'n', 'x' }, 'gw', '*N', { desc = 'Search word under cursor' })
-
--- splits
-vim.keymap.set('n', '<leader>h', '<cmd>split<cr>', { desc = 'Horizontal split' })
-vim.keymap.set('n', '<leader>v', '<cmd>vsplit<cr>', { desc = 'Vertical split' })
 
 -- resize
 vim.keymap.set('n', '<C-up>', '<cmd>resize -2<cr>', { desc = 'Increase bottom split' })

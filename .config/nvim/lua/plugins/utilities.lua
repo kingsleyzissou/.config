@@ -49,8 +49,8 @@ return {
     'AndrewRadev/sideways.vim',
     config = true,
     keys = {
-      { '<a-[>', '<cmd>SidewaysRight<cr>', desc = 'Move arg right' },
-      { '<a-]>', '<cmd>SidewaysLeft<cr>', desc = 'Move arg left' },
+      { '<a-[>', '<cmd>SidewaysLeft<cr>', desc = 'Move arg left' },
+      { '<a-]>', '<cmd>SidewaysRight<cr>', desc = 'Move arg right' },
       { '<a-a>', '<cmd>SidewaysJumpRight<cr>' },
     },
   },
@@ -70,6 +70,9 @@ return {
   {
     'gorbit99/codewindow.nvim',
     event = { 'BufReadPost', 'BufNewFile' },
+    keys = {
+      { '<leader>c', '<cmd>lua require("codewindow").toggle_minimap()<cr>', desc = 'Toggle code window' },
+    },
     opts = {
       exclude_filetypes = {
         'help',
@@ -83,7 +86,7 @@ return {
         'qf',
         'mason',
         'oil',
-        -- '',
+        '',
       },
       auto_enable = false,
       relative = 'editor',
@@ -152,7 +155,10 @@ return {
     -- which-key
     'folke/which-key.nvim',
     opts = {
-      plugins = {},
+      plugins = {
+        marks = true,
+        registers = true,
+      },
       key_labels = {
         ['<leader>'] = 'SPC',
       },
@@ -160,27 +166,20 @@ return {
         scroll_down = '<C-j>',
         scroll_up = '<C-k>',
       },
-      window = {
-        border = 'single',
-        position = 'bottom',
-        margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-        padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-        winblend = 0,
-      },
       hidden = { '<leader>w' },
     },
     config = function(_, options)
       local wk = require('which-key')
       wk.setup(options)
       wk.register({
-        d = { name = 'Tests' },
+        d = { name = 'Debugger' },
         f = { name = 'Finder' },
         g = { name = 'Git' },
         l = { name = 'Lsp' },
         m = { name = 'Harpoon' },
         n = { name = 'Notifications' },
         p = { name = 'Lazy' },
-        t = { name = 'Terminal' },
+        t = { name = 'Tests' },
         u = { name = 'Edgy' },
         x = { name = 'Trouble' },
         ['w'] = 'which_key_ignore',
