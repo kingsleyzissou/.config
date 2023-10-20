@@ -23,13 +23,10 @@ return {
       },
     },
     keys = {
-      { '<leader>t1', '<cmd>1ToggleTerm<cr>', desc = 'Terminal 1' },
-      { '<leader>t2', '<cmd>2ToggleTerm<cr>', desc = 'Terminal 2' },
-      { '<leader>t3', '<cmd>3ToggleTerm<cr>', desc = 'Terminal 3' },
-      { '<leader>t4', '<cmd>4ToggleTerm<cr>', desc = 'Terminal 4' },
-      { '<leader>tf', '<cmd>ToggleTerm direction=float<cr>', desc = 'Float' },
-      { '<leader>th', '<cmd>ToggleTerm size=10 direction=horizontal<cr>', desc = 'Horizontal' },
-      { '<leader>tv', '<cmd>ToggleTerm size=80 direction=vertical<cr>', desc = 'Vertical' },
+      -- first class terminal
+      { '<leader>a', '<cmd>ToggleTerm direction=float<cr>', desc = 'Float' },
+      { '<leader>h', '<cmd>ToggleTerm size=10 direction=horizontal<cr>', desc = 'Horizontal' },
+      { '<leader>v', '<cmd>ToggleTerm size=80 direction=vertical<cr>', desc = 'Vertical' },
     },
   },
 

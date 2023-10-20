@@ -72,11 +72,11 @@ auto({ 'QuitPre', 'ExitPre' }, {
   pattern = { ',' },
   callback = function()
     vim.cmd('silent! TroubleClose')
+    vim.cmd('silent! lua require("dapui").close()')
   end,
 })
 
 auto({ 'WinEnter', 'BufEnter' }, {
-  -- group = vim.api.nvim_create_augroup('CodewindowAutoOpen', { clear = true }),
   callback = function()
     if vim.bo.buftype == 'terminal' then
       return

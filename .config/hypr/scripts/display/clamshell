@@ -1,11 +1,11 @@
 #!/usr/bin/bash
 
-DISPLAY="DP-1"
+DISPLAY="DP-[0-9]"
 DISPLAY_ACTIVE=$(hyprctl monitors | grep -c -w "$DISPLAY")
 
 if [ "$DISPLAY_ACTIVE" -eq 0 ]; then
   # we don't want to disable the laptop display
-  # if the external display is not active
+  # if an external display is not active
   exit 0
 fi
 

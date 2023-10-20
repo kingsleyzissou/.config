@@ -141,7 +141,11 @@ return {
             },
           },
         },
-        extensions_list = { 'frecency', 'harpoon', 'noice' },
+        extensions_list = {
+          'frecency',
+          'harpoon',
+          'noice',
+        },
       }
     end,
     config = function(_, options)
