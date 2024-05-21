@@ -11,51 +11,76 @@ return {
   {
     -- harpoon navigation
     'ThePrimeagen/harpoon',
-    keys = function()
-      local m_ok, mark = pcall(require, 'harpoon.mark')
-      local u_ok, ui = pcall(require, 'harpoon.ui')
-      if not m_ok or not u_ok then
-        return {}
-      end
-      return {
-        { '<leader>ma', mark.add_file, desc = 'Add mark' },
-        { '<leader>m.', ui.nav_next, desc = 'Next mark' },
-        {
-          '<leader>m,',
-          ui.nav_prev,
-          desc = 'Previous mark',
-        },
-        { '<leader>mm', ui.toggle_quick_menu, desc = 'View marks' },
-        {
-          '<leader>m1',
-          ui.nav_file(1),
-          desc = 'Navigate to mark 1',
-        },
-        {
-          '<leader>m1',
-          ui.nav_file(2),
-          desc = 'Navigate to mark 2',
-        },
-        {
-          '<leader>m1',
-          ui.nav_file(3),
-          desc = 'Navigate to mark 3',
-        },
-        {
-          '<leader>m1',
-          ui.nav_file(4),
-          desc = 'Navigate to mark 4',
-        },
-        {
-          '<leader>mb',
-          function()
-            require('telescope.builtin').buffers(dropdown('Buffers'))
-          end,
-          desc = 'View buffers',
-        },
-      }
+    branch = 'harpoon2',
+    config = function()
+      require('harpoon'):setup()
     end,
-    config = true,
+    keys = {
+      {
+        '<leader>ma',
+        function()
+          require('harpoon'):list():append()
+        end,
+        desc = 'Add mark',
+      },
+      {
+        '<leader>mk',
+        function()
+          require('harpoon'):list():next()
+        end,
+        desc = 'Next mark',
+      },
+      {
+        '<leader>mj',
+        function()
+          require('harpoon'):list():prev()
+        end,
+        desc = 'Previous mark',
+      },
+      {
+        '<leader>mm',
+        function()
+          local harpoon = require('harpoon')
+          harpoon.ui:toggle_quick_menu(harpoon:list())
+        end,
+        desc = 'View marks',
+      },
+      {
+        '<leader>m1',
+        function()
+          require('harpoon'):list():select(1)
+        end,
+        desc = 'Navigate to mark 1',
+      },
+      {
+        '<leader>m2',
+        function()
+          require('harpoon'):list():select(2)
+        end,
+        desc = 'Navigate to mark 2',
+      },
+      {
+        '<leader>m3',
+        function()
+          require('harpoon'):list():select(3)
+        end,
+        desc = 'Navigate to mark 3',
+      },
+      {
+        '<leader>m4',
+        function()
+          require('harpoon'):list():select(4)
+        end,
+        desc = 'Navigate to mark 4',
+      },
+      {
+        '<leader>mb',
+        function()
+          require('telescope.builtin').buffers(dropdown('Buffers'))
+        end,
+        desc = 'View buffers',
+      },
+    },
   },
 
   {

@@ -59,8 +59,9 @@ if (argv.set) {
   await set(argv.set);
 }
 
-const update = async () => {
+const update = async (status) => {
   await $`canberra-gtk-play -i audio-volume-change -d 'changevolume'`;
+  await $`eww update volume=${status}`;
 };
 
 const status = async () => {

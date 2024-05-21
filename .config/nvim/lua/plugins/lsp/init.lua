@@ -68,10 +68,13 @@ return {
             },
             extra_args = {
               '--single-quote',
-              '--jsx-single-quote',
             },
           }),
-          null_ls.builtins.formatting.autopep8,
+          null_ls.builtins.formatting.autopep8.with({
+            extra_args = {
+              '--max-line-length=200',
+            },
+          }),
           null_ls.builtins.formatting.stylua,
           null_ls.builtins.formatting.goimports,
           null_ls.builtins.formatting.gofmt,
@@ -104,13 +107,6 @@ return {
         log = { enabled = true, level = 'trace' },
       })
     end,
-  },
-
-  {
-    -- symbol usage indicator
-    'Wansmer/symbol-usage.nvim',
-    event = 'BufReadPre',
-    config = true,
   },
 
   {

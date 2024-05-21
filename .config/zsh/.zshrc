@@ -1,7 +1,5 @@
 # Source config files
 source ~/.env.sh
-# source ~/.config/zsh/exports.zsh
-# source ~/.config/zsh/aliases.zsh
 source ~/.config/zsh/.zshenv
 source "$ZINIT_HOME/zinit.zsh"
 
@@ -9,12 +7,14 @@ source "$ZINIT_HOME/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-history-substring-search
 zinit light Aloxaf/fzf-tab
+
+# zinit ice wait atload'_history_substring_search_config'
 
 # Snippets
 zinit snippet OMZP::1password
 zinit snippet OMZP::docker-compose
-zinit snippet OMZP::git
 zinit snippet OMZP::podman
 zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
@@ -32,8 +32,8 @@ zstyle ':fzf-tab:complete:__zoxide:z:*' fzf-preview 'ls --color $realpath'
 # Keybindings
 bindkey -e # emacs keybindings
 # only cycle through commands with matching prefix
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+bindkey '^p' history-substring-search-up
+bindkey '^n' history-substring-search-down
 
 # History settings
 HISTSIZE=5000
