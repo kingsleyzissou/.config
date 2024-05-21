@@ -7,6 +7,7 @@ source "$ZINIT_HOME/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
+zinit light zsh-users/zhs-history-substring-search
 zinit light Aloxaf/fzf-tab
 
 # Snippets
@@ -25,8 +26,8 @@ zstyle ':fzf-tab:complete:__zoxide:z:*' fzf-preview 'ls --color $realpath'
 # Keybindings
 bindkey -e # emacs keybindings
 # only cycle through commands with matching prefix
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+bindkey '^p' history-substring-search-up
+bindkey '^n' history-substring-search-down
 
 # History settings
 HISTSIZE=5000
@@ -43,5 +44,4 @@ setopt hist_find_no_dups
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
-# eval "$(/opt/homebrew/bin/brew shellenv)"
 eval "$(starship init zsh)"
