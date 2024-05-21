@@ -67,37 +67,37 @@ return {
     },
   },
 
-  {
-    'gorbit99/codewindow.nvim',
-    event = { 'BufReadPost', 'BufNewFile' },
-    keys = {
-      { '<leader>c', '<cmd>lua require("codewindow").toggle_minimap()<cr>', desc = 'Toggle code window' },
-    },
-    opts = {
-      exclude_filetypes = {
-        'help',
-        'startify',
-        'aerial',
-        'lazy',
-        'neogitstatus',
-        'neo-tree',
-        'Trouble',
-        'noice',
-        'qf',
-        'mason',
-        'oil',
-        '',
-      },
-      auto_enable = false,
-      relative = 'editor',
-      screen_bounds = 'background',
-      width_multiplier = 5,
-      window_border = '',
-      use_lsp = true,
-      use_treesitter = true,
-      use_git = true,
-    },
-  },
+  -- {
+  --   'gorbit99/codewindow.nvim',
+  --   event = { 'BufReadPost', 'BufNewFile' },
+  --   keys = {
+  --     { '<leader>c', '<cmd>lua require("codewindow").toggle_minimap()<cr>', desc = 'Toggle code window' },
+  --   },
+  --   opts = {
+  --     exclude_filetypes = {
+  --       'help',
+  --       'startify',
+  --       'aerial',
+  --       'lazy',
+  --       'neogitstatus',
+  --       'neo-tree',
+  --       'Trouble',
+  --       'noice',
+  --       'qf',
+  --       'mason',
+  --       'oil',
+  --       '',
+  --     },
+  --     auto_enable = false,
+  --     relative = 'editor',
+  --     screen_bounds = 'background',
+  --     width_multiplier = 5,
+  --     window_border = '',
+  --     use_lsp = true,
+  --     use_treesitter = true,
+  --     use_git = true,
+  --   },
+  -- },
 
   {
     -- markdown preview
