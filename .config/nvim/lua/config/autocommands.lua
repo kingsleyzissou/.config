@@ -82,6 +82,6 @@ auto({ 'WinEnter', 'BufEnter' }, {
       return
     end
 
-    vim.schedule(require('codewindow').open_minimap)
+    -- vim.schedule(require('codewindow').open_minimap)
   end,
 })
