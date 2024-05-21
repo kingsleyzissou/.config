@@ -1,7 +1,0 @@
-[Desktop Entry]
-Version=1.0
-Terminal=false
-Type=Application
-Name=Settings
-Exec=/usr/bin/kitty --class 'config' -d '/home/kingsley/.config'
-Icon=/home/kingsley/.local/kitty.app/share/icons/hicolor/256x256/apps/kitty.png
