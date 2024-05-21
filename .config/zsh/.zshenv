@@ -83,6 +83,9 @@ export BAT_THEME="Catppuccin-mocha"
 export MANPAGER="zsh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
+# use nvim
+export EDITOR="nvim"
+
 # keychain
 export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 
