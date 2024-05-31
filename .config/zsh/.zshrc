@@ -7,10 +7,7 @@ source "$ZINIT_HOME/zinit.zsh"
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-autosuggestions
 zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-history-substring-search
 zinit light Aloxaf/fzf-tab
-
-# zinit ice wait atload'_history_substring_search_config'
 
 # Snippets
 zinit snippet OMZP::1password
@@ -29,11 +26,25 @@ zstyle ':completion:*' menu no
 zstyle ':fzf-tab:complete:cd:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:complete:__zoxide:z:*' fzf-preview 'ls --color $realpath'
 
+# Better command cycling
+# https://superuser.com/a/585004
+autoload -U up-line-or-beginning-search
+autoload -U down-line-or-beginning-search
+zle -N up-line-or-beginning-search
+zle -N down-line-or-beginning-search
+
+# Edit command line
+# https://stackoverflow.com/a/903973
+autoload edit-command-line
+zle -N edit-command-line
+
 # Keybindings
 bindkey -e # emacs keybindings
-# only cycle through commands with matching prefix
-bindkey '^p' history-substring-search-up
-bindkey '^n' history-substring-search-down
+bindkey '^x^e' edit-command-line
+bindkey '^p' up-line-or-beginning-search
+bindkey '^n' down-line-or-beginning-search
+bindkey "^[[A" up-line-or-beginning-search
+bindkey "^[[B" down-line-or-beginning-search
 
 # History settings
 HISTSIZE=5000
@@ -51,5 +62,7 @@ setopt hist_find_no_dups
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
+eval "$(thefuck --alias fk)"
 
 source /home/kingsley/.config/op/plugins.sh
+source /home/kingsley/.config/fzf/plugins/fzf-git.sh/fzf-git.sh
