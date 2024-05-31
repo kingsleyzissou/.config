@@ -79,13 +79,17 @@ export FZF_ALT_T_OPTS="--preview 'ls --color {} | head -200'"
 # export starship
 export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 
-# bat styles
-export BAT_THEME="Catppuccin-mocha"
+# man settings
 export MANPAGER="zsh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 
 # use nvim
 export EDITOR="nvim"
+
+# fix locale
+# https://superuser.com/a/1672196
+export LANG=C.UTF-8
+export LC_CTYPE=C.UTF-8
 
 # keychain
 export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
