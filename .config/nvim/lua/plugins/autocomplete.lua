@@ -35,7 +35,6 @@ return {
           ['<c-c>'] = cmp.mapping.abort(),
           ['<cr>'] = cmp.mapping.confirm({ select = true }),
           ['<right>'] = cmp.mapping.confirm({ select = true }),
-          ['<c-y>'] = cmp.mapping.confirm({ select = true }),
           ['<a-tab>'] = cmp.mapping(supertab(1), { 'i', 's' }),
           ['<s-tab>'] = cmp.mapping(supertab(-1), { 'i', 's' }), -- minus one for jumping back
         },

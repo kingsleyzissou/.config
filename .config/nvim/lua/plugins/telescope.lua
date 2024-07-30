@@ -97,7 +97,9 @@ return {
   {
     -- telescope
     'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
     lazy = false, -- this is required by too many plugins
     keys = {
       -- keybindings
@@ -148,7 +150,7 @@ return {
           file_sorter = require('telescope.sorters').get_fuzzy_file,
           file_ignore_patterns = { 'node_modules', 'vendor' },
           generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
-          path_display = { 'truncate' },
+          path_display = { 'smart' },
           winblend = 0,
           border = {},
           borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },

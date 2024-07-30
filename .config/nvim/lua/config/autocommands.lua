@@ -76,12 +76,7 @@ auto({ 'QuitPre', 'ExitPre' }, {
   end,
 })
 
-auto({ 'WinEnter', 'BufEnter' }, {
-  callback = function()
-    if vim.bo.buftype == 'terminal' then
-      return
-    end
-
-    -- vim.schedule(require('codewindow').open_minimap)
-  end,
+auto({ 'BufEnter', 'BufWinEnter' }, {
+  pattern = { 'Schutzfile' },
+  command = 'setlocal filetype=json',
 })

@@ -10,10 +10,10 @@ zinit light zsh-users/zsh-completions
 zinit light Aloxaf/fzf-tab
 
 # Snippets
-zinit snippet OMZP::1password
-zinit snippet OMZP::docker-compose
-zinit snippet OMZP::podman
-zinit snippet OMZP::sudo
+# zinit snippet OMZP::1password
+# zinit snippet OMZP::docker-compose
+# zinit snippet OMZP::podman
+# zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
 
 # Load completions
@@ -47,6 +47,7 @@ bindkey "^[[A" up-line-or-beginning-search
 bindkey "^[[B" down-line-or-beginning-search
 
 # History settings
+SAVEHIST=5000
 HISTSIZE=5000
 HYPHEN_INSENSITIVE="true"
 HISTFILE=~/.config/zsh/.zsh_history
@@ -64,5 +65,5 @@ eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
 eval "$(thefuck --alias fk)"
 
-source /home/kingsley/.config/op/plugins.sh
-source /home/kingsley/.config/fzf/plugins/fzf-git.sh/fzf-git.sh
+source $HOME/.config/op/plugins.sh
+source $HOME/.config/fzf/plugins/fzf-git.sh/fzf-git.sh

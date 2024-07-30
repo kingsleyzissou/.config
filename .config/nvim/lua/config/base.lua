@@ -12,8 +12,8 @@ vim.opt.cmdheight = 1 -- set more height for the terminal
 -- set whitespace char values
 vim.opt.listchars = {
   eol = '↵',
-  space = '•',
-  tab = '»•',
+  space = ' ',
+  tab = '» ',
   trail = '~',
 }
 vim.opt.list = true -- show whitespace
