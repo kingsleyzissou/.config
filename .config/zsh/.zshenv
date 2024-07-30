@@ -19,6 +19,9 @@ alias -s gmi=nvim
 alias -s png=imv
 alias -s jpg=imv
 
+# WLR cursors thing
+[[ $(uname) == "Linux" ]] && export WLR_NO_HARDWARE_CURSORS=1
+
 # Dump the cache elsewhere
 export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
 
@@ -38,11 +41,14 @@ export PIN_ENTRY_DATA="curses"
 # pkg-config path
 export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
 
+# brew path
+[[ $(uname) == "Darwin" ]] && export PATH=$PATH:/opt/homebrew/bin
+
 # export go path
 export GOPATH=$HOME/go
 export PATH=$PATH:$GOPATH/bin
-export PATH=$PATH:/home/$USER/go/bin
-export PATH=$PATH:/home/$USER/.local/bin
+export PATH=$PATH:$HOME/go/bin
+export PATH=$PATH:$HOME/.local/bin
 
 # prepend local scripts to path
 # so that we can use scripts that
@@ -51,6 +57,10 @@ export PATH="$HOME/.scripts:$PATH"
 
 # export podman socket
 export DOCKER_HOST=unix:///run/user/$UID/podman/podman.sock
+if [[ $(uname) == "Darwin" ]]; then
+  export CONTAINER_MACHINE_PROVIDER='applehv'
+  export DOCKER_HOST='unix://'
+fi
 
 # pfetch information
 export PF_INFO="ascii title os kernel uptime pkgs memory editor palette"
@@ -59,9 +69,9 @@ export PF_INFO="ascii title os kernel uptime pkgs memory editor palette"
 export GPG_TTY=$(tty)
 
 # language servers
-export PATH=$PATH:/home/$USER/.local/share/nvim/lsp_servers/jedi_language_server/venv/bin
-export PATH=$PATH:/home/$USER/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin
-export PATH=$PATH:/home/$USER/.local/share/nvim/lsp_servers/yamlls/node_modules/yaml-language-server/bin
+export PATH=$PATH:$HOME/.local/share/nvim/lsp_servers/jedi_language_server/venv/bin
+export PATH=$PATH:$HOME/.local/share/nvim/lsp_servers/sumneko_lua/extension/server/bin
+export PATH=$PATH:$HOME/.local/share/nvim/lsp_servers/yamlls/node_modules/yaml-language-server/bin
 
 # fuzzy finder
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude=.git"

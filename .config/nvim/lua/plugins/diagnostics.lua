@@ -3,7 +3,7 @@ return {
     -- trouble
     'folke/trouble.nvim',
     opts = {
-      position = 'left',
+      position = 'bottom',
       use_diagnostic_signs = false,
     },
     keys = {

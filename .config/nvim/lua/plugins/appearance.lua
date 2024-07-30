@@ -14,31 +14,18 @@ return {
   },
 
   {
-    -- backup theme
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = {
-      terminal_colors = true,
-      transparent = true,
-      styles = {
-        sidebars = 'transparent',
-        floats = 'transparent',
-      },
-      on_highlights = function(highlights, colors)
-        highlights.MsgArea = { bg = colors.none }
-      end,
-    },
-  },
-
-  -- {
-  -- highlighting
-  -- 'RRethy/vim-illuminate',
-  -- },
-
-  {
     -- inline hex colors
     'norcalli/nvim-colorizer.lua',
+  },
+
+  {
+    -- indent guides
+    'lukas-reineke/indent-blankline.nvim',
+    event = { 'BufEnter', 'BufNewFile' },
+    main = 'ibl',
+    opts = {
+      indent = { char = '|' },
+    },
   },
 
   {
@@ -164,59 +151,5 @@ return {
     opts = {
       enabled = true,
     },
-  },
-
-  {
-    -- edgy
-    'folke/edgy.nvim',
-    event = 'VeryLazy',
-    -- stylua: ignore
-    keys = {
-      { '<leader>be', function() require('edgy').toggle() end, desc = 'Edgy Toggle' },
-      { '<leader>bE', function() require('edgy').select() end, desc = 'Edgy Select Window' },
-    },
-    opts = function()
-      local opts = {
-        bottom = {
-          {
-            ft = 'noice',
-            size = { height = 0.4 },
-            filter = function(_, win)
-              return vim.api.nvim_win_get_config(win).relative == ''
-            end,
-          },
-          'Trouble',
-          { ft = 'qf', title = 'QuickFix' },
-          {
-            ft = 'help',
-            size = { height = 20 },
-            -- don't open help files in edgy that we're editing
-            filter = function(buf)
-              return vim.bo[buf].buftype == 'help'
-            end,
-          },
-          { title = 'Neotest Output', ft = 'neotest-output-panel', size = { height = 15 } },
-        },
-        keys = {
-          -- increase width
-          ['<c-Right>'] = function(win)
-            win:resize('width', 2)
-          end,
-          -- decrease width
-          ['<c-Left>'] = function(win)
-            win:resize('width', -2)
-          end,
-          -- increase height
-          ['<c-Up>'] = function(win)
-            win:resize('height', 2)
-          end,
-          -- decrease height
-          ['<c-Down>'] = function(win)
-            win:resize('height', -2)
-          end,
-        },
-      }
-      return opts
-    end,
   },
 }

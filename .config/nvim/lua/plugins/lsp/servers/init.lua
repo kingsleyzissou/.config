@@ -18,6 +18,6 @@ return {
 
   -- other
   cssls = {},
-  yamlls = {},
   jsonls = {},
+  -- yamlls = {},
 }

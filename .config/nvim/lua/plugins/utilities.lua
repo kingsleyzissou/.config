@@ -2,6 +2,7 @@ return {
   {
     -- auto-pairs
     'windwp/nvim-autopairs',
+    event = 'VeryLazy',
     opts = {
       fast_wrap = {},
       disable_filetype = { 'TelescopePrompt', 'vim' },
@@ -16,19 +17,23 @@ return {
   },
 
   {
+    -- TODO: fix this for ssh
     'christoomey/vim-tmux-navigator',
     lazy = false,
+  },
+
+  {
+    'szw/vim-maximizer',
+    event = 'VeryLazy',
+    keys = {
+      { '<leader>om', '<cmd>MaximizerToggle<cr>', desc = 'Mimimize/Maximize split' },
+    },
   },
 
   {
     -- add comments
     'tpope/vim-commentary',
     lazy = false,
-  },
-
-  {
-    -- db browser
-    'tpope/vim-dadbod',
   },
 
   {
@@ -42,6 +47,7 @@ return {
   {
     -- matching keywords, i.e. if/end
     'tpope/vim-endwise',
+    event = 'VeryLazy',
   },
 
   {
@@ -65,45 +71,6 @@ return {
         },
       },
     },
-  },
-
-  {
-    'gorbit99/codewindow.nvim',
-    event = { 'BufReadPost', 'BufNewFile' },
-    keys = {
-      { '<leader>c', '<cmd>lua require("codewindow").toggle_minimap()<cr>', desc = 'Toggle code window' },
-    },
-    opts = {
-      exclude_filetypes = {
-        'help',
-        'startify',
-        'aerial',
-        'lazy',
-        'neogitstatus',
-        'neo-tree',
-        'Trouble',
-        'noice',
-        'qf',
-        'mason',
-        'oil',
-        '',
-      },
-      auto_enable = false,
-      relative = 'editor',
-      screen_bounds = 'background',
-      width_multiplier = 5,
-      window_border = '',
-      use_lsp = true,
-      use_treesitter = true,
-      use_git = true,
-    },
-  },
-
-  {
-    -- markdown preview
-    'ellisonleao/glow.nvim',
-    config = true,
-    cmd = 'Glow',
   },
 
   {
@@ -154,6 +121,7 @@ return {
   {
     -- which-key
     'folke/which-key.nvim',
+    event = 'VeryLazy',
     opts = {
       plugins = {
         marks = true,
@@ -180,7 +148,6 @@ return {
         n = { name = 'Notifications' },
         p = { name = 'Lazy' },
         t = { name = 'Tests' },
-        u = { name = 'Edgy' },
         x = { name = 'Trouble' },
         ['w'] = 'which_key_ignore',
         ['q'] = 'which_key_ignore',
