@@ -8,50 +8,34 @@ return {
       require('catppuccin').setup({
         flavor = 'macchiato',
         transparent_background = true,
+        integrations = {
+          gitsigns = true,
+          telescope = true,
+        },
       })
       vim.cmd.colorscheme('catppuccin')
     end,
   },
 
   {
-    -- backup theme
-    'folke/tokyonight.nvim',
-    lazy = false,
-    priority = 1000,
-    opts = {
-      terminal_colors = true,
-      transparent = true,
-      styles = {
-        sidebars = 'transparent',
-        floats = 'transparent',
-      },
-      on_highlights = function(highlights, colors)
-        highlights.MsgArea = { bg = colors.none }
-      end,
-    },
-  },
-
-  -- {
-  -- highlighting
-  -- 'RRethy/vim-illuminate',
-  -- },
-
-  {
-    -- inline hex colors
-    'norcalli/nvim-colorizer.lua',
-  },
-
-  {
     -- icons
     'nvim-tree/nvim-web-devicons',
-    config = function(_, opts)
-      require('nvim-web-devicons').setup(opts)
-    end,
+    opts = {},
   },
 
   {
-    -- required by other plugins, import explicitly
-    'MunifTanjim/nui.nvim',
+    'echasnovski/mini.icons',
+    opts = {},
+    lazy = true,
+    specs = {
+      { 'nvim-tree/nvim-web-devicons', enabled = false, optional = true },
+    },
+    init = function()
+      package.preload['nvim-web-devicons'] = function()
+        require('mini.icons').mock_nvim_web_devicons()
+        return package.loaded['nvim-web-devicons']
+      end
+    end,
   },
 
   {
@@ -63,7 +47,7 @@ return {
       local theme = require('config.theme.lualine')
       return {
         options = {
-          disabled_filetypes = { 'neo-tree', 'toggleterm', 'trouble', 'minimap' },
+          disabled_filetypes = { 'neo-tree', 'toggleterm', 'trouble', 'minimap', 'snacks_terminal' },
           icons_enabled = true,
           section_separators = '',
           theme = theme(),
@@ -81,9 +65,35 @@ return {
     end,
   },
 
+  -- snacks
   {
-    -- indentation
-    'lukas-reineke/indent-blankline.nvim',
+    'folke/snacks.nvim',
+    priority = 1000,
+    lazy = false,
+    opts = {
+      bigfile = { enabled = true },
+      indent = { enabled = true },
+      lazygit = { enabled = true },
+      input = { enabled = false },
+      notifier = { enabled = true },
+      notify = { enabled = true },
+      rename = { enabled = true },
+      scope = { enabled = true },
+      terminal = { enabled = true },
+      zen = { enabled = true },
+    },
+    styles = {
+      input = {},
+    },
+    keys = {
+      {
+        '<leader>gg',
+        function()
+          require('snacks').lazygit()
+        end,
+        desc = 'Lazygit',
+      },
+    },
   },
 
   {
@@ -92,7 +102,6 @@ return {
     event = 'VeryLazy',
     dependencies = {
       'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
     },
     opts = {
       lsp = {
@@ -123,10 +132,10 @@ return {
         },
       },
       presets = {
-        -- bottom_search = true,
-        command_palette = true,
+        bottom_search = true,
+        command_palette = false,
         long_message_to_split = true,
-        inc_rename = false,
+        inc_rename = true,
       },
       views = {
         cmdline_popup = {
@@ -147,7 +156,6 @@ return {
         },
       },
     },
-    config = false,
   },
 
   {
@@ -164,66 +172,5 @@ return {
     opts = {
       enabled = true,
     },
-  },
-
-  {
-    -- edgy
-    'folke/edgy.nvim',
-    event = 'VeryLazy',
-    -- stylua: ignore
-    keys = {
-      { '<leader>be', function() require('edgy').toggle() end, desc = 'Edgy Toggle' },
-      { '<leader>bE', function() require('edgy').select() end, desc = 'Edgy Select Window' },
-    },
-    opts = function()
-      local opts = {
-        bottom = {
-          {
-            ft = 'toggleterm',
-            size = { height = 0.4 },
-            filter = function(_, win)
-              return vim.api.nvim_win_get_config(win).relative == ''
-            end,
-          },
-          {
-            ft = 'noice',
-            size = { height = 0.4 },
-            filter = function(_, win)
-              return vim.api.nvim_win_get_config(win).relative == ''
-            end,
-          },
-          'Trouble',
-          { ft = 'qf', title = 'QuickFix' },
-          {
-            ft = 'help',
-            size = { height = 20 },
-            -- don't open help files in edgy that we're editing
-            filter = function(buf)
-              return vim.bo[buf].buftype == 'help'
-            end,
-          },
-          { title = 'Neotest Output', ft = 'neotest-output-panel', size = { height = 15 } },
-        },
-        keys = {
-          -- increase width
-          ['<c-Right>'] = function(win)
-            win:resize('width', 2)
-          end,
-          -- decrease width
-          ['<c-Left>'] = function(win)
-            win:resize('width', -2)
-          end,
-          -- increase height
-          ['<c-Up>'] = function(win)
-            win:resize('height', 2)
-          end,
-          -- decrease height
-          ['<c-Down>'] = function(win)
-            win:resize('height', -2)
-          end,
-        },
-      }
-      return opts
-    end,
   },
 }

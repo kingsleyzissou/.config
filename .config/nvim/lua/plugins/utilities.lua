@@ -2,6 +2,7 @@ return {
   {
     -- auto-pairs
     'windwp/nvim-autopairs',
+    event = 'VeryLazy',
     opts = {
       fast_wrap = {},
       disable_filetype = { 'TelescopePrompt', 'vim' },
@@ -16,19 +17,23 @@ return {
   },
 
   {
+    -- TODO: fix this for ssh
     'christoomey/vim-tmux-navigator',
     lazy = false,
+  },
+
+  {
+    'szw/vim-maximizer',
+    event = 'VeryLazy',
+    keys = {
+      { '<leader>sm', '<cmd>MaximizerToggle<cr>', desc = 'Mimimize/Maximize split' },
+    },
   },
 
   {
     -- add comments
     'tpope/vim-commentary',
     lazy = false,
-  },
-
-  {
-    -- db browser
-    'tpope/vim-dadbod',
   },
 
   {
@@ -42,6 +47,7 @@ return {
   {
     -- matching keywords, i.e. if/end
     'tpope/vim-endwise',
+    event = 'VeryLazy',
   },
 
   {
@@ -65,45 +71,6 @@ return {
         },
       },
     },
-  },
-
-  -- {
-  --   'gorbit99/codewindow.nvim',
-  --   event = { 'BufReadPost', 'BufNewFile' },
-  --   keys = {
-  --     { '<leader>c', '<cmd>lua require("codewindow").toggle_minimap()<cr>', desc = 'Toggle code window' },
-  --   },
-  --   opts = {
-  --     exclude_filetypes = {
-  --       'help',
-  --       'startify',
-  --       'aerial',
-  --       'lazy',
-  --       'neogitstatus',
-  --       'neo-tree',
-  --       'Trouble',
-  --       'noice',
-  --       'qf',
-  --       'mason',
-  --       'oil',
-  --       '',
-  --     },
-  --     auto_enable = false,
-  --     relative = 'editor',
-  --     screen_bounds = 'background',
-  --     width_multiplier = 5,
-  --     window_border = '',
-  --     use_lsp = true,
-  --     use_treesitter = true,
-  --     use_git = true,
-  --   },
-  -- },
-
-  {
-    -- markdown preview
-    'ellisonleao/glow.nvim',
-    config = true,
-    cmd = 'Glow',
   },
 
   {
@@ -148,12 +115,9 @@ return {
   },
 
   {
-    'rest-nvim/rest.nvim',
-  },
-
-  {
     -- which-key
     'folke/which-key.nvim',
+    event = 'VeryLazy',
     opts = {
       plugins = {
         marks = true,
@@ -167,24 +131,31 @@ return {
         scroll_up = '<C-k>',
       },
       hidden = { '<leader>w' },
+      icons = {
+        mappings = false,
+      },
     },
-    config = function(_, options)
+    config = function()
       local wk = require('which-key')
-      wk.setup(options)
-      wk.register({
-        d = { name = 'Debugger' },
-        f = { name = 'Finder' },
-        g = { name = 'Git' },
-        l = { name = 'Lsp' },
-        m = { name = 'Harpoon' },
-        n = { name = 'Notifications' },
-        p = { name = 'Lazy' },
-        t = { name = 'Tests' },
-        u = { name = 'Edgy' },
-        x = { name = 'Trouble' },
-        ['w'] = 'which_key_ignore',
-        ['q'] = 'which_key_ignore',
-      }, { prefix = '<leader>' })
+      wk.add({
+        { '<leader>c', group = 'Terminal' },
+        { '<leader>f', group = 'Finder' },
+        { '<leader>g', group = 'Git' },
+        { '<leader>l', group = 'Diagnostics' },
+        { '<leader>m', group = 'Harpoon' },
+        -- { '<leader>n', group = 'Notifications' },
+        { '<leader>p', group = 'Lazy' },
+        { '<leader>s', group = 'Splits' },
+        { '<leader>t', group = 'Tests' },
+        { '<leader>x', group = 'Trouble' },
+        { '<leader>-', hidden = true },
+        { '<leader>.', hidden = true },
+        { '<leader>,', hidden = true },
+        { '<leader>w', hidden = true },
+        { '<leader>q', hidden = true },
+        { '<leader>j', hidden = true },
+        { '<leader>k', hidden = true },
+      })
     end,
   },
 }
