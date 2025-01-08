@@ -9,13 +9,14 @@ auto({ 'FileType' }, {
     'help',
     'Jaq',
     'man',
-    'spectre_panel',
     'MarkDown',
     'neo-tree',
     'vim',
     'toggleterm',
-    'httpResult',
     'LazyGit',
+    'snacks_terminal',
+    'neotest-output-panel',
+    'neotest-summary',
   },
   callback = function()
     vim.cmd([[
@@ -53,7 +54,6 @@ auto({ 'FileType' }, {
   pattern = { 'gitcommit', 'markdown' },
   callback = function()
     vim.opt_local.wrap = true
-    -- vim.opt_local.spell = true
   end,
 })
 
@@ -73,5 +73,12 @@ auto({ 'QuitPre', 'ExitPre' }, {
   callback = function()
     vim.cmd('silent! TroubleClose')
     vim.cmd('silent! lua require("dapui").close()')
+    vim.cmd('silent! lua require("neotest").output_panel.close()')
+    vim.cmd('silent! lua require("neotest").summary.close()')
   end,
+})
+
+auto({ 'BufEnter', 'BufWinEnter' }, {
+  pattern = { 'Schutzfile' },
+  command = 'setlocal filetype=json',
 })
