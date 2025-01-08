@@ -1,0 +1,9 @@
+background-opacity = 0.95
+font-family = RobotoMono
+font-size = 24
+copy-on-select = clipboard
+theme = catppuccin-mocha
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
+window-padding-color = extend
