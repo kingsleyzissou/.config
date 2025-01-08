@@ -4,8 +4,10 @@ return {
   config = function()
     local conform = require('conform')
 
-    conform.formatters.prettier = {
-      prepend_args = { '--single-quote' },
+    conform.formatters.prettierd = {
+      prepend_args = {
+        '--single-quote',
+      },
     }
 
     conform.formatters.autopep8 = {
@@ -16,14 +18,13 @@ return {
 
     conform.setup({
       formatters_by_ft = {
-        javascript = { 'prettier' },
-        javascriptreact = { 'prettier' },
-        typescript = { 'prettier' },
-        typescriptreact = { 'prettier' },
-        css = { 'prettier' },
-        html = { 'prettier' },
+        javascript = { 'prettierd' },
+        javascriptreact = { 'prettierd' },
+        typescript = { 'prettierd' },
+        typescriptreact = { 'prettierd' },
+        css = { 'prettierd' },
+        html = { 'prettierd' },
         json = { 'jq' },
-        -- yaml = { 'prettier' },
         lua = { 'stylua' },
         go = { 'goimports' },
         python = { 'isort', 'ruff', 'autopep8' },

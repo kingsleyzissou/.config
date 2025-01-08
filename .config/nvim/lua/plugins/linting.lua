@@ -4,16 +4,6 @@ return {
   config = function()
     local linter = require('lint')
 
-    linter.linters_by_ft = {
-      javascript = { 'eslint_d' },
-      javascriptreact = { 'eslint_d' },
-      typescript = { 'eslint_d' },
-      typescriptreact = { 'eslint_d' },
-      python = { 'pylint', 'flake8' },
-      go = { 'golangcilint' },
-      shell = { 'shellcheck' },
-    }
-
     linter.linters.shellcheck.args = {
       '-e',
       'SC1091',
@@ -27,6 +17,27 @@ return {
 
     linter.linters.flake8.args = {
       '--max-line-length=200',
+    }
+
+    linter.linters.eslint.args = {
+      '--no-warn-ignored',
+      '--format',
+      'json',
+      '--stdin',
+      '--stdin-filename',
+      function()
+        return vim.api.nvim_buf_get_name(0)
+      end,
+    }
+
+    linter.linters_by_ft = {
+      javascript = { 'eslint' },
+      javascriptreact = { 'eslint' },
+      typescript = { 'eslint' },
+      typescriptreact = { 'eslint' },
+      python = { 'pylint', 'flake8' },
+      go = { 'golangcilint' },
+      shell = { 'shellcheck' },
     }
 
     local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })

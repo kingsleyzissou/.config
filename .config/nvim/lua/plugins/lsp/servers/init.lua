@@ -10,8 +10,8 @@ return {
   lua_ls = require('plugins.lsp.servers.lua_ls'),
 
   -- typescript/javascript
-  tsserver = {},
-  eslint = {},
+  ts_ls = {},
+  -- eslint = {},
 
   -- rust
   rust_analyzer = {},
