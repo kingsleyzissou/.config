@@ -6,7 +6,7 @@ vim.keymap.set('n', '<leader>ww', '<cmd>w!<cr>', { desc = 'Save' })
 vim.keymap.set('n', '<leader>wq', '<cmd>wq!<cr>', { desc = 'Save & quit' })
 
 -- lazy
-vim.keymap.set('n', '<leader>i', '<cmd>Lazy<cr>', { desc = 'Lazy' })
+vim.keymap.set('n', '<leader>pi', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 
 -- shift-k // split line at cursor
 vim.keymap.set({ 'n', 'v' }, '<s-k>', 'i<cr><esc>', { desc = 'Split line' })
@@ -40,7 +40,7 @@ vim.keymap.set('x', '<a-p>', '"_dP') -- delete current word into the void
 vim.keymap.set({ 'n', 'v' }, 'x', '"_x') -- delete char into the void
 
 -- exit terminal
-vim.keymap.set('t', '<esc>', '<c-\\><c-n>', { desc = 'Esc terminal' })
+vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Esc terminal' })
 vim.keymap.set('t', '<c-q>', '<c-\\><c-n><cmd>q!<cr>', { desc = 'Close terminal' }) -- ctrl-q to exit terminal
 
 -- move lines
@@ -58,13 +58,7 @@ vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Jump half page up' })
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
--- rest nvim
--- TODO: maybe move this to the plugin
--- TODO: rethink the keymap
-vim.keymap.set('n', '<leader>rr', '<Plug>RestNvim', { desc = 'RestNvim' })
-
 -- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
 -- stylua: ignore
 local replace = [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>]]
-vim.keymap.set('n', '<leader>s', replace, { desc = 'Substitute word under cursor' })
-vim.keymap.set('n', '<a-x>', '<cmd>!chmod +x %<cr>', { silent = true, desc = 'Make executable' })
+vim.keymap.set('n', '<leader>r', replace, { desc = 'Replace word' })
