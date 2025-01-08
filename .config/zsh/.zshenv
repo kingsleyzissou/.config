@@ -98,8 +98,11 @@ export EDITOR="nvim"
 
 # fix locale
 # https://superuser.com/a/1672196
-export LANG=C.UTF-8
-export LC_CTYPE=C.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+# https://github.com/warpdotdev/Warp/issues/1271#issuecomment-1463001540
+unset LC_CTYPE
 
 # keychain
 export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
