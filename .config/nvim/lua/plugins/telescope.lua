@@ -1,10 +1,23 @@
-local function dropdown(title)
+local function dropdown_opts(title)
   local themes = require('telescope.themes')
   return themes.get_dropdown({
     previewer = false,
-    initial_mode = 'normal',
+    initial_mode = 'insert',
     prompt_title = title,
+    layout_strategy = 'horizontal',
   })
+end
+
+local function picker(paths, opts)
+  local conf = require('telescope.config').values
+  require('telescope.pickers')
+    .new(opts, {
+      finder = require('telescope.finders').new_table({
+        results = paths,
+      }),
+      sorter = conf.generic_sorter({}),
+    })
+    :find()
 end
 
 return {
@@ -13,13 +26,13 @@ return {
     'ThePrimeagen/harpoon',
     branch = 'harpoon2',
     config = function()
-      require('harpoon'):setup()
+      require('harpoon').setup()
     end,
     keys = {
       {
         '<leader>ma',
         function()
-          require('harpoon'):list():append()
+          require('harpoon'):list():add()
         end,
         desc = 'Add mark',
       },
@@ -40,8 +53,12 @@ return {
       {
         '<leader>mm',
         function()
-          local harpoon = require('harpoon')
-          harpoon.ui:toggle_quick_menu(harpoon:list())
+          local file_paths = {}
+          for _, item in ipairs(require('harpoon'):list().items) do
+            table.insert(file_paths, item.value)
+          end
+          local opts = dropdown_opts('Harpoon')
+          picker(file_paths, opts)
         end,
         desc = 'View marks',
       },
@@ -76,7 +93,8 @@ return {
       {
         '<leader>mb',
         function()
-          require('telescope.builtin').buffers(dropdown('Buffers'))
+          local opts = dropdown_opts('Buffers')
+          require('telescope.builtin').buffers(opts)
         end,
         desc = 'View buffers',
       },
@@ -106,13 +124,10 @@ return {
       { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Find files' },
       { '<leader>fe', '<cmd>Telescope symbols<cr>', desc = 'Find emoji' },
       { '<leader>ft', '<cmd>Telescope live_grep<cr>', desc = 'Find text' },
-      { '<leader>fs', '<cmd>Telescope grep_string<cr>', desc = 'Find string' },
+      { '<leader>fs', '<cmd>Telescope grep_string<cr>', desc = 'Find string under cursor' },
       { '<leader>fm', '<cmd>Telescope man_pages<cr>', desc = 'Find man pages' },
-      { '<leader>fn', '<cmd>Telescope notify<cr>', desc = 'Find notifications' },
       { '<leader>fk', '<cmd>Telescope keymaps<cr>', desc = 'Find keymaps' },
-      { '<leader>fo', '<cmd>Telescope oldfiles<cr>', desc = 'Find recent' },
       { '<leader>fT', '<cmd>TodoTelescope<cr>', desc = 'Find todos' },
-      { '<leader>fp', '<cmd>Telescope projects<cr>', desc = 'Find projects' },
     },
     opts = function()
       return {
@@ -137,25 +152,19 @@ return {
           layout_config = {
             horizontal = {
               prompt_position = 'top',
-              preview_width = 0.55,
-              results_width = 0.8,
+              width = {
+                padding = 0,
+              },
+              height = {
+                padding = 0,
+              },
             },
-            vertical = {
-              mirror = false,
-            },
-            width = 0.87,
-            height = 0.80,
-            preview_cutoff = 120,
           },
           file_sorter = require('telescope.sorters').get_fuzzy_file,
           file_ignore_patterns = { 'node_modules', 'vendor' },
           generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
           path_display = { 'smart' },
-          winblend = 0,
-          border = {},
-          borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
           color_devicons = true,
-          set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
           file_previewer = require('telescope.previewers').vim_buffer_cat.new,
           grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
           qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
@@ -170,8 +179,8 @@ return {
         },
         extensions_list = {
           'frecency',
-          'harpoon',
           'noice',
+          'harpoon',
         },
       }
     end,

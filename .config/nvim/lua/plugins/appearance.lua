@@ -8,37 +8,34 @@ return {
       require('catppuccin').setup({
         flavor = 'macchiato',
         transparent_background = true,
+        integrations = {
+          gitsigns = true,
+          telescope = true,
+        },
       })
       vim.cmd.colorscheme('catppuccin')
     end,
   },
 
   {
-    -- inline hex colors
-    'norcalli/nvim-colorizer.lua',
-  },
-
-  {
-    -- indent guides
-    'lukas-reineke/indent-blankline.nvim',
-    event = { 'BufEnter', 'BufNewFile' },
-    main = 'ibl',
-    opts = {
-      indent = { char = '|' },
-    },
-  },
-
-  {
     -- icons
     'nvim-tree/nvim-web-devicons',
-    config = function(_, opts)
-      require('nvim-web-devicons').setup(opts)
-    end,
+    opts = {},
   },
 
   {
-    -- required by other plugins, import explicitly
-    'MunifTanjim/nui.nvim',
+    'echasnovski/mini.icons',
+    opts = {},
+    lazy = true,
+    specs = {
+      { 'nvim-tree/nvim-web-devicons', enabled = false, optional = true },
+    },
+    init = function()
+      package.preload['nvim-web-devicons'] = function()
+        require('mini.icons').mock_nvim_web_devicons()
+        return package.loaded['nvim-web-devicons']
+      end
+    end,
   },
 
   {
@@ -50,7 +47,7 @@ return {
       local theme = require('config.theme.lualine')
       return {
         options = {
-          disabled_filetypes = { 'neo-tree', 'toggleterm', 'trouble', 'minimap' },
+          disabled_filetypes = { 'neo-tree', 'toggleterm', 'trouble', 'minimap', 'snacks_terminal' },
           icons_enabled = true,
           section_separators = '',
           theme = theme(),
@@ -68,9 +65,35 @@ return {
     end,
   },
 
+  -- snacks
   {
-    -- indentation
-    'lukas-reineke/indent-blankline.nvim',
+    'folke/snacks.nvim',
+    priority = 1000,
+    lazy = false,
+    opts = {
+      bigfile = { enabled = true },
+      indent = { enabled = true },
+      lazygit = { enabled = true },
+      input = { enabled = false },
+      notifier = { enabled = true },
+      notify = { enabled = true },
+      rename = { enabled = true },
+      scope = { enabled = true },
+      terminal = { enabled = true },
+      zen = { enabled = true },
+    },
+    styles = {
+      input = {},
+    },
+    keys = {
+      {
+        '<leader>gg',
+        function()
+          require('snacks').lazygit()
+        end,
+        desc = 'Lazygit',
+      },
+    },
   },
 
   {
@@ -79,7 +102,6 @@ return {
     event = 'VeryLazy',
     dependencies = {
       'MunifTanjim/nui.nvim',
-      'rcarriga/nvim-notify',
     },
     opts = {
       lsp = {
@@ -110,10 +132,10 @@ return {
         },
       },
       presets = {
-        -- bottom_search = true,
-        command_palette = true,
+        bottom_search = true,
+        command_palette = false,
         long_message_to_split = true,
-        inc_rename = false,
+        inc_rename = true,
       },
       views = {
         cmdline_popup = {
@@ -134,7 +156,6 @@ return {
         },
       },
     },
-    config = false,
   },
 
   {

@@ -4,9 +4,12 @@ return {
     opts = {
       auto_restore_enabled = true,
       auto_session_supress_dirs = {
+        '/',
         '~/',
         '~/downloads',
         '~/documents',
+        '~/Downloads',
+        '~/Documents',
       },
     },
   },

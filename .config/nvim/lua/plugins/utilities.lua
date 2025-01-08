@@ -26,7 +26,7 @@ return {
     'szw/vim-maximizer',
     event = 'VeryLazy',
     keys = {
-      { '<leader>om', '<cmd>MaximizerToggle<cr>', desc = 'Mimimize/Maximize split' },
+      { '<leader>sm', '<cmd>MaximizerToggle<cr>', desc = 'Mimimize/Maximize split' },
     },
   },
 
@@ -115,10 +115,6 @@ return {
   },
 
   {
-    'rest-nvim/rest.nvim',
-  },
-
-  {
     -- which-key
     'folke/which-key.nvim',
     event = 'VeryLazy',
@@ -135,23 +131,31 @@ return {
         scroll_up = '<C-k>',
       },
       hidden = { '<leader>w' },
+      icons = {
+        mappings = false,
+      },
     },
-    config = function(_, options)
+    config = function()
       local wk = require('which-key')
-      wk.setup(options)
-      wk.register({
-        d = { name = 'Debugger' },
-        f = { name = 'Finder' },
-        g = { name = 'Git' },
-        l = { name = 'Lsp' },
-        m = { name = 'Harpoon' },
-        n = { name = 'Notifications' },
-        p = { name = 'Lazy' },
-        t = { name = 'Tests' },
-        x = { name = 'Trouble' },
-        ['w'] = 'which_key_ignore',
-        ['q'] = 'which_key_ignore',
-      }, { prefix = '<leader>' })
+      wk.add({
+        { '<leader>c', group = 'Terminal' },
+        { '<leader>f', group = 'Finder' },
+        { '<leader>g', group = 'Git' },
+        { '<leader>l', group = 'Diagnostics' },
+        { '<leader>m', group = 'Harpoon' },
+        -- { '<leader>n', group = 'Notifications' },
+        { '<leader>p', group = 'Lazy' },
+        { '<leader>s', group = 'Splits' },
+        { '<leader>t', group = 'Tests' },
+        { '<leader>x', group = 'Trouble' },
+        { '<leader>-', hidden = true },
+        { '<leader>.', hidden = true },
+        { '<leader>,', hidden = true },
+        { '<leader>w', hidden = true },
+        { '<leader>q', hidden = true },
+        { '<leader>j', hidden = true },
+        { '<leader>k', hidden = true },
+      })
     end,
   },
 }

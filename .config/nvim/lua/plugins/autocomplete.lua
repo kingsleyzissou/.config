@@ -19,7 +19,6 @@ return {
     opts = function()
       local cmp = require('cmp')
       local luasnip = require('luasnip')
-      local supertab = require('utilities.supertab')
 
       return {
         preselect = cmp.PreselectMode.None,
@@ -29,14 +28,12 @@ return {
           end,
         },
         mapping = {
-          ['<c-j>'] = cmp.mapping.select_next_item(),
-          ['<c-k>'] = cmp.mapping.select_prev_item(),
           ['<c-space>'] = cmp.mapping.complete(),
           ['<c-c>'] = cmp.mapping.abort(),
-          ['<cr>'] = cmp.mapping.confirm({ select = true }),
           ['<right>'] = cmp.mapping.confirm({ select = true }),
-          ['<a-tab>'] = cmp.mapping(supertab(1), { 'i', 's' }),
-          ['<s-tab>'] = cmp.mapping(supertab(-1), { 'i', 's' }), -- minus one for jumping back
+          ['<cr>'] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Replace }),
+          ['<tab>'] = cmp.mapping.select_next_item(),
+          ['<s-tab>'] = cmp.mapping.select_prev_item(),
         },
         sources = {
           { name = 'nvim_lsp' },
@@ -52,8 +49,8 @@ return {
         window = {
           documentation = false,
           completion = {
-            border = 'rounded',
-            winhighlight = 'NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None',
+            border = 'none',
+            padding = 2,
           },
         },
         experimental = {
