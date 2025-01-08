@@ -1,15 +1,6 @@
 local language_servers = require('plugins.lsp.servers')
 local lsp_settings = require('plugins.lsp.settings')
 
-local file_exists = function(file)
-  local f = io.open(file, 'r')
-  if f ~= nil then
-    io.close(f)
-    return true
-  end
-  return false
-end
-
 return {
   {
     -- setup mason first, the order is important
@@ -35,85 +26,26 @@ return {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     dependencies = { 'williamboman/mason.nvim' },
     opts = {
-      ensure_installed = { 'prettierd', 'shellcheck', 'jq', 'stylua' },
+      ensure_installed = {
+        'prettier',
+        'prettierd',
+        'eslint_d',
+        'shellcheck',
+        'jq',
+        'stylua',
+        'isort',
+        'autopep8',
+        'flake8',
+        'ruff',
+        'goimports',
+        'golangci-lint',
+      },
     },
   },
 
   {
     -- formatting helper
     'lukas-reineke/lsp-format.nvim',
-  },
-
-  {
-    -- null-ls
-    -- TODO: this is deprecated
-    -- - maybe nvim-lint for linting
-    -- - conform.nvim for formatting
-    'jose-elias-alvarez/null-ls.nvim',
-    config = function()
-      local null_ls = require('null-ls')
-      null_ls.setup({
-        on_attach = lsp_settings.on_attach,
-        sources = {
-          -- code actions
-          null_ls.builtins.code_actions.gitsigns,
-          null_ls.builtins.code_actions.eslint_d,
-          -- formatting
-          null_ls.builtins.formatting.prettierd.with({
-            filetypes = {
-              'javascript',
-              'javascriptreact',
-              'typescript',
-              'typescriptreact',
-            },
-            extra_args = {
-              '--single-quote',
-            },
-          }),
-          null_ls.builtins.formatting.autopep8.with({
-            extra_args = {
-              '--max-line-length=120',
-            },
-          }),
-          null_ls.builtins.formatting.stylua,
-          null_ls.builtins.formatting.goimports,
-          null_ls.builtins.formatting.gofmt,
-          null_ls.builtins.formatting.trim_whitespace,
-          -- define missing diagnostics
-          null_ls.builtins.diagnostics.eslint_d.with({
-            extra_args = function(params)
-              local file_types = { 'js', 'cjs', 'yaml', 'yml', 'json' }
-              for _, file_type in pairs(file_types) do
-                if file_exists(params.root .. '/.eslintrc.' .. file_type) then
-                  return {}
-                end
-              end
-
-              return {
-                '--config',
-                vim.fn.expand('~/.config/eslint/.eslintrc.json'),
-              }
-            end,
-          }),
-          null_ls.builtins.diagnostics.shellcheck.with({
-            extra_args = {
-              '-e',
-              'SC1091',
-              '-e',
-              'SC2002',
-            },
-          }),
-        },
-        log = { enabled = true, level = 'trace' },
-      })
-    end,
-  },
-
-  {
-    -- symbol usage indicator
-    'Wansmer/symbol-usage.nvim',
-    event = 'BufReadPre',
-    config = true,
   },
 
   {
@@ -154,6 +86,15 @@ return {
           on_attach = lsp_settings.on_attach,
           capabilities = lsp_settings.capabilities,
           settings = settings,
+          -- root_dir = lspconfig.util.root_pattern(
+          -- '.eslintrc',
+          -- '.eslintrc.js',
+          -- '.eslintrc.cjs',
+          -- '.eslintrc.yaml',
+          -- '.eslintrc.yml',
+          -- '.eslintrc.json',
+          -- 'package.json'
+          -- ),
         })
       end
     end,
