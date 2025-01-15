@@ -26,17 +26,10 @@ return {
         { '<leader>gs', signs.stage_hunk, desc = 'Stage hunk' },
         { '<leader>gu', signs.undo_stage_hunk, desc = 'Undo stage hunk' },
         { '<leader>gx', signs.toggle_deleted, desc = 'Toggle deleted' },
-        { '<leader>gd', signs.diffthis, desc = 'Diff this' },
+        { '<leader>gdo', '<cmd>DiffviewOpen<cr>', desc = 'Diff view open' },
+        { '<leader>gdc', '<cmd>DiffviewClose<cr>', desc = 'Diff view close' },
       }
     end,
-  },
-
-  {
-    -- lazygit
-    'kdheepak/lazygit.nvim',
-    keys = {
-      { '<leader>gg', '<cmd>LazyGit<cr>', desc = 'LazyGit' },
-    },
   },
 
   {

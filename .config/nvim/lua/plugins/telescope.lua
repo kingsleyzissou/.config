@@ -1,61 +1,104 @@
-local function dropdown(title)
+local function dropdown_opts(title)
   local themes = require('telescope.themes')
   return themes.get_dropdown({
     previewer = false,
-    initial_mode = 'normal',
+    initial_mode = 'insert',
     prompt_title = title,
+    layout_strategy = 'horizontal',
   })
+end
+
+local function picker(paths, opts)
+  local conf = require('telescope.config').values
+  require('telescope.pickers')
+    .new(opts, {
+      finder = require('telescope.finders').new_table({
+        results = paths,
+      }),
+      sorter = conf.generic_sorter({}),
+    })
+    :find()
 end
 
 return {
   {
     -- harpoon navigation
     'ThePrimeagen/harpoon',
-    keys = function()
-      local m_ok, mark = pcall(require, 'harpoon.mark')
-      local u_ok, ui = pcall(require, 'harpoon.ui')
-      if not m_ok or not u_ok then
-        return {}
-      end
-      return {
-        { '<leader>ma', mark.add_file, desc = 'Add mark' },
-        { '<leader>m.', ui.nav_next, desc = 'Next mark' },
-        {
-          '<leader>m,',
-          ui.nav_prev,
-          desc = 'Previous mark',
-        },
-        { '<leader>mm', ui.toggle_quick_menu, desc = 'View marks' },
-        {
-          '<leader>m1',
-          ui.nav_file(1),
-          desc = 'Navigate to mark 1',
-        },
-        {
-          '<leader>m1',
-          ui.nav_file(2),
-          desc = 'Navigate to mark 2',
-        },
-        {
-          '<leader>m1',
-          ui.nav_file(3),
-          desc = 'Navigate to mark 3',
-        },
-        {
-          '<leader>m1',
-          ui.nav_file(4),
-          desc = 'Navigate to mark 4',
-        },
-        {
-          '<leader>mb',
-          function()
-            require('telescope.builtin').buffers(dropdown('Buffers'))
-          end,
-          desc = 'View buffers',
-        },
-      }
+    branch = 'harpoon2',
+    config = function()
+      require('harpoon').setup()
     end,
-    config = true,
+    keys = {
+      {
+        '<leader>ma',
+        function()
+          require('harpoon'):list():add()
+        end,
+        desc = 'Add mark',
+      },
+      {
+        '<leader>mk',
+        function()
+          require('harpoon'):list():next()
+        end,
+        desc = 'Next mark',
+      },
+      {
+        '<leader>mj',
+        function()
+          require('harpoon'):list():prev()
+        end,
+        desc = 'Previous mark',
+      },
+      {
+        '<leader>mm',
+        function()
+          local file_paths = {}
+          for _, item in ipairs(require('harpoon'):list().items) do
+            table.insert(file_paths, item.value)
+          end
+          local opts = dropdown_opts('Harpoon')
+          picker(file_paths, opts)
+        end,
+        desc = 'View marks',
+      },
+      {
+        '<leader>m1',
+        function()
+          require('harpoon'):list():select(1)
+        end,
+        desc = 'Navigate to mark 1',
+      },
+      {
+        '<leader>m2',
+        function()
+          require('harpoon'):list():select(2)
+        end,
+        desc = 'Navigate to mark 2',
+      },
+      {
+        '<leader>m3',
+        function()
+          require('harpoon'):list():select(3)
+        end,
+        desc = 'Navigate to mark 3',
+      },
+      {
+        '<leader>m4',
+        function()
+          require('harpoon'):list():select(4)
+        end,
+        desc = 'Navigate to mark 4',
+      },
+      {
+        '<leader>mb',
+        function()
+          local opts = dropdown_opts('Buffers')
+          require('telescope.builtin').buffers(opts)
+        end,
+        desc = 'View buffers',
+      },
+    },
   },
 
   {
@@ -72,20 +115,19 @@ return {
   {
     -- telescope
     'nvim-telescope/telescope.nvim',
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+    },
     lazy = false, -- this is required by too many plugins
     keys = {
       -- keybindings
       { '<leader>ff', '<cmd>Telescope find_files<cr>', desc = 'Find files' },
       { '<leader>fe', '<cmd>Telescope symbols<cr>', desc = 'Find emoji' },
       { '<leader>ft', '<cmd>Telescope live_grep<cr>', desc = 'Find text' },
-      { '<leader>fs', '<cmd>Telescope grep_string<cr>', desc = 'Find string' },
+      { '<leader>fs', '<cmd>Telescope grep_string<cr>', desc = 'Find string under cursor' },
       { '<leader>fm', '<cmd>Telescope man_pages<cr>', desc = 'Find man pages' },
-      { '<leader>fn', '<cmd>Telescope notify<cr>', desc = 'Find notifications' },
       { '<leader>fk', '<cmd>Telescope keymaps<cr>', desc = 'Find keymaps' },
-      { '<leader>fo', '<cmd>Telescope oldfiles<cr>', desc = 'Find recent' },
       { '<leader>fT', '<cmd>TodoTelescope<cr>', desc = 'Find todos' },
-      { '<leader>fp', '<cmd>Telescope projects<cr>', desc = 'Find projects' },
     },
     opts = function()
       return {
@@ -110,25 +152,19 @@ return {
           layout_config = {
             horizontal = {
               prompt_position = 'top',
-              preview_width = 0.55,
-              results_width = 0.8,
+              width = {
+                padding = 0,
+              },
+              height = {
+                padding = 0,
+              },
             },
-            vertical = {
-              mirror = false,
-            },
-            width = 0.87,
-            height = 0.80,
-            preview_cutoff = 120,
           },
           file_sorter = require('telescope.sorters').get_fuzzy_file,
           file_ignore_patterns = { 'node_modules', 'vendor' },
           generic_sorter = require('telescope.sorters').get_generic_fuzzy_sorter,
-          path_display = { 'truncate' },
-          winblend = 0,
-          border = {},
-          borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+          path_display = { 'smart' },
           color_devicons = true,
-          set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
           file_previewer = require('telescope.previewers').vim_buffer_cat.new,
           grep_previewer = require('telescope.previewers').vim_buffer_vimgrep.new,
           qflist_previewer = require('telescope.previewers').vim_buffer_qflist.new,
@@ -143,8 +179,8 @@ return {
         },
         extensions_list = {
           'frecency',
-          'harpoon',
           'noice',
+          'harpoon',
         },
       }
     end,

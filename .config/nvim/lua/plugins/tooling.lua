@@ -10,8 +10,8 @@ return {
     config = true,
     build = ':lua require("go.install").update_all_sync()',
     keys = {
-      { '<leader>gat', '<cmd>GoAddTag<cr>', desc = 'Add Go struct tags' },
-      { '<leader>gie', '<cmd>GoIfErr<cr>', desc = 'Add Go error checking' },
+      { '<leader>lgt', '<cmd>GoAddTag<cr>', desc = 'Add Go struct tags' },
+      { '<leader>lge', '<cmd>GoIfErr<cr>', desc = 'Add Go error checking' },
     },
   },
 }

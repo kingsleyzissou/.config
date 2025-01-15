@@ -1,4 +1,5 @@
 return {
+
   {
     -- terminal
     'akinsho/toggleterm.nvim',
@@ -24,9 +25,9 @@ return {
     },
     keys = {
       -- first class terminal
-      { '<leader>a', '<cmd>ToggleTerm direction=float<cr>', desc = 'Float' },
-      { '<leader>h', '<cmd>ToggleTerm size=10 direction=horizontal<cr>', desc = 'Horizontal' },
-      { '<leader>v', '<cmd>ToggleTerm size=80 direction=vertical<cr>', desc = 'Vertical' },
+      { '<leader>ca', '<cmd>ToggleTerm direction=float<cr>', desc = 'Floating terminal' },
+      { '<leader>ch', '<cmd>ToggleTerm size=10 direction=horizontal<cr>', desc = 'Horizontal terminal' },
+      { '<leader>cv', '<cmd>ToggleTerm size=80 direction=vertical<cr>', desc = 'Vertical terminal' },
     },
   },
 
@@ -34,7 +35,8 @@ return {
     -- execute commands in vim
     'is0n/jaq-nvim',
     keys = {
-      { '<a-q>', '<cmd>Jaq<cr>', desc = 'Jaq' },
+      { '<leader>ce', '<cmd>Jaq<cr>', desc = 'Execute file' },
+      { '<leader>cx', '<cmd>!chmod +x %<cr>', desc = 'Make executable' },
     },
     opts = {
       cmds = {
@@ -47,8 +49,6 @@ return {
           cpp = 'g++ % -o $fileBase && ./$fileBase',
           go = 'go run %',
           sh = 'sh %',
-          -- markdown = "glow %",
-          -- rust = "rustc % && ./$fileBase && rm $fileBase",
         },
         internal = {
           lua = 'luafile %',

@@ -12,10 +12,11 @@ vim.opt.cmdheight = 1 -- set more height for the terminal
 -- set whitespace char values
 vim.opt.listchars = {
   eol = '↵',
-  space = '•',
-  tab = '»•',
+  space = ' ',
+  tab = '» ',
   trail = '~',
 }
+
 vim.opt.list = true -- show whitespace
 
 vim.opt.tabstop = 2
@@ -44,5 +45,7 @@ vim.opt.foldenable = true
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 vim.g.mapleader = ' '
+
+
 
 -- vim.g.Illuminate_ftblacklist = { 'alpha', 'NvimTree', 'harpoon' }

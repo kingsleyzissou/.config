@@ -1,21 +1,15 @@
 return {
   {
-    -- needed by neotest, require explicitly
-    'antoinemadec/FixCursorHold.nvim',
-  },
-
-  {
     -- neotest
-    -- TODO: fix colorscheme
     'nvim-neotest/neotest',
     dependencies = {
-      -- implicit require
-      'nvim-neotest/neotest-go',
-      'nvim-neotest/neotest-jest',
-      -- other dependencies
+      'nvim-neotest/nvim-nio',
       'nvim-lua/plenary.nvim',
-      'nvim-treesitter/nvim-treesitter',
       'antoinemadec/FixCursorHold.nvim',
+      'nvim-treesitter/nvim-treesitter',
+      -- adapters
+      'nvim-neotest/neotest-go',
+      'marilari88/neotest-vitest',
     },
     opts = {
       status = { virtual_text = true },
@@ -25,6 +19,19 @@ return {
           vim.cmd('Trouble quickfix')
         end,
       },
+      icons = {
+        expanded = '',
+        child_prefix = '',
+        child_indent = '',
+        final_child_prefix = '',
+        non_collapsible = '',
+        collapsed = '',
+        passed = '',
+        running = '',
+        failed = '',
+        unknown = '',
+      },
+      log_level = vim.log.levels.DEBUG,
     },
     config = function(_, opts)
       -- get neotest namespace (api call creates or returns namespace)
@@ -39,21 +46,49 @@ return {
       }, neotest_ns)
 
       opts.adapters = {
-        require('neotest-jest'),
+        require('neotest-vitest'),
         require('neotest-go'),
       }
 
       require('neotest').setup(opts)
     end,
-    -- stylua: ignore
     keys = {
-      { '<leader>tt', function() require('neotest').run.run(vim.fn.expand('%')) end, desc = 'Run File' },
-      { '<leader>tT', function() require('neotest').run.run(vim.loop.cwd()) end, desc = 'Run All Test Files' },
-      { '<leader>tr', function() require('neotest').run.run() end, desc = 'Run Nearest' },
-      { '<leader>ts', function() require('neotest').summary.toggle() end, desc = 'Toggle Summary' },
-      { '<leader>to', function() require('neotest').output.open({ enter = true, auto_close = true }) end, desc = 'Show Output' },
-      { '<leader>tO', function() require('neotest').output_panel.toggle() end, desc = 'Toggle Output Panel' },
-      { '<leader>tS', function() require('neotest').run.stop() end, desc = 'Stop' },
+      {
+        '<leader>tr',
+        function()
+          require('neotest').run.run(vim.fn.expand('%'))
+        end,
+        desc = 'Run File',
+      },
+      {
+        '<leader>tt',
+        function()
+          require('neotest').run.run(vim.fn.getcwd())
+        end,
+        desc = 'Run All Test Files',
+      },
+      {
+        '<leader>tn',
+        function()
+          require('neotest').run.run()
+        end,
+        desc = 'Run Nearest',
+      },
+      {
+        '<leader>to',
+        function()
+          require('neotest').summary.toggle()
+          require('neotest').output_panel.toggle()
+        end,
+        desc = 'Toggle test output',
+      },
+      {
+        '<leader>ts',
+        function()
+          require('neotest').run.stop()
+        end,
+        desc = 'Stop tests',
+      },
     },
   },
 }
