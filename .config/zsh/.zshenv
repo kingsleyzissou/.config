@@ -5,8 +5,11 @@ alias vim=nvim # launch vim as nvim
 alias s="kitty +kitten ssh" # launch ssh in kitty
 alias config='/usr/bin/git --git-dir=$HOME/.cfg/ --work-tree=$HOME' # alias for dotfiles
 alias nnn='nnn -a -c -e -P p'
-alias cat='/usr/bin/bat'
 alias ls="ls --color"
+
+# bat is installed with homebrew on mac
+[[ $(uname) == "Linux" ]] && alias cat="/usr/bin/bat"
+[[ $(uname) == "Darwin" ]] && alias cat="$(brew --prefix)/bin/bat"
 
 # yay
 alias ys="yay -S"
