@@ -1,5 +1,4 @@
 # Source config files
-source ~/.env.sh
 source ~/.config/zsh/.zshenv
 source "$ZINIT_HOME/zinit.zsh"
 
@@ -10,11 +9,15 @@ zinit light zsh-users/zsh-completions
 zinit light Aloxaf/fzf-tab
 
 # Snippets
-# zinit snippet OMZP::1password
-# zinit snippet OMZP::docker-compose
-# zinit snippet OMZP::podman
-# zinit snippet OMZP::sudo
 zinit snippet OMZP::command-not-found
+zinit snippet OMZP::ssh-agent
+
+# ssh agent stuff for linux
+if [[ $(uname) == "Linux" ]]; then
+  zstyle :omz:plugins:ssh-agent lazy yes
+  zstyle :omz:plugins:ssh-agent agent-forwarding yes
+  zstyle :omz:plugins:ssh-agent identities ~/.ssh/id_rsa
+fi
 
 # Load completions
 autoload -U compinit && compinit
