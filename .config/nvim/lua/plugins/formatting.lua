@@ -23,6 +23,7 @@ return {
         typescript = { 'prettierd' },
         typescriptreact = { 'prettierd' },
         css = { 'prettierd' },
+        scss = { 'prettierd' },
         html = { 'prettierd' },
         json = { 'jq' },
         lua = { 'stylua' },
