@@ -1,5 +1,0 @@
-(include "./yuck/bar/right/utilities/utilities.yuck")
-(include "./yuck/bar/right/system/system.yuck")
-(include "./yuck/bar/right/tray/tray.yuck")
-(include "./yuck/bar/right/date/date.yuck")
-(include "./yuck/bar/right/power/power.yuck")
