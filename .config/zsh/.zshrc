@@ -65,5 +65,6 @@ eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
 eval "$(thefuck --alias fk)"
 
-source $HOME/.config/op/plugins.sh
+FZF_PLUGIN_HOME=$HOME/.config/fzf/plugins/fzf-git.sh
+[ ! -d $FZF_PLUGIN_HOME ] && git clone --depth 1 https://github.com/unixorn/fzf-zsh-plugin.git $FZF_PLUGIN_HOME
 source $HOME/.config/fzf/plugins/fzf-git.sh/fzf-git.sh
