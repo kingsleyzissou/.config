@@ -1,0 +1,11 @@
+[Unit]
+Description=Set sink inputs to default
+
+[Service]
+Type=simple
+RemainAfterExit=true
+StandardOutput=journal
+ExecStart=/var/home/kingsley/bin/move-inputs
+
+[Install]
+WantedBy=default.target
