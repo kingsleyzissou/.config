@@ -1,0 +1,36 @@
+#!/usr/bin/bash
+
+# stow will fail if some of the .zsh files are
+# a .zshrc file is already in the user home
+rm /var/home/kingsley/.zshrc
+rm /var/home/kingsley/.zshenv
+
+# this needs to be first so all the config files
+# get correctly symlinked and the systemd drop-ins
+# become available
+cd /var/home/kingsley/.dotfiles && stow .
+
+# enable custom units
+systemctl enable --user output.service
+systemctl enable --user sink-input.service
+
+# gpg keys, will need to copy these across manually
+gpg --import /var/tmp/public.gpg
+gpg --allow-secret-key-import --import /var/tmp/secret.gpg
+
+# install additional packages
+flatpak install -y flathub md.obsidian.Obsidian
+flatpak install -y flathub com.slack.Slack
+flatpak install -y flathub com.spotify.Client
+flatpak install -y flathub app.zen_browser.zen
+
+# setup spicetify (curl pipe bash ¯\_(ツ)_/¯)
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+
+# update vpn config
+nmcli connection modify '1 - Red Hat Global VPN' vpn.user-name gzuccare
+
+# disable the service, because we don't want to
+# re-run this script.
+systemctl disable --user installer.service
+systemctl mask --user installer.service
