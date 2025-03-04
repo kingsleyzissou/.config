@@ -1,6 +1,0 @@
-require('config.base')
-require('config.diagnostics')
-require('config.autocommands')
-require('config.keymap')
-require('config.lazyvim')
-require('config.highlights')

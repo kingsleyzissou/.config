@@ -1,0 +1,57 @@
+#!/usr/bin/bash
+
+if [ "$SSH_AUTH_SOCK" == "" ]; then
+  echo "Error: SSH forwarding not enabled"
+  echo "Unable to initialize system"
+  exit
+fi
+
+# stow will fail if some of the .zsh files are
+# a .zshrc file is already in the user home
+[ -f /var/home/kingsley/.zshrc ] && rm /var/home/kingsley/.zshrc
+
+
+# make some of the toplevel directories so we don't symlink the
+# whole thing and muddy the git tree
+[ ! -d /var/home/kingsley/.cache ] && mkdir -p /var/home/kingsley/.cache
+[ ! -d /var/home/kingsley/.config ] && mkdir -p /var/home/kingsley/.config
+[ ! -d /var/home/kingsley/.config ] && mkdir -p /var/home/kingsley/.local/share/fonts
+
+# clone relevant repos
+git clone -b fedora https://github.com/kingsleyzissou/.dotfiles.git
+git clone git@github.com:kingsleyzissou/passwords.git "$HOME/.pass"
+git clone git@github.com:kingsleyzissou/obsidian.git "$HOME/Documents/journal"
+
+# this needs to be first so all the config files
+# get correctly symlinked and the systemd drop-ins
+# become available
+cd .dotfiles && stow .
+
+# rebuild the bat cache
+bat cache --build
+
+# refresh the font cache
+fc-cache -fv
+
+# enable pipewire units
+systemctl enable --user pipewire.service
+systemctl enable --user pipewire.socket
+systemctl enable --user pipewire-pulse.service
+systemctl enable --user wireplumber.service
+
+# enable custom units
+systemctl enable --user output.service
+systemctl enable --user sink-input.service
+
+# install additional packages
+flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
+flatpak install -y --user flathub md.obsidian.Obsidian
+flatpak install -y --user flathub com.slack.Slack
+flatpak install -y --user flathub com.spotify.Client
+flatpak install -y --user flathub app.zen_browser.zen
+
+# setup spicetify (curl pipe bash ¯\_(ツ)_/¯)
+curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+
+# update vpn config
+nmcli connection modify '1 - Red Hat Global VPN' vpn.user-name gzuccare

@@ -1,1 +1,0 @@
-export { Powermenu } from './powermenu';

@@ -1,8 +1,0 @@
-#!/usr/bin/bash
-
-DEFAULT=$(pactl get-default-sink)
-
-while read -r stream; do
-  idx=$(echo "$stream" | awk '{print $1}')
-  pactl move-sink-input "$idx" "$DEFAULT"
-done < <(pactl list sink-inputs short)

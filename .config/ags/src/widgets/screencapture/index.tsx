@@ -1,1 +1,0 @@
-export { ScreenCapture } from './screencapture';

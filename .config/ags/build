@@ -1,4 +1,0 @@
-#!/bin/bash
-
-cd "$HOME/.config/ags" && ags bundle "app.ts" "$HOME/bin/widgets"
-chmod +x "$HOME/bin/widgets"
