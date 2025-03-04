@@ -21,8 +21,10 @@ show_always = true
 
 [hostname]
 ssh_only = true
-format = '[$hostname](bold mauve) '
 disabled = false
+format = "[@$hostname >> ]($style)"
+style = "bold mauve"
+trim_at = "-"
 
 [directory]
 truncation_length = 4
