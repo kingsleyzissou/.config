@@ -52,6 +52,3 @@ flatpak install -y --user flathub app.zen_browser.zen
 
 # setup spicetify (curl pipe bash ¯\_(ツ)_/¯)
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
-
-# update vpn config
-nmcli connection modify '1 - Red Hat Global VPN' vpn.user-name gzuccare
