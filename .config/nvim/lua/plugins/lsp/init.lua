@@ -1,5 +1,6 @@
 local language_servers = require('plugins.lsp.servers')
 local lsp_settings = require('plugins.lsp.settings')
+local formatters = require('plugins.lsp.formatters')
 
 return {
   {
@@ -25,14 +26,11 @@ return {
     -- ensure formatters are installed
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     dependencies = { 'williamboman/mason.nvim' },
-    opts = {
-      ensure_installed = {
-        'prettier',
-        'prettierd',
-        'eslint_d',
-        'stylua',
-      },
-    },
+    config = function()
+      require('mason-tool-installer').setup({
+        ensure_installed = formatters,
+      })
+    end,
   },
 
   {
