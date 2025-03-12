@@ -7,6 +7,9 @@
       "right": 6
     }
   },
+  "display": {
+    "color": "36"
+  },
   "modules": [
     "break",
     "break",
