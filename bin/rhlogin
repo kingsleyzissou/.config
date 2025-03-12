@@ -6,7 +6,7 @@ if [ "$VPN" -eq 0 ]; then
   PASSWORD=$(pass redhat/main | head -n 1)
   OTP=$(pass otp redhat/main)
   echo "Connecting to VPN..."
-  echo "${PASSWORD}${OTP}"| sudo nmcli con up "Farnborough (FAB)" --ask > /dev/null
+  echo "${PASSWORD}${OTP}"| nmcli con up "1 - Red Hat Global VPN" --ask > /dev/null
 fi
 
 echo "Logging in..."
