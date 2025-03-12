@@ -7,6 +7,10 @@ export const Spotify = () => {
   const spotify = AstalMpris.Player.new('spotify');
   const hypr = Hyprland.get_default();
 
+  if (!bind(spotify, 'available').as(Boolean)) {
+    return <></>;
+  }
+
   return (
     <eventbox
       className="box media spotify"

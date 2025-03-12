@@ -21,7 +21,7 @@ eventbox.notification {
 
   > box {
     min-width: 400px;
-    background-color: colors.$base;
+    background: colors.$base;
     margin: 0.5rem 1rem 0.5rem 1rem;
     border: 3px solid rgba(colors.$text, 0.1);
   }
@@ -70,7 +70,7 @@ eventbox.notification {
 
   separator {
     margin: 0 0.4rem;
-    background-color: rgba(colors.$text, 0.1);
+    background: rgba(colors.$text, 0.1);
   }
 
   .content {

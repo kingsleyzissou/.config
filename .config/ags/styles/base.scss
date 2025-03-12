@@ -1,0 +1,11 @@
+button {
+  border: none;
+  box-shadow: none;
+  text-shadow: none;
+  outline: none;
+
+  &:active,
+  &:hover {
+    box-shadow: none;
+  }
+}
