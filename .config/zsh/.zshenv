@@ -79,14 +79,15 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 # man settings
 export MANPAGER="zsh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
+export MANPATH="$MANPATH:$HOME/.local/share/man"
 
 # use nvim
 export EDITOR="nvim"
 
 # fix locale
 # https://superuser.com/a/1672196
-export LANG=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+export LANG=C.UTF-8
+export LC_ALL=C.UTF-8
 
 # https://github.com/warpdotdev/Warp/issues/1271#issuecomment-1463001540
 unset LC_CTYPE
