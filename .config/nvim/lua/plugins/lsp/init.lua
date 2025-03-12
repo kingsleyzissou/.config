@@ -76,15 +76,7 @@ return {
           on_attach = lsp_settings.on_attach,
           capabilities = lsp_settings.capabilities,
           settings = settings,
-          -- root_dir = lspconfig.util.root_pattern(
-          -- '.eslintrc',
-          -- '.eslintrc.js',
-          -- '.eslintrc.cjs',
-          -- '.eslintrc.yaml',
-          -- '.eslintrc.yml',
-          -- '.eslintrc.json',
-          -- 'package.json'
-          -- ),
+          root_dir = lspconfig.util.root_pattern('eslint.config.js', 'package.json'),
         })
       end
     end,
