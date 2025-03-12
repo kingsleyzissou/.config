@@ -22,7 +22,7 @@ mute() {
 }
 
 case "$1" in
-  up) up ;;
-  down) down ;;
-  mute) mute ;;
+  --up) up ;;
+  --down) down ;;
+  --mute) mute ;;
 esac
