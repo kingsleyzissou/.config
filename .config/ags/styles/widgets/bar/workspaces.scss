@@ -1,8 +1,16 @@
 @use '../../colors.scss';
 
 .workspace {
-  // hack to get a transparent bottom border
-  border-bottom: rgba(colors.$text, 0) 5px solid;
+  &.button {
+    // hack to get a transparent bottom border
+    border-bottom: rgba(colors.$text, 0) 5px solid;
+
+    .icon {
+      color: colors.$text;
+      padding: 0.2em 0.8em;
+      text-shadow: none;
+    }
+  }
 
   &.active,
   &:hover {

@@ -6,7 +6,7 @@ window.controlcenter {
 
   .container {
     padding: 3rem 4rem;
-    background-color: rgba(colors.$text, 0.1);
+    background: rgba(colors.$text, 0.1);
   }
 
   .hidden {
@@ -20,11 +20,20 @@ window.controlcenter {
     .tool {
       margin-bottom: 0.5rem;
       border-radius: 100%;
-      background-color: rgba(colors.$base, 0.6);
+      background: rgba(colors.$base, 0.6);
 
-      &:focus,
-      &:active {
+      icon {
         box-shadow: none;
+        border: none;
+        color: colors.$text;
+        font-weight: 100;
+      }
+
+      &:active,
+      &:focus,
+      &:hover {
+        box-shadow: none;
+        background: rgba(colors.$text, 0.2);
       }
     }
   }
@@ -32,7 +41,7 @@ window.controlcenter {
   .settings {
     margin-top: 5rem;
     padding: 1rem;
-    background-color: rgba(colors.$base, 0.6);
+    background: rgba(colors.$base, 0.6);
 
     .separator {
       border-bottom: 0.2em rgba(colors.$text, 0.1) solid;
@@ -115,14 +124,14 @@ window.controlcenter {
         }
 
         &.active {
-          background-color: colors.$teal;
+          background: colors.$teal;
         }
 
         &:focus,
         &:hover {
           box-shadow: none;
           color: colors.$text;
-          background-color: colors.$base;
+          background: colors.$base;
         }
       }
 
@@ -136,7 +145,8 @@ window.controlcenter {
 
       .selector-item {
         border-radius: 0;
-        background-color: colors.$base;
+        background: colors.$base;
+        color: colors.$text;
 
         .icon {
           color: colors.$teal;

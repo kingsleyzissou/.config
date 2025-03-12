@@ -67,7 +67,7 @@ export default class Screencapture extends GObject.Object {
     timeout(2000, async () => {
       // just call notify-send inside the script
       // since the image takes time to generate
-      await execAsync(`${HOME_DIR}/.scripts/screenshot ${input}`);
+      await execAsync(`${HOME_DIR}/bin/screenshot ${input}`);
     });
   }
 

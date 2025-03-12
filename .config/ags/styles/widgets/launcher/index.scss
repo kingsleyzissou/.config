@@ -23,7 +23,7 @@ window#launcher {
 
   box.container {
     padding: 0.6rem;
-    background-color: colors.$base;
+    background: colors.$base;
   }
 
   button.entry {
@@ -32,8 +32,10 @@ window#launcher {
     min-height: 1em;
     padding: 1rem;
     border-radius: 0;
+    border: none;
+    box-shadow: none;
     border-bottom: rgba(colors.$text, 0.1) 3px solid;
-    background-color: rgba(colors.$text, 0.01);
+    background: rgba(colors.$text, 0.01);
 
     icon {
       font-size: 3em;

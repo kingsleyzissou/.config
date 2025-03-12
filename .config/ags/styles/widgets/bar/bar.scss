@@ -1,6 +1,7 @@
 @use '../../colors.scss';
 
 window.bar {
+  all: unset;
   background: transparent;
   font-weight: 100;
   font-family:
@@ -13,20 +14,24 @@ window.bar {
     margin-top: 25px;
     margin-left: 25px;
     margin-right: 25px;
-    margin-bottom: 0;
+    margin-bottom: 0px;
   }
 
   button {
-    border-radius: 0px;
-    margin: 0 2px;
-    background-color: transparent;
+    border-radius: 0;
+    margin: 0em 2px;
+    border: none;
+    box-shadow: none;
+    background: transparent;
 
-    .icon {
-      padding: 0 8px;
+    .button {
+      .icon {
+        padding: 0 0.75em;
+      }
     }
 
     &:hover {
-      background-color: rgba(colors.$text, 0.2);
+      background: rgba(colors.$text, 0.2);
     }
   }
 
@@ -46,11 +51,12 @@ window.bar {
       .label {
         color: colors.$mantle;
         font-weight: 100;
+        margin-left: 0.5em;
       }
 
       .button {
         &:hover {
-          background-color: rgba(colors.$base, 0.02);
+          background: rgba(colors.$base, 0.02);
         }
       }
     }

@@ -1,8 +1,10 @@
 @use '../../colors.scss';
 
 window.osd {
+  background: transparent;
+
   box.osd {
-    background-color: rgba(colors.$base, 0.2);
+    background: rgba(colors.$base, 0.2);
     padding: 1.2rem 1rem;
     margin: 1rem 1rem 1rem 1rem;
   }
@@ -20,10 +22,14 @@ window.osd {
   levelbar {
     trough {
       margin: 1 0.6rem;
+      border: none;
+      box-shadow: none;
     }
 
     block {
       min-width: 2rem;
+      border: none;
+      box-shadow: none;
     }
   }
 }
