@@ -19,7 +19,7 @@
   "harpoon": { "branch": "harpoon2", "commit": "a84ab829eaf3678b586609888ef52f7779102263" },
   "hyprland-vim-syntax": { "branch": "main", "commit": "71760fe0cad972070657b0528f48456f7e0027b2" },
   "jaq-nvim": { "branch": "master", "commit": "236296aae555657487d1bb4d066cbde9d79d8cd4" },
-  "lazy.nvim": { "branch": "main", "commit": "7e6c863bc7563efbdd757a310d17ebc95166cef3" },
+  "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lsp-format.nvim": { "branch": "master", "commit": "47de35b54ec95bb049f52016632394b914d4d9e9" },
   "lspkind-nvim": { "branch": "master", "commit": "d79a1c3299ad0ef94e255d045bed9fa26025dab6" },
   "lualine.nvim": { "branch": "master", "commit": "2a5bae925481f999263d6f5ed8361baef8df4f83" },
