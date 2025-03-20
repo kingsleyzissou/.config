@@ -34,6 +34,22 @@ export const Notification = (props: NotificationProps) => {
   const { notification: n, onHoverLost, setup } = props;
   const { START, CENTER, END } = Gtk.Align;
 
+  const appName = (name: string, desktopEntry: string) => {
+    if (name !== '') {
+      return name;
+    }
+
+    if (desktopEntry === 'com.spotify.Client') {
+      return 'Spotify';
+    }
+
+    if (desktopEntry === 'com.slack.Slack') {
+      return 'Slack';
+    }
+
+    return 'Unknown';
+  };
+
   return (
     <eventbox
       className={`notification ${urgency(n)}`}
@@ -53,7 +69,7 @@ export const Notification = (props: NotificationProps) => {
             className="app-name"
             halign={START}
             truncate
-            label={n.appName || 'Unknown'}
+            label={appName(n.appName, n.desktopEntry)}
           />
           <label className="time" hexpand halign={END} label={time(n.time)} />
           <button onClicked={() => n.dismiss()}>

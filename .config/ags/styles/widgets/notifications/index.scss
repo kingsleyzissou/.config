@@ -1,29 +1,20 @@
 @use 'sass:string';
 @use '../../colors.scss';
+@use '../../effects.scss';
 
 window.notifications {
   all: unset;
-}
 
-eventbox.notification {
-  &:first-child > box {
-    // this puts the notification inside the application
-    // windows in hypr (including the borders)
+  .container {
     margin-top: 3rem;
     margin-right: 3rem;
   }
+}
 
-  &:last-child > box {
-    // see comment for first-child
-    margin-bottom: 3rem;
-    margin-right: 3rem;
-  }
-
+eventbox.notification {
   > box {
     min-width: 400px;
     background: colors.$base;
-    margin: 0.5rem 1rem 0.5rem 1rem;
-    border: 3px solid rgba(colors.$text, 0.1);
   }
 
   &.critical > box {
@@ -62,9 +53,11 @@ eventbox.notification {
     }
 
     button {
-      padding: 0.2rem;
+      padding: 0.2rem 0.4rem;
       min-width: 0;
       min-height: 0;
+      color: colors.$text;
+      background: colors.$mantle;
     }
   }
 

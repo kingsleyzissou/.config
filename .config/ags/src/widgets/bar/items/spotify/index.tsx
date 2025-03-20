@@ -20,9 +20,12 @@ export const Spotify = () => {
       <box className="button">
         <box className="button track">
           <label
-            label={bind(spotify, 'title').as((title) =>
-              title.length < 20 ? title : `${title.slice(0, 20)}...`,
-            )}
+            label={bind(spotify, 'title').as((title) => {
+              if (title) {
+                return title.length < 20 ? title : `${title.slice(0, 20)}...`;
+              }
+              return 'Not playing';
+            })}
           />
         </box>
         <box className="controls">

@@ -4,7 +4,7 @@ import { Notification } from './notification';
 import { type Subscribable } from 'astal/binding';
 import { Variable, timeout } from 'astal';
 
-const TIMEOUT_DELAY = 5000;
+const TIMEOUT_DELAY = 3000;
 
 export class NotificationMap implements Subscribable {
   private map: Map<number, Gtk.Widget> = new Map();
