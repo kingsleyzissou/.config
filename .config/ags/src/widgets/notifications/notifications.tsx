@@ -16,7 +16,11 @@ export const Notifications = (gdkmonitor: Gdk.Monitor) => {
       anchor={TOP | RIGHT}
       visible={bind(notifications).as((n) => n.length > 0)}
     >
-      <box vertical>{bind(notifications)}</box>
+      <box className="container">
+        <box vertical noImplicitDestroy>
+          {bind(notifications)}
+        </box>
+      </box>
     </window>
   );
 };

@@ -1,5 +1,5 @@
 import { Variable } from 'astal';
-import { App, Astal, Gdk } from 'astal/gtk3';
+import { App, Astal, Gdk, Gtk } from 'astal/gtk3';
 
 import Apps from 'gi://AstalApps';
 
@@ -33,11 +33,18 @@ export const Launcher = (gdkmonitor: Gdk.Monitor) => {
   return (
     <window
       name="launcher"
-      anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.BOTTOM}
-      exclusivity={Astal.Exclusivity.IGNORE}
-      keymode={Astal.Keymode.ON_DEMAND}
-      application={App}
+      className="launcher"
+      anchor={
+        Astal.WindowAnchor.TOP |
+        Astal.WindowAnchor.BOTTOM |
+        Astal.WindowAnchor.RIGHT |
+        Astal.WindowAnchor.LEFT
+      }
       gdkmonitor={gdkmonitor}
+      exclusivity={Astal.Exclusivity.IGNORE}
+      application={App}
+      layer={Astal.Layer.OVERLAY}
+      keymode={Astal.Keymode.ON_DEMAND}
       visible={false}
       onShow={() => {
         text.set('');
@@ -45,35 +52,32 @@ export const Launcher = (gdkmonitor: Gdk.Monitor) => {
       }}
       onKeyPressEvent={hideOnEscape}
     >
-      <box>
-        <eventbox
-          widthRequest={width((w) => w / 2)}
-          expand
-          onClick={() => hide()}
-        />
-        <box hexpand={false} vertical>
-          <eventbox heightRequest={200} onClick={() => hide()} />
-          <box className="search" widthRequest={800} vertical>
-            <entry
-              primaryIconName="folder-saved-search-symbolic"
-              placeholderText="Search..."
-              text={text()}
-              onChanged={(value) => text.set(value.text)}
-              onActivate={onEnter}
-            />
-          </box>
-          <box
-            className="container"
-            widthRequest={500}
-            vertical
-            visible={list.as((l) => l.length > 0)}
-          >
-            <box spacing={6} className="entries" vertical>
-              {list.as((list) => list.map((app) => <Entry app={app} />))}
+      <centerbox className="container">
+        <centerbox halign={Gtk.Align.CENTER}>
+          <box valign={Gtk.Align.START}>
+            <box className="search-contents" hexpand={false} vertical>
+              <box className="search" widthRequest={800} vertical>
+                <entry
+                  primaryIconName="folder-saved-search-symbolic"
+                  placeholderText="Search..."
+                  text={text()}
+                  onChanged={(value) => text.set(value.text)}
+                  onActivate={onEnter}
+                />
+              </box>
+              <box
+                className="entries"
+                vertical
+                visible={list.as((l) => l.length > 0)}
+              >
+                <box spacing={6} className="entries" vertical>
+                  {list.as((list) => list.map((app) => <Entry app={app} />))}
+                </box>
+              </box>
             </box>
           </box>
-        </box>
-      </box>
+        </centerbox>
+      </centerbox>
     </window>
   );
 };

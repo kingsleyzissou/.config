@@ -1,5 +1,6 @@
 @use 'sass:string';
 @use '../../colors.scss';
+@use '../../effects.scss';
 
 window.controlcenter {
   all: unset;
@@ -41,7 +42,9 @@ window.controlcenter {
   .settings {
     margin-top: 5rem;
     padding: 1rem;
-    background: rgba(colors.$base, 0.6);
+    background: colors.$base;
+    box-shadow: effects.$box-shadow;
+    border-radius: 0.8rem;
 
     .separator {
       border-bottom: 0.2em rgba(colors.$text, 0.1) solid;

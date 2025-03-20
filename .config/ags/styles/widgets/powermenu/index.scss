@@ -29,10 +29,12 @@ window.screencapture {
           margin: 1rem;
 
           > icon {
+            color: colors.$text;
             font-size: 6em;
           }
 
           > label {
+            color: colors.$text;
             font-size: 2em;
             font-weight: 100;
           }
