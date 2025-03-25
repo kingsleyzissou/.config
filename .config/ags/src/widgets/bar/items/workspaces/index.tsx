@@ -26,11 +26,12 @@ export const Workspaces = () => {
             return (
               <button
                 onClick={() => ws.focus()}
-                className={bind(hypr, 'focusedWorkspace').as((focused) =>
-                  ws.id === focused.id
-                    ? `button workspace ${item?.name} active`
-                    : `button workspace ${item?.name}`,
-                )}
+                className={bind(hypr, 'focusedWorkspace').as((focused) => {
+                  if (!focused || ws.id !== focused.id) {
+                    return `button workspace ${item?.name}`;
+                  }
+                  return `button workspace ${item?.name} active`;
+                })}
               >
                 <label className="icon" label={item?.icon} />
               </button>
