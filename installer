@@ -18,9 +18,9 @@ fi
 [ ! -d /var/home/kingsley/.config ] && mkdir -p /var/home/kingsley/.local/share/fonts
 
 # clone relevant repos
-git clone -b fedora https://github.com/kingsleyzissou/.dotfiles.git
-git clone git@github.com:kingsleyzissou/passwords.git "$HOME/.pass"
-git clone git@github.com:kingsleyzissou/obsidian.git "$HOME/Documents/journal"
+git clone -b fedora git@github.com:kingsleyzissou/.dotfiles.git
+git clone git@github.com:kingsleyzissou/passwords.git "$HOME/.password-store"
+git clone git@github.com:kingsleyzissou/obsidian.git "$HOME/documents/journal"
 
 # this needs to be first so all the config files
 # get correctly symlinked and the systemd drop-ins
@@ -40,8 +40,7 @@ systemctl enable --user pipewire-pulse.service
 systemctl enable --user wireplumber.service
 
 # enable custom units
-systemctl enable --user output.service
-systemctl enable --user sink-input.service
+systemctl enable --user kanshi.service
 
 # install additional packages
 flatpak remote-add --if-not-exists --user flathub https://dl.flathub.org/repo/flathub.flatpakrepo
@@ -52,3 +51,9 @@ flatpak install -y --user flathub app.zen_browser.zen
 
 # setup spicetify (curl pipe bash ¯\_(ツ)_/¯)
 curl -fsSL https://raw.githubusercontent.com/spicetify/cli/main/install.sh | sh
+
+# update npm prefix
+npm config set prefix ~/.local
+
+# we need dart-sass
+npm install -g sass
