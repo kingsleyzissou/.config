@@ -45,7 +45,3 @@ vim.opt.foldenable = true
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 vim.g.mapleader = ' '
-
-
-
--- vim.g.Illuminate_ftblacklist = { 'alpha', 'NvimTree', 'harpoon' }

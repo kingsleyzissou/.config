@@ -82,3 +82,10 @@ auto({ 'BufEnter', 'BufWinEnter' }, {
   pattern = { 'Schutzfile' },
   command = 'setlocal filetype=json',
 })
+
+auto({ 'Filetype' }, {
+  pattern = { '*' },
+  callback = function()
+    vim.opt.formatoptions:remove({ 'o' })
+  end,
+})
