@@ -113,6 +113,11 @@ return {
   },
 
   {
+    -- ui selecter!
+    'nvim-telescope/telescope-ui-select.nvim',
+  },
+
+  {
     -- telescope
     'nvim-telescope/telescope.nvim',
     dependencies = {
@@ -141,6 +146,7 @@ return {
             '--line-number',
             '--column',
             '--smart-case',
+            '--hidden',
           },
           prompt_prefix = '   ',
           selection_caret = '  ',
@@ -181,6 +187,7 @@ return {
           'frecency',
           'noice',
           'harpoon',
+          'ui-select',
         },
       }
     end,

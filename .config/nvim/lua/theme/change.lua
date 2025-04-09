@@ -1,0 +1,11 @@
+function ChangeTheme(color)
+  color = color or 'rose-pine'
+  vim.cmd.colorscheme(color)
+  require('theme.prompt').setup()
+  require('theme.neotest').setup()
+  require('theme.telescope').setup()
+end
+
+vim.api.nvim_create_user_command('ChangeTheme', function(opts)
+  ChangeTheme(opts.args)
+end, { nargs = 1 })
