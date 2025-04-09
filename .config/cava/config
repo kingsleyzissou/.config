@@ -3,22 +3,17 @@ bar_width = 3
 bar_spacing = 1
 
 [input]
-method = pulse
-source = auto
+method = "pulse"
+source = "auto"
 
 [output]
-method = ncurses
+method = "ncurses"
 
 [color]
-# Gradient mode, only hex defined colors are supported, background must also be defined in hex
-# or remain commented out. 1 = on, 0 = off. Warning: for certain terminal emulators cava will
-# not able to restore color definitions on exit, simply restart your terminal to restore colors.
 gradient = 1
-gradient_color_1 = '#BEE4ED'
-gradient_color_2 = '#A4B9EF'
-gradient_color_3 = '#C6AAE8'
-gradient_color_4 = '#E5B4E2'
-gradient_color_5 = '#F2CECF'
-gradient_color_6 = '#EBDDAA'
-gradient_color_7 = '#F9C096'
-gradient_color_8 = '#E38C8F'
+gradient_color_1 = "#31748f"
+gradient_color_2 = "#9ccfd8"
+gradient_color_3 = "#c4a7e7"
+gradient_color_4 = "#ebbcba"
+gradient_color_5 = "#f6c177"
+gradient_color_6 = "#eb6f92"
