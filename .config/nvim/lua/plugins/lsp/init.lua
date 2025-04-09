@@ -1,6 +1,6 @@
-local language_servers = require('plugins.lsp.servers')
-local lsp_settings = require('plugins.lsp.settings')
+local servers = require('plugins.lsp.servers')
 local formatters = require('plugins.lsp.formatters')
+local lsp_settings = require('plugins.lsp.settings')
 
 return {
   {
@@ -12,10 +12,6 @@ return {
     'williamboman/mason-lspconfig.nvim',
     dependencies = { 'williamboman/mason.nvim' },
     config = function()
-      local servers = {}
-      for server, _ in pairs(language_servers) do
-        table.insert(servers, tostring(server))
-      end
       require('mason-lspconfig').setup({
         ensure_installed = servers,
       })
@@ -71,12 +67,25 @@ return {
     },
     config = function()
       local lspconfig = require('lspconfig')
-      for server, settings in pairs(language_servers) do
+      local configs = require('lspconfig/configs')
+
+      if not configs.golangcilsp then
+        configs.golangcilsp = {
+          default_config = {
+            cmd = { 'golangci-lint-langserver' },
+            root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
+            init_options = {
+              command = { 'golangci-lint', 'run', '--output.json.path', 'stdout' },
+            },
+          },
+        }
+      end
+
+      for server, settings in pairs(servers) do
         lspconfig[server].setup({
           on_attach = lsp_settings.on_attach,
           capabilities = lsp_settings.capabilities,
           settings = settings,
-          root_dir = lspconfig.util.root_pattern('eslint.config.js', 'package.json'),
         })
       end
     end,

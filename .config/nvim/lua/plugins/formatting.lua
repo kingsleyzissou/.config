@@ -27,7 +27,7 @@ return {
         html = { 'prettierd' },
         json = { 'jq' },
         lua = { 'stylua' },
-        go = { 'goimports' },
+        go = { 'goimports', 'gofumpt' },
         python = { 'isort', 'ruff', 'autopep8' },
         ['*'] = { 'trim_whitespace' },
       },
