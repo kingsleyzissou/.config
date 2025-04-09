@@ -17,7 +17,14 @@ return {
   },
 
   {
-    -- TODO: fix this for ssh
+    -- color code inlays
+    'brenoprata10/nvim-highlight-colors',
+    opts = {
+      render = 'virtual',
+    },
+  },
+
+  {
     'christoomey/vim-tmux-navigator',
     lazy = false,
   },
