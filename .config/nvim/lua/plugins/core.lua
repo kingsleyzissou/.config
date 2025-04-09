@@ -10,10 +10,13 @@ return {
   },
 
   {
-    -- neodev
-    'folke/neodev.nvim',
+    -- lazydev
+    'folke/lazydev.nvim',
+    ft = 'lua',
     dependencies = { 'neovim/nvim-lspconfig' },
-    library = { plugins = { 'neotest' }, types = true },
     config = true,
+    opts = {
+      { path = 'LazyVim', words = { 'LazyVim' } },
+    },
   },
 }

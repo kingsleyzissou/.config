@@ -1,17 +1,6 @@
-return {
-  -- go
-  golangci_lint_ls = {},
-  gopls = {
-    analyses = {
-      simplifycompositelit = false,
-    },
-  },
-
-  -- python
-  jedi_language_server = {},
-
+local servers = {
   -- lua
-  lua_ls = {
+  ['lua_ls'] = {
     Lua = {
       diagnostics = {
         globals = { 'use', 'vim' },
@@ -21,15 +10,31 @@ return {
       },
       Workspace = {
         checkThirdParty = false,
+        maxPreload = 10000,
+        preloadFileSize = 10000,
       },
     },
   },
 
   -- typescript/javascript
-  ts_ls = {},
+  ['vtsls'] = {},
 
   -- other
-  cssls = {},
-  jsonls = {},
-  yamlls = {},
+  ['cssls'] = {},
+  ['jsonls'] = {},
+  ['yamlls'] = {},
 }
+
+if os.getenv('CONTAINER_ID') ~= nil then
+  servers['jedi_language_server'] = {}
+  servers['golangci_lint_ls'] = {
+    filetypes = { 'go', 'gomod' },
+  }
+  servers['gopls'] = {
+    analyses = {
+      simplifycompositelit = false,
+    },
+  }
+end
+
+return servers
