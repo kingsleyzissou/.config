@@ -34,6 +34,13 @@ return {
     event = 'VeryLazy',
     keys = {
       { '<leader>sm', '<cmd>MaximizerToggle<cr>', desc = 'Mimimize/Maximize split' },
+      { '<leader>sv', '<cmd>vsplit<cr>', desc = 'Vertical split' },
+      { '<leader>sh', '<cmd>hsplit<cr>', desc = 'Horizontal split' },
+      --resize
+      { '<leader>sj', '<cmd>resize -2<cr>', desc = 'Increase bottom split' },
+      { '<leader>sk', '<cmd>resize +2<cr>', desc = 'Increase top split' },
+      { '<leader>sh', '<cmd>vertical resize -2<cr>', desc = 'Increase right split' },
+      { '<leader>sl', '<cmd>vertical resize +2<cr>', desc = 'Increase left split' },
     },
   },
 
@@ -150,7 +157,6 @@ return {
         { '<leader>g', group = 'Git' },
         { '<leader>l', group = 'Diagnostics' },
         { '<leader>m', group = 'Harpoon' },
-        -- { '<leader>n', group = 'Notifications' },
         { '<leader>p', group = 'Lazy' },
         { '<leader>s', group = 'Splits' },
         { '<leader>t', group = 'Tests' },
