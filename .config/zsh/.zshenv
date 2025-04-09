@@ -95,6 +95,10 @@ unset LC_CTYPE
 # set terminfo
 export TERM=xterm-256color
 
+# ip address for ollama host
+[[ $(uname) == "Linux" ]] && export OLLAMA_HOST="$(tailscale ip -4 mac-mini)"
+[[ $(uname) == "Darwin" ]] && export OLLAMA_HOST="127.0.0.1"
+
 # keychain
 export SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
 
