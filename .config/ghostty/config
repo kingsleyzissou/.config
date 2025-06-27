@@ -1,9 +1,11 @@
-background-opacity = 0.95
-font-family = RobotoMono
+background-opacity = 0.8
+copy-on-select = "clipboard"
 font-size = 24
-copy-on-select = clipboard
-theme = catppuccin-mocha
-window-padding-x = 0
+link-url = true
+theme = "rose-pine"
+window-padding-x = 4
 window-padding-y = 0
 window-padding-balance = true
-window-padding-color = extend
+window-padding-color = "extend"
+window-theme = "ghostty"
+window-decoration = false
