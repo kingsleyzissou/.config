@@ -21,9 +21,7 @@ export const OSD = (monitor: Gdk.Monitor) => {
       onKeyPressEvent={hideOnEscape}
     >
       <box>
-        <eventbox onClick={() => visible.set(false)}>
-          <OSDBar visible={visible} />
-        </eventbox>
+        <OSDBar visible={visible} />
         <box widthRequest={25} />
       </box>
     </window>

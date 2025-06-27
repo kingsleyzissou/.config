@@ -11,12 +11,14 @@ export const OSDBar = ({ visible }: { visible: Variable<boolean> }) => {
   const count = Variable(0);
   const value = Variable(0);
   const iconName = Variable('');
+  const className = Variable('');
 
-  const show = (v: number, icon: string) => {
+  const show = (v: number, icon: string, c: string) => {
     visible.set(true);
     value.set(v);
     iconName.set(icon);
     count.set(count.get() + 1);
+    className.set(c);
     timeout(2000, () => {
       count.set(count.get() - 1);
       if (count.get() === 0) visible.set(false);
@@ -28,11 +30,15 @@ export const OSDBar = ({ visible }: { visible: Variable<boolean> }) => {
       setup={(self) => {
         if (speaker) {
           self.hook(brightness, 'notify::screen', () =>
-            show(brightness.screen, 'display-brightness-symbolic'),
+            show(
+              brightness.screen,
+              'display-brightness-symbolic',
+              'brightness',
+            ),
           );
 
           self.hook(speaker, 'notify::volume', () =>
-            show(speaker.volume, speaker.volumeIcon),
+            show(speaker.volume, speaker.volumeIcon, 'speaker'),
           );
         }
       }}
@@ -43,12 +49,13 @@ export const OSDBar = ({ visible }: { visible: Variable<boolean> }) => {
         <levelbar
           valign={Gtk.Align.CENTER}
           heightRequest={100}
+          className={className()}
           value={value()}
+          maxValue={1}
           vertical
           inverted
         />
         <icon icon={iconName()} />
-        {false && <label label={value((v) => `${Math.floor(v * 100)}%`)} />}
       </box>
     </revealer>
   );

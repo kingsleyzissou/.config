@@ -12,6 +12,7 @@ export const ScreenSlider = () => {
         hexpand
         min={0}
         max={1}
+        className="brightness"
         value={bind(brightness, 'screen').as(Number)}
         drawValue={false}
         onChangeValue={({ value }) => {
