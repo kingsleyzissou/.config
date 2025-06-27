@@ -6,7 +6,7 @@ FOCUSED=$(aerospace list-workspaces --focused)
 
 if [ "$1" = "$FOCUSED" ]; then
   sketchybar --set "$NAME" \
-    background.color="$TEAL" \
+    background.color="$BLUE" \
     icon.color="$MANTLE"
 else
   sketchybar --set "$NAME" \

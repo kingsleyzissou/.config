@@ -15,7 +15,6 @@ sketchybar \
 
 sketchybar --add event aerospace_workspace_change
 space=(
-  space="1"
   icon=""
   icon.padding_left=14
   icon.font="RobotoMono Nerd Font:Bold:17.0"
@@ -25,12 +24,11 @@ space=(
   script="$PLUGIN_DIR/space.sh 1"
 )
 sketchybar \
-  --add space "space.1" left \
+  --add item "space.1" left \
   --subscribe "space.1" aerospace_workspace_change \
   --set "space.1" "${space[@]}"
 
 space=(
-  space="2"
   icon=""
   icon.padding_left=14
   icon.font="RobotoMono Nerd Font:Bold:17.0"
@@ -40,12 +38,11 @@ space=(
   script="$PLUGIN_DIR/space.sh 2"
 )
 sketchybar \
-  --add space "space.2" left \
+  --add item "space.2" left \
   --subscribe "space.2" aerospace_workspace_change \
   --set "space.2" "${space[@]}"
 
 space=(
-  space="4"
   icon=""
   icon.padding_left=14
   icon.font="RobotoMono Nerd Font:Bold:17.0"
@@ -55,12 +52,11 @@ space=(
   script="$PLUGIN_DIR/space.sh 4"
 )
 sketchybar \
-  --add space "space.4" left \
+  --add item "space.4" left \
   --subscribe "space.4" aerospace_workspace_change \
   --set "space.4" "${space[@]}"
 
 space=(
-  space="5"
   icon=""
   icon.padding_left=14
   icon.font="RobotoMono Nerd Font:Bold:17.0"
@@ -70,12 +66,11 @@ space=(
   script="$PLUGIN_DIR/space.sh 5"
 )
 sketchybar \
-  --add space "space.5" left \
+  --add item "space.5" left \
   --subscribe "space.5" aerospace_workspace_change \
   --set "space.5" "${space[@]}"
 
 space=(
-  space="7"
   icon=""
   icon.padding_left=14
   icon.font="RobotoMono Nerd Font:Bold:17.0"
@@ -85,12 +80,11 @@ space=(
   script="$PLUGIN_DIR/space.sh 7"
 )
 sketchybar \
-  --add space "space.7" left \
+  --add item "space.7" left \
   --subscribe "space.7" aerospace_workspace_change \
   --set "space.7" "${space[@]}"
 
 space=(
-  space="9"
   icon=""
   icon.padding_left=14
   icon.font="RobotoMono Nerd Font:Bold:17.0"
@@ -100,15 +94,14 @@ space=(
   script="$PLUGIN_DIR/space.sh 9"
 )
 sketchybar \
-  --add space "space.9" left \
+  --add item "space.9" left \
   --subscribe "space.9" aerospace_workspace_change \
   --set "space.9" "${space[@]}"
 
 frontapp=(
   icon=􀆊
   icon.color="${SURFACE}"
-  icon.background.color="${MAUVE}"
-  # icon.drawing=off
+  icon.background.color="${PURPLE}"
   script="$PLUGIN_DIR/front_app.sh"
   background.padding_left=21
 )

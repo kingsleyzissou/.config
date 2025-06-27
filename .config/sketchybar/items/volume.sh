@@ -2,7 +2,7 @@
 
 volume=(
   icon.color="$MANTLE"
-  icon.background.color="$PEACH"
+  icon.background.color="$PINK"
   label.width=0
   background.color="$TRANSPARENT"
   background.padding_right=14
