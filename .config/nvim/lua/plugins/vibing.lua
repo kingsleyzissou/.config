@@ -2,6 +2,7 @@ local ollama_host = os.getenv('OLLAMA_HOST') or 'localhost'
 local ollama_port = '11434'
 local ollama_key = 'TERM'
 local ollama_model = 'deepseek-coder-v2'
+-- local ollama_model = 'qwen2.5-coder:7b'
 
 local function ollama_endpoint(endpoint)
   return ollama_host .. ':' .. ollama_port .. endpoint
@@ -38,7 +39,7 @@ return {
               end_point = ollama_endpoint('/v1/completions'),
               model = ollama_model,
               optional = {
-                max_tokens = 56,
+                max_tokens = 64,
                 top_p = 0.9,
               },
             },
@@ -49,15 +50,19 @@ return {
   },
 
   {
-    -- use ollama to debug lsp warning + errors
-    -- TODO: switch back to 'piersolenski/wtf.nvim'
-    -- when this branch is merged into main
-    'mike2194/wtf.nvim',
+
+    'piersolenski/wtf.nvim',
+    branch = 'feature/multiple-providers',
     opts = {
       popup_type = 'vertical',
-      openai_api_base_url = ollama_endpoint('/v1/'),
-      openai_api_key = ollama_key,
-      openai_model_id = ollama_model,
+      provider = 'openai',
+      providers = {
+        openai = {
+          base_url = ollama_endpoint('/v1'),
+          api_key = ollama_key,
+          model_id = ollama_model,
+        },
+      },
       hooks = {
         -- these hooks show a spinner while the model
         -- is running
@@ -74,7 +79,7 @@ return {
         '<leader>lw',
         mode = { 'x', 'n' },
         function()
-          require('wtf').ai()
+          require('wtf').diagnose()
         end,
         desc = 'Debug diagnostic with AI',
       },

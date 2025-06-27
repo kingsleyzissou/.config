@@ -11,9 +11,6 @@ vim.keymap.set('n', '<leader>pi', '<cmd>Lazy<cr>', { desc = 'Lazy' })
 -- shift-k // split line at cursor
 vim.keymap.set({ 'n', 'v' }, '<s-k>', 'i<cr><esc>', { desc = 'Split line' })
 
--- search for word under cursor
-vim.keymap.set({ 'n', 'x' }, '<c-f>', '*N', { desc = 'Search word under cursor' })
-
 -- cycle buffers
 vim.keymap.set('n', '<leader>j', '<cmd>bn<cr>', { desc = 'Next buffer' })
 vim.keymap.set('n', '<leader>k', '<cmd>bp<cr>', { desc = 'Previous buffer' })

@@ -130,6 +130,7 @@ return {
       { '<leader>fe', '<cmd>Telescope symbols<cr>', desc = 'Find emoji' },
       { '<leader>ft', '<cmd>Telescope live_grep<cr>', desc = 'Find text' },
       { '<leader>fs', '<cmd>Telescope grep_string<cr>', desc = 'Find string under cursor' },
+      { '<leader>fw', '*N', mode = { 'n', 'x' }, desc = 'Search word under cursor' },
       { '<leader>fm', '<cmd>Telescope man_pages<cr>', desc = 'Find man pages' },
       { '<leader>fk', '<cmd>Telescope keymaps<cr>', desc = 'Find keymaps' },
       { '<leader>fT', '<cmd>TodoTelescope<cr>', desc = 'Find todos' },
