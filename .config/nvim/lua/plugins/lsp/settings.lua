@@ -26,8 +26,6 @@ local function keymap(bufnr, lhs, rhs, description, opts)
 end
 
 M.on_attach = function(client, buffer)
-  require('lsp-format').on_attach(client)
-
   keymap(buffer, '<leader>fd', '<cmd>Telescope lsp_definitions<cr>', 'Find definition')
   keymap(buffer, '<leader>fD', '<cmd>Telescope lsp_declarations<cr>', 'Find declaration')
   keymap(buffer, '<leader>fi', '<cmd>Telescope lsp_implementations<cr>', 'Find implementation')
@@ -36,17 +34,7 @@ M.on_attach = function(client, buffer)
   -- off by default
   client.server_capabilities.documentFormattingProvider = false
   client.server_capabilities.documentRangeFormattingProvider = false
-
-  if client.name == 'null-ls' then
-    client.server_capabilities.documentFormattingProvider = true
-    client.server_capabilities.documentRangeFormattingProvider = true
-    vim.cmd([[
-      augroup LspFormatting
-        autocmd! * <buffer>
-        autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
-      augroup END
-    ]])
-  end
+  client.capabilities.textDocument.formatting = false
 end
 
 return M

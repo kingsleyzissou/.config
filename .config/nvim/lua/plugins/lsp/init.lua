@@ -1,4 +1,5 @@
-local language_servers = require('plugins.lsp.servers')
+local servers = require('plugins.lsp.servers')
+local formatters = require('plugins.lsp.formatters')
 local lsp_settings = require('plugins.lsp.settings')
 
 return {
@@ -11,12 +12,8 @@ return {
     'williamboman/mason-lspconfig.nvim',
     dependencies = { 'williamboman/mason.nvim' },
     config = function()
-      local servers = {}
-      for server, _ in pairs(language_servers) do
-        table.insert(servers, tostring(server))
-      end
       require('mason-lspconfig').setup({
-        ensure_installed = servers,
+        ensure_installed = servers.keys,
       })
     end,
   },
@@ -25,22 +22,11 @@ return {
     -- ensure formatters are installed
     'WhoIsSethDaniel/mason-tool-installer.nvim',
     dependencies = { 'williamboman/mason.nvim' },
-    opts = {
-      ensure_installed = {
-        'prettier',
-        'prettierd',
-        'eslint_d',
-        'shellcheck',
-        'jq',
-        'stylua',
-        'isort',
-        'autopep8',
-        'flake8',
-        'ruff',
-        'goimports',
-        'golangci-lint',
-      },
-    },
+    config = function()
+      require('mason-tool-installer').setup({
+        ensure_installed = formatters,
+      })
+    end,
   },
 
   {
@@ -62,6 +48,7 @@ return {
   {
     -- setup lspconfig last
     'neovim/nvim-lspconfig',
+    tag = 'v1.3.0',
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
@@ -81,20 +68,25 @@ return {
     },
     config = function()
       local lspconfig = require('lspconfig')
-      for server, settings in pairs(language_servers) do
+      local configs = require('lspconfig/configs')
+
+      if not configs.golangcilsp then
+        configs.golangcilsp = {
+          default_config = {
+            cmd = { 'golangci-lint-langserver' },
+            root_dir = lspconfig.util.root_pattern('.git', 'go.mod'),
+            init_options = {
+              command = { 'golangci-lint', 'run', '--output.json.path', 'stdout' },
+            },
+          },
+        }
+      end
+
+      for server, settings in pairs(servers) do
         lspconfig[server].setup({
           on_attach = lsp_settings.on_attach,
           capabilities = lsp_settings.capabilities,
           settings = settings,
-          -- root_dir = lspconfig.util.root_pattern(
-          -- '.eslintrc',
-          -- '.eslintrc.js',
-          -- '.eslintrc.cjs',
-          -- '.eslintrc.yaml',
-          -- '.eslintrc.yml',
-          -- '.eslintrc.json',
-          -- 'package.json'
-          -- ),
         })
       end
     end,

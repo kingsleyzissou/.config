@@ -1,6 +1,23 @@
 return {
   {
     -- main theme
+    'rose-pine/neovim',
+    lazy = false,
+    priority = 1000,
+    name = 'rose-pine',
+    config = function()
+      require('rose-pine').setup({
+        variant = 'main',
+        styles = {
+          transparency = true,
+        },
+      })
+      vim.cmd.colorscheme('rose-pine')
+    end,
+  },
+
+  {
+    -- backup theme
     'catppuccin/nvim',
     lazy = false,
     priority = 1000,
@@ -13,7 +30,7 @@ return {
           telescope = true,
         },
       })
-      vim.cmd.colorscheme('catppuccin')
+      -- vim.cmd.colorscheme('catppuccin')
     end,
   },
 
@@ -43,17 +60,24 @@ return {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
     opts = function()
+      local wtf = require('wtf')
       -- custom theme
-      local theme = require('config.theme.lualine')
       return {
         options = {
           disabled_filetypes = { 'neo-tree', 'toggleterm', 'trouble', 'minimap', 'snacks_terminal' },
           icons_enabled = true,
           section_separators = '',
-          theme = theme(),
+          theme = function()
+            -- dynamically configure the lualine
+            -- theme colors
+            return require('theme.lualine').setup()
+          end,
         },
         sections = {
           lualine_x = {
+            wtf.get_status,
+          },
+          lualine_y = {
             {
               require('noice').api.statusline.mode.get,
               cond = require('noice').api.statusline.mode.has,
