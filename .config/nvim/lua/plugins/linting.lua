@@ -19,8 +19,7 @@ return {
       '--max-line-length=200',
     }
 
-    linter.linters.eslint.args = {
-      '--no-warn-ignored',
+    linter.linters.eslint_d.args = {
       '--format',
       'json',
       '--stdin',
@@ -31,10 +30,10 @@ return {
     }
 
     linter.linters_by_ft = {
-      javascript = { 'eslint' },
-      javascriptreact = { 'eslint' },
-      typescript = { 'eslint' },
-      typescriptreact = { 'eslint' },
+      javascript = { 'eslint_d' },
+      javascriptreact = { 'eslint_d' },
+      typescript = { 'eslint_d' },
+      typescriptreact = { 'eslint_d' },
       python = { 'pylint', 'flake8' },
       go = { 'golangcilint' },
       shell = { 'shellcheck' },
