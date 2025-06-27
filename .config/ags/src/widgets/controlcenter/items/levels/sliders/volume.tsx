@@ -9,6 +9,7 @@ const SpeakerSlider = ({ speaker }: { speaker: WirePlumber.Endpoint }) => {
       min={0}
       max={1}
       widthRequest={150}
+      className="speaker"
       value={bind(speaker, 'volume').as(Number)}
       onChangeValue={({ value }) => {
         speaker.volume = value;
@@ -24,6 +25,7 @@ const MicSlider = ({ microphone }: { microphone: WirePlumber.Endpoint }) => {
       min={0}
       max={1}
       widthRequest={150}
+      className="microphone"
       value={bind(microphone, 'volume').as(Number)}
       onChangeValue={({ value }) => {
         microphone.volume = value;

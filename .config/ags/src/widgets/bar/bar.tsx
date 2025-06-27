@@ -38,6 +38,7 @@ export const Bar = (gdkmonitor: Gdk.Monitor) => {
           <box className="box right">
             <Recording />
             <Search />
+            <Github />
             <Battery />
             <Network />
             <Audio />

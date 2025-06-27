@@ -71,7 +71,7 @@ window.controlcenter {
           }
 
           &.storage {
-            color: colors.$mauve;
+            color: colors.$purple;
           }
 
           > box {
@@ -140,6 +140,24 @@ window.controlcenter {
 
       .slider {
         margin: 0.25em 0;
+
+        .brightness {
+          highlight {
+            background-color: colors.$yellow;
+          }
+        }
+
+        .microphone {
+          highlight {
+            background-color: colors.$purple;
+          }
+        }
+
+        .speaker {
+          highlight {
+            background-color: colors.$green;
+          }
+        }
       }
 
       .selector {
@@ -172,6 +190,10 @@ window.controlcenter {
           padding: 0 1em;
           min-width: 250px;
           margin-bottom: 1em;
+
+          highlight {
+            background-color: colors.$green;
+          }
         }
 
         .time {
