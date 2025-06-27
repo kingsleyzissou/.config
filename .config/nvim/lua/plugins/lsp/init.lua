@@ -13,7 +13,7 @@ return {
     dependencies = { 'williamboman/mason.nvim' },
     config = function()
       require('mason-lspconfig').setup({
-        ensure_installed = servers,
+        ensure_installed = servers.keys,
       })
     end,
   },
@@ -48,6 +48,7 @@ return {
   {
     -- setup lspconfig last
     'neovim/nvim-lspconfig',
+    tag = 'v1.3.0',
     dependencies = {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',

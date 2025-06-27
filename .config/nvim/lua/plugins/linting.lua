@@ -20,7 +20,6 @@ return {
     }
 
     linter.linters.eslint_d.args = {
-      '--no-warn-ignored',
       '--format',
       'json',
       '--stdin',

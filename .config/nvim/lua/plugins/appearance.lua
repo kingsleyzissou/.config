@@ -79,8 +79,8 @@ return {
           },
           lualine_y = {
             {
-              require('noice').api.status.message.get,
-              cond = require('noice').api.status.mode.has,
+              require('noice').api.statusline.mode.get,
+              cond = require('noice').api.statusline.mode.has,
               color = { fg = '#a5adcb' },
             },
           },
