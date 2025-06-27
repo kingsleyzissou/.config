@@ -30,6 +30,9 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
+# eslint old config format
+export ESLINT_USE_FLAT_CONFIG=false
+
 # set gtk theme early
 export GTK_THEME=Catppuccin-Macchiato-Standard-Teal-Dark
 
@@ -96,7 +99,7 @@ unset LC_CTYPE
 export TERM=xterm-256color
 
 # ip address for ollama host
-[[ $(uname) == "Linux" ]] && export OLLAMA_HOST="$(tailscale ip -4 mac-mini)"
+[[ $(uname) == "Linux" ]] && [[ ! "$CONTAINER_ID" ]] && export OLLAMA_HOST="$(tailscale ip -4 mac-mini)"
 [[ $(uname) == "Darwin" ]] && export OLLAMA_HOST="127.0.0.1"
 
 # keychain
