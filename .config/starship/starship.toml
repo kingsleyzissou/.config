@@ -1,14 +1,45 @@
-# Get editor completions based on the config schema
-"$schema" = 'https://starship.rs/config-schema.json'
-
-# Inserts a blank line between shell prompts
+"$schema" = "https://starship.rs/config-schema.json"
+palette = "rosepine"
 add_newline = true
 
-# Replace the '❯' symbol in the prompt with '➜'
-[character] # The name of the module we are configuring is 'character'
-success_symbol = '[➜](bold green)' # The 'success_symbol' segment is being set to '➜' with the color 'bold green'
+[character]
+success_symbol = "[➜](bold green)"
+error_symbol = "[➜](bold red)"
+vimcmd_symbol = "[](bold green)"
+vimcmd_replace_one_symbol = "[](bold purple)"
+vimcmd_replace_symbol = "[](bold purple)"
+vimcmd_visual_symbol = "[](bold yellow)"
 
-# Disable the package module, hiding it from the prompt completely
+[username]
+style_user = "bold blue"
+style_root = "bold overlay"
+disabled = false
+show_always = true
+
+[hostname]
+ssh_only = true
+disabled = false
+format = "[@$hostname >> ]($style)"
+style = "bold purple"
+trim_at = "-"
+
+[directory]
+truncation_length = 4
+style = "bold pink"
+
+[git_branch]
+truncation_length = 24
+format = "[[$symbol$branch(:$remote_branch)](bold green)]($style) "
+
+[git_status]
+deleted = "✖"
+ahead = ""
+behind = ""
+format = "[($all_status$ahead_behind )]($style)"
+
+[cmd_duration]
+format = "[$duration]($style)"
+
 [package]
 disabled = true
 
@@ -17,3 +48,47 @@ disabled = true
 
 [docker_context]
 disabled = true
+
+[container]
+symbol = ""
+style = "bold purple"
+
+[nodejs]
+detect_files = ["package.json", "node_modules", "!.zshenv"]
+
+[palettes]
+[palettes.catppuccin]
+base = "#24273a"
+blue = "#8aadf4"
+crust = "#181926"
+flamingo = "#f0c6c6"
+green = "#a6da95"
+lavender = "#b7bdf8"
+mantle = "#1e2030"
+maroon = "#ee99a0"
+overlay0 = "#6e738d"
+overlay1 = "#8087a2"
+overlay2 = "#939ab7"
+peach = "#f5a97f"
+pink = "#f5bde6"
+purple = "#c6a0f6"
+red = "#ed8796"
+rosewater = "#f4dbd6"
+sapphire = "#7dc4e4"
+sky = "#91d7e3"
+subtext0 = "#a5adcb"
+subtext1 = "#b8c0e0"
+surface0 = "#363a4f"
+surface1 = "#494d64"
+surface2 = "#5b6078"
+teal = "#8bd5ca"
+text = "#cad3f5"
+yellow = "#eed49f"
+[palettes.rosepine]
+blue = "#9ccfd8"
+green = "#31748f"
+overlay = "#26233a"
+pink = "#ebbcba"
+purple = "#c4a7e7"
+red = "#eb6f92"
+yellow = "#f6c177"
