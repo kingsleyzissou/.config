@@ -5,12 +5,12 @@ mail=(
   icon="􀍛"
   drawing=off
   icon.color="$MANTLE"
-  icon.background.color="$BLUE"
+  icon.background.color="$GREEN"
   icon.padding_right=5
   label.color="$MANTLE"
-  label.background.color="$BLUE"
+  label.background.color="$GREEN"
   label.padding_left=2
-  background.color="$BLUE"
+  background.color="$GREEN"
   background.padding_right=14
   script="$PLUGIN_DIR/mail.sh"
 )

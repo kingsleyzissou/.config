@@ -3,7 +3,7 @@
 wifi=(
   icon=􀙈
   icon.color="$MANTLE"
-  icon.background.color="$PINK"
+  icon.background.color="$RED"
   label.width=0
   background.color="$TRANSPARENT"
   background.padding_right=14

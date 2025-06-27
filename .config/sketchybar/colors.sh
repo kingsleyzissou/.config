@@ -1,5 +1,6 @@
 #!/bin/sh
 
+# catppuccin
 FLAMINGO=0xfff0c6c6
 PINK=0xfff5bde6
 MAUVE=0xffc6a0f6
@@ -15,5 +16,19 @@ SURFACE=0xff363a4f
 BASE=0xff24273a
 MANTLE=0xff1e2030
 CRUST=0xff181926
+
+# rose-pine
+BLUE=0xff9ccfd8
+GREEN=0xff31748f
+OVERLAY=0xff26233a
+PINK=0xffebbcba
+PURPLE=0xffc4a7e7
+RED=0xffeb6f92
+YELLOW=0xfff6c177
+BASE=0xff24273a
+MANTLE=0xff191724
+TEXT=0xffe0def4
+
+SPOTIFY_GREEN=0xffa6da95
 
 TRANSPARENT=0x00000000

@@ -7,6 +7,7 @@ headphones=(
   background.color="$TRANSPARENT"
   background.padding_right=14
   script="$PLUGIN_DIR/headphones.sh"
+  drawing=off
 )
 sketchybar \
   --add event bluetooth.change "com.apple.bluetooth.status" \
