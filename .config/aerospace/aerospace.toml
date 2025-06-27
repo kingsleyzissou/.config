@@ -118,6 +118,9 @@ alt-9 = 'workspace 9'
 alt-tab = 'workspace-back-and-forth'
 alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
 
+# Lock Screen
+alt-esc = '''exec-and-forget osascript -e 'tell application "Shortcuts" to run shortcut "Lock Screen"''''
+
 # User apps
 alt-enter = 'exec-and-forget open -a /Applications/Ghostty.app'
 alt-n = 'exec-and-forget open -a /Applications/Obsidian.app'
