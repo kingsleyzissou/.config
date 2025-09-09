@@ -13,9 +13,21 @@ for _, sign in ipairs(signs) do
   })
 end
 
+-- signs = {
+--   text = {
+--     [vim.diagnostic.severity.ERROR] = '🙀',
+--     [vim.diagnostic.severity.WARN] = '😿',
+--     [vim.diagnostic.severity.HINT] = '😾',
+--     [vim.diagnostic.severity.INFO] = '😺',
+--   },
+
 vim.diagnostic.config({
-  virtual_lines = true,
-  virtual_text = true,
+  virtual_lines = false,
+  virtual_text = {
+    spacing = 4,
+    severity_limited = true,
+    prefix = '●',
+  },
   signs = {
     active = signs,
   },

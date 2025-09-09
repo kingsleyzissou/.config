@@ -1,7 +1,6 @@
 -- rocket
 local auto = vim.api.nvim_create_autocmd
 
--- https://github.com/ChristianChiarulli/nvim/blob/master/lua/user/autocommands.lua
 auto({ 'FileType' }, {
   pattern = {
     'qf',
@@ -14,9 +13,6 @@ auto({ 'FileType' }, {
     'vim',
     'toggleterm',
     'LazyGit',
-    'snacks_terminal',
-    'neotest-output-panel',
-    'neotest-summary',
   },
   callback = function()
     vim.cmd([[
@@ -73,8 +69,6 @@ auto({ 'QuitPre', 'ExitPre' }, {
   callback = function()
     vim.cmd('silent! TroubleClose')
     vim.cmd('silent! lua require("dapui").close()')
-    vim.cmd('silent! lua require("neotest").output_panel.close()')
-    vim.cmd('silent! lua require("neotest").summary.close()')
   end,
 })
 

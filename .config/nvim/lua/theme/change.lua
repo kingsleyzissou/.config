@@ -2,7 +2,6 @@ function ChangeTheme(color)
   color = color or 'rose-pine'
   vim.cmd.colorscheme(color)
   require('theme.prompt').setup()
-  require('theme.neotest').setup()
   require('theme.telescope').setup()
 end
 

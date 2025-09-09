@@ -36,21 +36,28 @@ vim.keymap.set('t', '<esc><esc>', '<c-\\><c-n>', { desc = 'Esc terminal' })
 vim.keymap.set('t', '<c-q>', '<c-\\><c-n><cmd>q!<cr>', { desc = 'Close terminal' }) -- ctrl-q to exit terminal
 
 -- move lines
-vim.keymap.set('n', '<c-down>', '<cmd>m .+1<cr>==', { desc = 'Move line down' })
-vim.keymap.set('n', '<c-up>', '<cmd>m .-2<cr>==', { desc = 'Move line up' })
-vim.keymap.set('v', '<c-down>', "<cmd>m '>+1<cr>gv=gv", { desc = 'Move line down' })
-vim.keymap.set('v', '<c-up>', "<cmd>m '<-2<cr>gv=gv", { desc = 'Move line up' })
-vim.keymap.set('i', '<c-down>', '<esc> <cmd>m .+1<cr>gi', { desc = 'Move line down' })
-vim.keymap.set('i', '<c-up>', '<esc> <cmd>m .-2<cr>gi', { desc = 'Move line up' })
+vim.keymap.set('n', '<a-j>', '<cmd>m .+1<cr>==', { desc = 'Move line down' })
+vim.keymap.set('n', '<a-k>', '<cmd>m .-2<cr>==', { desc = 'Move line up' })
+vim.keymap.set('v', '<a-j>', "<cmd>m '>+1<cr>gv=gv", { desc = 'Move line down' })
+vim.keymap.set('v', '<a-k>', "<cmd>m '<-2<cr>gv=gv", { desc = 'Move line up' })
+vim.keymap.set('i', '<a-j>', '<esc> <cmd>m .+1<cr>gi', { desc = 'Move line down' })
+vim.keymap.set('i', '<a-k>', '<esc> <cmd>m .-2<cr>gi', { desc = 'Move line up' })
 
 -- centre stuff in centre of the screen
 -- https://youtu.be/w7i4amO_zaE?t=1464
-vim.keymap.set('n', '<C-d>', '<C-d>zz', { desc = 'Jump half page down' })
-vim.keymap.set('n', '<C-u>', '<C-u>zz', { desc = 'Jump half page up' })
+vim.keymap.set('n', '<c-d>', '<C-d>zz', { desc = 'Jump half page down' })
+vim.keymap.set('n', '<c-f>', '<C-d>zz', { desc = 'Jump half page down' })
+vim.keymap.set('n', '<c-]>', '<C-d>zz', { desc = 'Jump half page down' })
+vim.keymap.set('n', '<c-u>', '<C-u>zz', { desc = 'Jump half page up' })
+vim.keymap.set('n', '<c-b>', '<C-u>zz', { desc = 'Jump half page up' })
+vim.keymap.set('n', '<c-[>', '<C-u>zz', { desc = 'Jump half page up' })
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
+-- emacs key jumping
+vim.keymap.set('n', '<c-a>', '^', { desc = 'Jump to start of line' })
+vim.keymap.set('n', '<c-e>', '$', { desc = 'Jump to end of line' })
+
 -- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
--- stylua: ignore
 local replace = [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>]]
-vim.keymap.set('n', '<leader>r', replace, { desc = 'Replace word' })
+vim.keymap.set('n', '<c-r>', replace, { desc = 'Replace word' })
