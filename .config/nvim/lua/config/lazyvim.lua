@@ -9,4 +9,11 @@ local config = function()
   }
 end
 
-require('lazy').setup('plugins', config())
+require('lazy').setup({
+  { import = 'plugins.lsp' },
+  { import = 'plugins.linting' },
+  { import = 'plugins.formatting' },
+  { import = 'plugins.coding' },
+  { import = 'plugins.editor' },
+  { import = 'plugins.appearance' },
+}, config())

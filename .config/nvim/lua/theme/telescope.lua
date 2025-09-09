@@ -5,7 +5,7 @@ local function setup()
   -- Telescope Styles
   -- https://www.reddit.com/r/neovim/comments/xcsatv/comment/iq32go0
   local c = colors.get_theme()
-  local bg = vim.g.colors_name == 'rose-pine' and c.surface or c.base
+  local bg = c.none
 
   -- create a new highlight group
 
@@ -22,37 +22,37 @@ local function setup()
 
     -- Prompt component
     TelescopePromptBorder = {
-      bg = c.overlay,
-      fg = c.overlay,
+      bg = bg,
+      fg = c.subtext,
     },
     TelescopePromptNormal = {
-      bg = c.overlay,
+      bg = bg,
     },
     TelescopePromptPrefix = {
-      bg = c.overlay,
+      bg = bg,
     },
     TelescopePromptTitle = {
       fg = c.pink,
-      bg = c.overlay,
+      bg = bg,
     },
 
     -- Results component
     TelescopeResultsBorder = {
-      fg = bg,
+      fg = c.subtext,
       bg = bg,
     },
     TelescopeResultsNormal = {
       bg = bg,
     },
     TelescopeResultsTitle = {
-      fg = c.subtle,
+      fg = c.subtext,
       bg = bg,
     },
 
     -- Preview component
     TelescopePreviewBorder = {
-      fg = bg,
-      bg = bg,
+      fg = c.subtext,
+      bg = c.mantle,
     },
     TelescopePreviewNormal = {
       bg = bg,
