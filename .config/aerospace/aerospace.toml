@@ -79,10 +79,10 @@ run = ['layout tiling', 'move-node-to-workspace 9']
 
 # Keybindings
 [mode.main.binding]
-alt-h = 'focus left'
-alt-j = 'focus down'
-alt-k = 'focus up'
-alt-l = 'focus right'
+alt-left = 'focus left'
+alt-down = 'focus down'
+alt-up = 'focus up'
+alt-right = 'focus right'
 
 # Fullscreen
 alt-f = 'fullscreen'
