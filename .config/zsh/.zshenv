@@ -30,8 +30,10 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
-# eslint old config format
-export ESLINT_USE_FLAT_CONFIG=false
+# API keys and credentials
+export GEMINI_API_KEY=$(cat "$HOME/.config/zsh/gemini")
+export INSIGHTS_CLIENT_ID=$(cat "$HOME/.config/zsh/insights_id")
+export INSIGHTS_CLIENT_SECRET=$(cat "$HOME/.config/zsh/insights_key")
 
 # set gtk theme early
 export GTK_THEME=Catppuccin-Macchiato-Standard-Teal-Dark
@@ -83,6 +85,10 @@ export STARSHIP_CONFIG="$HOME/.config/starship/starship.toml"
 export MANPAGER="zsh -c 'col -bx | bat -l man -p'"
 export MANROFFOPT="-c"
 export MANPATH="$MANPATH:$HOME/.local/share/man"
+
+# add bun to path
+export PATH=$PATH:$HOME/.bun/bin
+export PATH=$PATH:$HOME/.cache/.bun/bin
 
 # use nvim
 export EDITOR="nvim"
