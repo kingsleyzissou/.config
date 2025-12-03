@@ -1,16 +1,17 @@
-local combine = require('utilities.combine')
 local server = 'lua_ls'
 
 return {
   {
     'mason-org/mason-lspconfig.nvim',
-    opts = combine({ server }),
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      table.insert(opts.ensure_installed, server)
+      return opts
+    end,
   },
 
   {
     'neovim/nvim-lspconfig',
-    tag = 'v1.3.0',
-    lazy = false,
     opts = function(_, opts)
       opts.servers = opts.servers or {}
       opts.servers[server] = {
@@ -22,7 +23,7 @@ return {
             completion = {
               callSnippet = 'Replace',
             },
-            Workspace = {
+            workspace = {
               checkThirdParty = false,
               maxPreload = 10000,
               preloadFileSize = 10000,

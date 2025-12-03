@@ -54,10 +54,13 @@ vim.keymap.set('n', '<c-[>', '<C-u>zz', { desc = 'Jump half page up' })
 vim.keymap.set('n', 'n', 'nzzzv')
 vim.keymap.set('n', 'N', 'Nzzzv')
 
+-- annoyingly this is jumping around the screen so I have to remap it
+vim.keymap.set('n', '<esc>', '<cmd><esc>')
+
 -- emacs key jumping
 vim.keymap.set('n', '<c-a>', '^', { desc = 'Jump to start of line' })
 vim.keymap.set('n', '<c-e>', '$', { desc = 'Jump to end of line' })
 
 -- https://github.com/ThePrimeagen/init.lua/blob/master/lua/theprimeagen/remap.lua
 local replace = [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<left><left><left>]]
-vim.keymap.set('n', '<c-r>', replace, { desc = 'Replace word' })
+vim.keymap.set('n', '<a-r>', replace, { desc = 'Replace word' })

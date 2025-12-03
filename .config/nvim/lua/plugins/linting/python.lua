@@ -1,10 +1,15 @@
-local combine = require('utilities.combine')
 local linters = { 'pylint', 'flake8' }
 
 return {
   {
     'WhoIsSethDaniel/mason-tool-installer.nvim',
-    opts = combine(linters),
+    opts = function(_, opts)
+      opts.ensure_installed = opts.ensure_installed or {}
+      for _, tool in ipairs(linters) do
+        table.insert(opts.ensure_installed, tool)
+      end
+      return opts
+    end,
   },
 
   {
