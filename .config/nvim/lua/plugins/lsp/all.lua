@@ -3,9 +3,24 @@ local function buf_keymap(bufnr, lhs, rhs, description, opts)
   vim.keymap.set('n', lhs, rhs, opts)
 end
 
+local function on_attach(client, buffer)
+  buf_keymap(buffer, '<leader>fd', '<cmd>Telescope lsp_definitions<cr>', 'Find definition')
+  buf_keymap(buffer, '<leader>fD', '<cmd>Telescope lsp_declarations<cr>', 'Find declaration')
+  buf_keymap(buffer, '<leader>fi', '<cmd>Telescope lsp_implementations<cr>', 'Find implementation')
+  buf_keymap(buffer, '<leader>fr', '<cmd>Telescope lsp_references<cr>', 'Find references')
+
+  -- we'll let conform handle the formatting
+  client.server_capabilities.documentFormattingProvider = false
+  client.server_capabilities.documentRangeFormattingProvider = false
+end
+
+-- Store server configs globally so they can be accessed after all opts are merged
+_G.lsp_server_configs = _G.lsp_server_configs or {}
+
 return {
   {
     'williamboman/mason.nvim',
+    lazy = false,
     config = true,
   },
 
@@ -24,11 +39,29 @@ return {
     config = true,
   },
 
-  -- this needs to go last, hence the file name
+  {
+    'mason-org/mason-lspconfig.nvim',
+    lazy = false,
+    dependencies = {
+      'williamboman/mason.nvim',
+    },
+    opts = {
+      automatic_installation = true,
+    },
+    config = function(_, opts)
+      require('mason-lspconfig').setup({
+        ensure_installed = opts.ensure_installed or {},
+        automatic_installation = opts.automatic_installation,
+      })
+    end,
+  },
+
   {
     'neovim/nvim-lspconfig',
-    tag = 'v1.3.0',
     lazy = false,
+    dependencies = {
+      'mason-org/mason-lspconfig.nvim',
+    },
     keys = {
       { '<leader>lp', vim.diagnostic.open_float, desc = 'View diagnostics' },
       { '<leader>la', vim.lsp.buf.code_action, desc = 'Code action' },
@@ -39,28 +72,19 @@ return {
       { '<leader>ls', vim.lsp.buf.signature_help, desc = 'Signature help' },
       { '<leader>li', '<cmd>LspInfo<cr>', desc = 'Lsp info' },
     },
+    opts = {
+      servers = {},
+    },
     config = function(_, opts)
       local lspconfig = require('lspconfig')
-      for server, settings in pairs(opts.servers) do
-        if server == 'vtsls' then
-          local pretty = require('pretty-ts-errors')
-          vim.keymap.set('n', '<leader>lp', pretty.show_formatted_error, { desc = 'View diagnostics' })
-        end
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+      for server, settings in pairs(opts.servers or {}) do
         lspconfig[server].setup({
-          capabilities = vim.lsp.protocol.make_client_capabilities(),
-          settings = settings,
-          on_attach = function(client, buffer)
-            buf_keymap(buffer, '<leader>fd', '<cmd>Telescope lsp_definitions<cr>', 'Find definition')
-            buf_keymap(buffer, '<leader>fD', '<cmd>Telescope lsp_declarations<cr>', 'Find declaration')
-            buf_keymap(buffer, '<leader>fi', '<cmd>Telescope lsp_implementations<cr>', 'Find implementation')
-            buf_keymap(buffer, '<leader>fr', '<cmd>Telescope lsp_references<cr>', 'Find references')
-
-            -- we'll let conform handle the formatting
-            client.server_capabilities.documentFormattingProvider = false
-            client.server_capabilities.documentRangeFormattingProvider = false
-            client.capabilities.textDocument.formatting = false
-          end,
+          capabilities = capabilities,
+          settings = settings.settings or settings,
+          filetypes = settings.filetypes,
+          on_attach = on_attach,
         })
       end
     end,

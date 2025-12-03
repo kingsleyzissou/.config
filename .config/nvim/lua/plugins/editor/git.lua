@@ -8,6 +8,7 @@ return {
       return {
         { '<leader>gg', neogit.open, desc = 'NeoGit' },
         { '<leader>gr', function() neogit.open({ 'rebase' }) end, desc = 'Neogit Rebase' },
+        { '<leader>gp', function() neogit.open({ 'push' }) end, desc = 'Neogit Push' },
         { '<leader>gl',  function()neogit.open({ 'log' }) end, desc = 'Neogit Log' },
       }
     end,
