@@ -4,12 +4,6 @@ after-startup-command = [
   'exec-and-forget open -a /Applications/Ghostty.app',
   'exec-and-forget open -a /Applications/Slack.app',
   'exec-and-forget open -a /Applications/Mail.app',
-  'exec-and-forget sketchybar'
-]
-
-# Notify Sketchybar about workspace change
-exec-on-workspace-change = [
-  '/bin/bash', '-c', 'sketchybar --trigger aerospace_workspace_change',
 ]
 
 default-root-container-layout = 'tiles'
@@ -18,7 +12,7 @@ default-root-container-orientation = 'auto'
 [gaps]
 inner.vertical =   20
 inner.horizontal = 20
-outer.top =        50
+outer.top =        10
 outer.right =      10
 outer.bottom =     10
 outer.left =       10
