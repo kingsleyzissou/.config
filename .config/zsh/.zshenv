@@ -30,11 +30,6 @@ export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_DATA_HOME="$HOME/.local/share"
 
-# API keys and credentials
-export GEMINI_API_KEY=$(cat "$HOME/.config/zsh/gemini")
-export INSIGHTS_CLIENT_ID=$(cat "$HOME/.config/zsh/insights_id")
-export INSIGHTS_CLIENT_SECRET=$(cat "$HOME/.config/zsh/insights_key")
-
 # set gtk theme early
 export GTK_THEME=Catppuccin-Macchiato-Standard-Teal-Dark
 
@@ -103,6 +98,16 @@ unset LC_CTYPE
 
 # set terminfo
 export TERM=xterm-256color
+
+# API keys and credentials
+export CLAUDE_CODE_USE_VERTEX=1
+export CLOUD_ML_REGION=us-east5
+export GEMINI_API_KEY=$(cat "$HOME/.config/zsh/gemini")
+export ANTHROPIC_VERTEX_PROJECT_ID=$(cat "$HOME/.config/zsh/anthropic-project")
+
+GCLOUD_SDK_PATH="$HOME/.local/lib/google-cloud-sdk"
+[[ -f "$GCLOUD_SDK_PATH/path.zsh.inc" ]] && source "$GCLOUD_SDK_PATH/path.zsh.inc"
+[[ -f "$GCLOUD_SDK_PATH/completion.zsh.inc" ]] && source "$GCLOUD_SDK_PATH/completion.zsh.inc"
 
 # ip address for ollama host
 [[ $(uname) == "Linux" ]] && [[ ! "$CONTAINER_ID" ]] && export OLLAMA_HOST="$(tailscale ip -4 mac-mini)"
