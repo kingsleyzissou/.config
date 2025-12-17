@@ -1,0 +1,49 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "default_agent": "plan",
+  "mcp": {
+    "github": {
+      "type": "remote",
+      "oauth": false,
+      "url": "https://api.githubcopilot.com/mcp/",
+      "headers": {
+        "Authorization": "Bearer {env:GH_TOKEN}"
+      }
+    },
+  },
+  "permission": {
+    "edit": "ask",
+    "bash": {
+      "*": "ask",
+      "git status": "allow",
+      "git show*": "allow",
+      "git --no-pager show*": "allow",
+      "git grep*": "allow",
+      "git log*": "allow",
+      "git --no-pager log*": "allow",
+      "git branch*": "allow",
+      "git diff*": "allow",
+      "git --no-pager diff*": "allow",
+      "git remote*": "allow",
+      "git commit *": "deny",
+      "git push *": "deny",
+      "git rebase *": "deny",
+      "git reset *": "deny",
+      "git merge *": "deny",
+      "git cherry-pick *": "deny",
+      "git revert *": "deny",
+      "git tag *": "deny",
+      "npm test*": "allow",
+      "npm run test*": "allow",
+      "npm run build*": "allow",
+      "npm run lint*": "allow",
+      "npx tsc*": "allow",
+      "grep *": "allow",
+      "ls*": "allow",
+      "head *": "allow",
+      "tail *": "allow",
+      "rg*": "allow",
+      "wc*": "allow"
+    }
+  }
+}

@@ -8,6 +8,6 @@ zsh/.zsh_sessions
 zsh/.zcompdump
 zsh/.zsh_history
 zsh/gemini
-zsh/insights*
+zsh/anthropic-project
 
 .DS_store
