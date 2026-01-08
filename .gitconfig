@@ -1,0 +1,17 @@
+[user]
+	email = gianlucazuccarelli@gmail.com
+  name = Gianluca Zuccarelli
+
+[checkout]
+  defaultRemote = upstream
+
+[init]
+  defaultBranch = main
+
+[credential]
+	helper = osxkeychain
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
