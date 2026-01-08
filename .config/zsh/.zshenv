@@ -102,8 +102,8 @@ export TERM=xterm-256color
 # API keys and credentials
 export CLAUDE_CODE_USE_VERTEX=1
 export CLOUD_ML_REGION=us-east5
-export GEMINI_API_KEY=$(cat "$HOME/.config/zsh/gemini")
-export ANTHROPIC_VERTEX_PROJECT_ID=$(cat "$HOME/.config/zsh/anthropic-project")
+[[ ! "$CONTAINER_ID" ]] && export GEMINI_API_KEY=$(cat "$HOME/.config/zsh/gemini")
+[[ ! "$CONTAINER_ID" ]] && export ANTHROPIC_VERTEX_PROJECT_ID=$(cat "$HOME/.config/zsh/anthropic-project")
 
 GCLOUD_SDK_PATH="$HOME/.local/lib/google-cloud-sdk"
 [[ -f "$GCLOUD_SDK_PATH/path.zsh.inc" ]] && source "$GCLOUD_SDK_PATH/path.zsh.inc"
