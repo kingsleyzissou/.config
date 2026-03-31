@@ -18,6 +18,17 @@ return {
       opts.servers = opts.servers or {}
       opts.servers['golangci_lint_ls'] = {
         filetypes = { 'go', 'gomod' },
+        init_options = {
+          command = {
+            'golangci-lint',
+            'run',
+            '--output.json.path=stdout',
+            '--output.text.path=',
+            '--issues-exit-code=0',
+            '--show-stats=false',
+            '--path-mode=abs',
+          },
+        },
       }
       opts.servers['gopls'] = {
         settings = {
