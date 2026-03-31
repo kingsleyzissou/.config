@@ -84,6 +84,7 @@ return {
           capabilities = capabilities,
           settings = settings.settings or settings,
           filetypes = settings.filetypes,
+          init_options = settings.init_options,
           on_attach = on_attach,
         })
       end

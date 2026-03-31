@@ -1,4 +1,4 @@
-local linters = { 'golangci-lint' }
+local linters = {}
 
 return {
   {
