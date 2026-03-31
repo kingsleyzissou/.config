@@ -44,10 +44,14 @@ export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
 [[ $(uname) == "Darwin" ]] && export PATH=$PATH:/opt/homebrew/bin
 
 # export go path
-export GOPATH=$HOME/go
-export PATH=$PATH:$GOPATH/bin
+export GO_PATH=$HOME/go
+export PATH=$PATH:$GO_PATH/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.local/bin
+
+# export python bin
+export PYTHON_PATH="$(python3 -c 'import sysconfig; print(sysconfig.get_path("scripts"))')"
+export PATH=$PATH:$PYTHON_PATH
 
 # add ~/bin to the path if it exists
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
@@ -99,12 +103,7 @@ unset LC_CTYPE
 # set terminfo
 export TERM=xterm-256color
 
-# API keys and credentials
-export CLAUDE_CODE_USE_VERTEX=1
-export CLOUD_ML_REGION=us-east5
-export GEMINI_API_KEY=$(cat "$HOME/.config/zsh/gemini")
-export ANTHROPIC_VERTEX_PROJECT_ID=$(cat "$HOME/.config/zsh/anthropic-project")
-
+# google sdk stuff for using gemini models
 GCLOUD_SDK_PATH="$HOME/.local/lib/google-cloud-sdk"
 [[ -f "$GCLOUD_SDK_PATH/path.zsh.inc" ]] && source "$GCLOUD_SDK_PATH/path.zsh.inc"
 [[ -f "$GCLOUD_SDK_PATH/completion.zsh.inc" ]] && source "$GCLOUD_SDK_PATH/completion.zsh.inc"
