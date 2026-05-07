@@ -15,23 +15,4 @@ return {
       vim.cmd.colorscheme('rose-pine')
     end,
   },
-
-  {
-    -- backup theme
-    'catppuccin/nvim',
-    lazy = false,
-    priority = 1000,
-    enable = false,
-    config = function()
-      require('catppuccin').setup({
-        flavor = 'macchiato',
-        transparent_background = true,
-        integrations = {
-          gitsigns = true,
-          telescope = true,
-        },
-      })
-      -- vim.cmd.colorscheme('catppuccin')
-    end,
-  },
 }

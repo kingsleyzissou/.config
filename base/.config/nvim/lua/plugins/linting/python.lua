@@ -1,4 +1,4 @@
-local linters = { 'pylint', 'flake8' }
+local linters = { 'flake8' }
 
 return {
   {

@@ -10,6 +10,17 @@ return {
   },
 
   {
+    'windwp/nvim-ts-autotag',
+    opts = {
+      opts = {
+        enable_close = true,
+        enable_rename = true,
+        enable_close_on_slash = false,
+      },
+    },
+  },
+
+  {
     -- matching keywords, i.e. if/end
     'tpope/vim-endwise',
     event = 'VeryLazy',

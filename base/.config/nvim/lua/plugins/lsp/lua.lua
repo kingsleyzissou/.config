@@ -18,7 +18,7 @@ return {
         settings = {
           Lua = {
             diagnostics = {
-              globals = { 'use', 'vim' },
+              globals = { 'use', 'vim', 'Snacks' },
             },
             completion = {
               callSnippet = 'Replace',

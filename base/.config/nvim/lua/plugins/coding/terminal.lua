@@ -1,33 +1,15 @@
 return {
-
   {
-    -- terminal
-    'akinsho/toggleterm.nvim',
-    opts = {
-      size = 20,
-      hide_numbers = true,
-      open_mapping = [[<C-\>]],
-      shade_filetypes = {},
-      shade_terminals = false,
-      shading_factor = 0.3,
-      start_in_insert = true,
-      persist_size = true,
-      direction = 'horizontal',
-      highlights = {
-        NormalFloat = {
-          link = 'NormalFloat',
-        },
-        FloatBorder = {
-          guifg = '#181926',
-          guibg = '#181926',
-        },
-      },
-    },
+    -- terminal, just use the snacks terminal
+    'folke/snacks.nvim',
     keys = {
-      -- first class terminal
-      { '<leader>ca', '<cmd>ToggleTerm direction=float<cr>', desc = 'Floating terminal' },
-      { '<leader>ch', '<cmd>ToggleTerm size=10 direction=horizontal<cr>', desc = 'Horizontal terminal' },
-      { '<leader>cv', '<cmd>ToggleTerm size=80 direction=vertical<cr>', desc = 'Vertical terminal' },
+      {
+        '<leader>ca',
+        function()
+          Snacks.terminal.toggle()
+        end,
+        desc = 'Floating terminal',
+      },
     },
   },
 

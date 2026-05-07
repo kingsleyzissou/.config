@@ -9,11 +9,6 @@ return {
   },
 
   {
-    'ggandor/flit.nvim',
-    opts = {},
-  },
-
-  {
     'folke/flash.nvim',
     event = 'VeryLazy',
     vscode = true,

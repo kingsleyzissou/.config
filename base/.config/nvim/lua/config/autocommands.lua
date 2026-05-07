@@ -11,8 +11,7 @@ auto({ 'FileType' }, {
     'MarkDown',
     'neo-tree',
     'vim',
-    'toggleterm',
-    'LazyGit',
+    'snacks_lazygit',
   },
   callback = function()
     vim.cmd([[
@@ -49,37 +48,31 @@ auto({ 'BufEnter' }, {
 auto({ 'FileType' }, {
   pattern = { 'gitcommit', 'markdown' },
   callback = function()
+    -- just for readability
     vim.opt_local.wrap = true
   end,
 })
 
 -- autosave
 auto({ 'FocusLost', 'BufLeave', 'VimLeave' }, {
-  pattern = { ',' },
+  pattern = { '*' },
   callback = function()
-    -- write - which then triggers
-    -- formatting
-    vim.cmd('silent! w')
+    -- write - which then triggers formatting
+    vim.cmd('noautocmd silent! w')
   end,
 })
 
 -- Close annoying buffers
 auto({ 'QuitPre', 'ExitPre' }, {
-  pattern = { ',' },
+  pattern = { '*' },
   callback = function()
+    -- this causes nvim to crashout,
+    -- so we make sure to close it before exiting
     vim.cmd('silent! TroubleClose')
-    vim.cmd('silent! lua require("dapui").close()')
   end,
 })
 
 auto({ 'BufEnter', 'BufWinEnter' }, {
   pattern = { 'Schutzfile' },
   command = 'setlocal filetype=json',
-})
-
-auto({ 'Filetype' }, {
-  pattern = { '*' },
-  callback = function()
-    vim.opt.formatoptions:remove({ 'o' })
-  end,
 })
