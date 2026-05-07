@@ -1,9 +1,20 @@
+[include]
+  # we will symlink this either from mac or linux
+  # using stow. So that the correct local only configs
+  # get pulled in correctly
+  path = ~/.gitconfig.local
+
 [core]
   excludesFile = ~/.gitignore_global
+  editor = nvim
+  pager = delta
 
-[user]
-	email = gianlucazuccarelli@gmail.com
-  name = Gianluca Zuccarelli
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  side-by-side = true
 
 [checkout]
   defaultRemote = upstream
@@ -14,11 +25,8 @@
 [init]
   defaultBranch = main
 
-[credential]
-	helper = osxkeychain
-
 [filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true

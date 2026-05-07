@@ -1,0 +1,6 @@
+[user]
+  email = gianlucazuccarelli@gmail.com
+  name = Gianluca Zuccarelli
+
+[credential]
+  helper = osxkeychain
