@@ -1,0 +1,43 @@
+#!/bin/bash
+
+usage() {
+    echo "Usage: $(basename "$0") [--otp]"
+    echo ""
+    echo "Red Hat login utility."
+    echo ""
+    echo "  (no args)    Connect to VPN via netbird and authenticate with Kerberos"
+    echo "  --otp        Copy VPN password + OTP to clipboard"
+}
+
+login() {
+  VPN=$(netbird status --json | jq -r '.daemonStatus')
+
+  if [[ "$VPN" != "Connected" ]]; then
+    echo "Connecting to VPN..."
+    netbird up --management-url https://wgvpn.redhat.com:8080
+  fi
+
+  echo "Logging in..."
+  kinit --keychain gzuccare@IPA.REDHAT.COM > /dev/null
+}
+
+otp() {
+  PASSWORD=$(pass redhat/main | head -n 1)
+  OTP=$(pass otp redhat/main)
+
+  echo "${PASSWORD}${OTP}" | pbcopy
+}
+
+case $# in
+    0)
+        login;;
+    1)
+        if [[ $1 == '--otp' ]]; then
+          otp
+        else
+          usage
+        fi
+        ;;
+    *)
+        usage
+esac
