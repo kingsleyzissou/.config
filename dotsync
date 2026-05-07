@@ -1,0 +1,33 @@
+#!/bin/bash
+
+DOTFILES="$(cd "$(dirname "$0")" && pwd)"
+PLATFORM="$(uname -s | tr '[:upper:]' '[:lower:]')"
+
+echo "Syncing dotfiles from ${DOTFILES}"
+echo "Platform: ${PLATFORM}"
+
+# --no-folding creates individual file symlinks instead of directory symlinks.
+# This is needed for directories like .config/opencode/ where runtime files
+# (node_modules, etc.) coexist with tracked config files.
+echo "Stowing base configs..."
+stow --no-folding -d "$DOTFILES" -t "$HOME" base
+
+case "$PLATFORM" in
+  darwin)
+    echo "Stowing macOS configs..."
+    stow --no-folding -d "$DOTFILES" -t "$HOME" darwin
+    ;;
+  linux)
+    echo "Stowing Linux configs..."
+    stow --no-folding -d "$DOTFILES" -t "$HOME" linux
+    ;;
+  *)
+    echo "Unknown platform: $PLATFORM"
+    ;;
+esac
+
+# Make dotsync available in PATH
+mkdir -p "$HOME/bin"
+ln -sf "$DOTFILES/dotsync" "$HOME/bin/dotsync"
+
+echo "Done."
