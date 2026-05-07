@@ -30,7 +30,7 @@ vim.opt.ttyfast = true -- fast scrolling
 vim.opt.swapfile = false -- disable swap file
 vim.opt.backup = false -- disable backup
 vim.opt.undofile = true
-vim.opt.undodir = os.getenv('HOME') .. '/.vim/undodir'
+vim.opt.undodir = vim.fn.stdpath('state') .. '/undo'
 vim.opt.signcolumn = 'yes' -- set the sign column permanently
 
 -- color support

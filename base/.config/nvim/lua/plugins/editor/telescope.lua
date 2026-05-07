@@ -1,7 +1,6 @@
 local extensions = {
   'frecency',
   'harpoon',
-  'noice',
   'ui-select',
 }
 

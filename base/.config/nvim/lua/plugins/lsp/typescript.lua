@@ -19,6 +19,14 @@ return {
     opts = function(_, opts)
       opts.servers = opts.servers or {}
       opts.servers['vtsls'] = {
+        settings = {
+          typescript = {
+            preferences = {
+              importModuleSpecifier = 'shortest',
+              importModuleSpecifierEnding = 'minimal',
+            },
+          },
+        },
         handlers = {
           ['textDocument/publishDiagnostics'] = function(err, result, ctx)
             if result and result.diagnostics then

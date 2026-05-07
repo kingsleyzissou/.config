@@ -67,8 +67,20 @@ return {
       { '<leader>la', vim.lsp.buf.code_action, desc = 'Code action' },
       { '<leader>ll', vim.lsp.codelens.run, desc = 'Codelens' },
       { '<leader>lr', vim.lsp.buf.rename, desc = 'Rename' },
-      { '<leader>lj', vim.diagnostic.goto_next, desc = 'Next item' },
-      { '<leader>lk', vim.diagnostic.goto_prev, desc = 'Previous item' },
+      {
+        '<leader>lj',
+        function()
+          vim.diagnostic.jump({ count = 1 })
+        end,
+        desc = 'Next item',
+      },
+      {
+        '<leader>lk',
+        function()
+          vim.diagnostic.jump({ count = -1 })
+        end,
+        desc = 'Previous item',
+      },
       { '<leader>ls', vim.lsp.buf.signature_help, desc = 'Signature help' },
       { '<leader>li', '<cmd>LspInfo<cr>', desc = 'Lsp info' },
     },
@@ -76,11 +88,10 @@ return {
       servers = {},
     },
     config = function(_, opts)
-      local lspconfig = require('lspconfig')
       local capabilities = vim.lsp.protocol.make_client_capabilities()
 
       for server, settings in pairs(opts.servers or {}) do
-        lspconfig[server].setup({
+        vim.lsp.config(server, {
           capabilities = capabilities,
           settings = settings.settings or {},
           filetypes = settings.filetypes,

@@ -1,20 +1,5 @@
 return {
   {
-    'NeogitOrg/neogit',
-    opts = {},
-    keys = function()
-      local neogit = require('neogit')
-      -- stylua: ignore
-      return {
-        { '<leader>gg', neogit.open, desc = 'NeoGit' },
-        { '<leader>gr', function() neogit.open({ 'rebase' }) end, desc = 'Neogit Rebase' },
-        { '<leader>gp', function() neogit.open({ 'push' }) end, desc = 'Neogit Push' },
-        { '<leader>gl',  function()neogit.open({ 'log' }) end, desc = 'Neogit Log' },
-      }
-    end,
-  },
-
-  {
     -- git signs
     'lewis6991/gitsigns.nvim',
     opts = {
@@ -31,15 +16,13 @@ return {
       local gs = require('gitsigns')
       return {
         { '<leader>gb', gs.blame_line, desc = 'Git Blame' },
-        { '<leader>ghp', gs.preview_hunk, desc = 'Preview hunk' },
-        { '<leader>ghr', gs.reset_hunk, desc = 'Reset hunk' },
-        { '<leader>ghR', gs.reset_buffer, desc = 'Reset buffer' },
-        { '<leader>ghs', gs.stage_hunk, desc = '(Un)Stage hunk' },
-        { '<leader>ghx', gs.preview_hunk_inline, desc = 'Toggle deleted' },
-        { '<leader>gdo', '<cmd>DiffviewOpen<cr>', desc = 'Diff view open' },
-        { '<leader>gdc', '<cmd>DiffviewClose<cr>', desc = 'Diff view close' },
+        { '<leader>gp', gs.preview_hunk, desc = 'Preview hunk' },
+        { '<leader>gr', gs.reset_hunk, desc = 'Reset hunk' },
+        { '<leader>gR', gs.reset_buffer, desc = 'Reset buffer' },
+        { '<leader>gs', gs.stage_hunk, desc = '(Un)Stage hunk' },
+        { '<leader>gx', gs.preview_hunk_inline, desc = 'Toggle deleted' },
         {
-          '<leader>ghj',
+          '<leader>gj',
           function()
             ---@diagnostic disable-next-line
             gs.nav_hunk('next')
@@ -47,13 +30,22 @@ return {
           desc = 'Next hunk',
         },
         {
-          '<leader>ghk',
+          '<leader>gk',
           function()
             ---@diagnostic disable-next-line
             gs.nav_hunk('prev')
           end,
           desc = 'Previous hunk',
         },
+        {
+          '<leader>gg',
+          function()
+            Snacks.lazygit()
+          end,
+          desc = 'Lazygit',
+        },
+        { '<leader>gdo', '<cmd>DiffviewOpen<cr>', desc = 'Diff view open' },
+        { '<leader>gdc', '<cmd>DiffviewClose<cr>', desc = 'Diff view close' },
       }
     end,
   },
