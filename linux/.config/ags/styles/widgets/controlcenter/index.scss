@@ -1,0 +1,220 @@
+@use 'sass:string';
+@use '../../colors.scss';
+@use '../../effects.scss';
+
+window.controlcenter {
+  all: unset;
+
+  .container {
+    padding: 3rem 4rem;
+    background: rgba(colors.$text, 0.1);
+  }
+
+  .hidden {
+    opacity: 0;
+  }
+
+  .tools {
+    margin-top: 5rem;
+    margin-right: 1rem;
+
+    .tool {
+      margin-bottom: 0.5rem;
+      border-radius: 100%;
+      background: rgba(colors.$base, 0.6);
+
+      icon {
+        box-shadow: none;
+        border: none;
+        color: colors.$text;
+        font-weight: 100;
+      }
+
+      &:active,
+      &:focus,
+      &:hover {
+        box-shadow: none;
+        background: rgba(colors.$text, 0.2);
+      }
+    }
+  }
+
+  .settings {
+    margin-top: 5rem;
+    padding: 1rem;
+    background: colors.$base;
+    box-shadow: effects.$box-shadow;
+    border-radius: 0.8rem;
+
+    .separator {
+      border-bottom: 0.2em rgba(colors.$text, 0.1) solid;
+      margin: 1rem 0;
+    }
+
+    .item {
+      padding: 1rem;
+      margin-bottom: 0.5rem;
+
+      .progress {
+        margin: 0 0.5rem;
+        margin-top: 1rem;
+
+        > circularprogress {
+          font-size: 0.2em;
+
+          &.battery {
+            color: colors.$green;
+          }
+
+          &.cpu {
+            color: colors.$teal;
+          }
+
+          &.storage {
+            color: colors.$purple;
+          }
+
+          > box {
+            padding: 2rem;
+            font-size: 5em;
+
+            > icon {
+              color: colors.$text;
+              margin-bottom: 0.25rem;
+            }
+
+            > label {
+              color: colors.$text;
+            }
+          }
+        }
+      }
+
+      &.date {
+        padding: 1rem 0;
+        padding-top: 0;
+
+        .time {
+          font-size: 2em;
+          font-weight: 800;
+        }
+      }
+
+      &.session {
+        > button {
+          border-radius: 100%;
+          margin-left: 0.5rem;
+        }
+      }
+
+      .action {
+        margin: 0 0.5rem;
+        border-radius: 1em;
+        padding: 0;
+
+        .icon {
+          font-weight: 800;
+          padding: 1em;
+        }
+
+        .subtitle {
+          font-weight: 100;
+          padding: 1em;
+
+          &.active {
+            font-weight: 800;
+          }
+        }
+
+        &.active {
+          background: colors.$teal;
+        }
+
+        &:focus,
+        &:hover {
+          box-shadow: none;
+          color: colors.$text;
+          background: colors.$base;
+        }
+      }
+
+      .slider {
+        margin: 0.25em 0;
+
+        .brightness {
+          highlight {
+            background-color: colors.$yellow;
+          }
+        }
+
+        .microphone {
+          highlight {
+            background-color: colors.$purple;
+          }
+        }
+
+        .speaker {
+          highlight {
+            background-color: colors.$green;
+          }
+        }
+      }
+
+      .selector {
+        margin: 0.5em 0;
+      }
+
+      .selector-item {
+        border-radius: 0;
+        background: colors.$base;
+        color: colors.$text;
+
+        .icon {
+          color: colors.$teal;
+          margin-right: 0.5em;
+        }
+      }
+    }
+
+    .player {
+      padding: 1rem;
+      margin-bottom: 1rem;
+      background: rgba(colors.$mantle, 0.4);
+
+      .title {
+        font-weight: 800;
+      }
+
+      .progress {
+        .bar {
+          padding: 0 1em;
+          min-width: 250px;
+          margin-bottom: 1em;
+
+          highlight {
+            background-color: colors.$green;
+          }
+        }
+
+        .time {
+          font-family: RobotoMono;
+          font-size: 12px;
+          font-weight: 100;
+          margin-bottom: 1em;
+        }
+      }
+
+      .controls {
+        > button {
+          margin: 0 0.5em;
+          border-radius: 100%;
+          font-size: 10px;
+
+          > icon.active {
+            color: colors.$teal;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,13 @@
+profile docked {
+	output eDP-1 disable
+	output "ASUSTek COMPUTER INC PA278CV M1LMQS000275" enable
+}
+
+profile opened {
+	output eDP-1 enable
+	output "ASUSTek COMPUTER INC PA278CV M1LMQS000275" enable
+}
+
+profile laptop {
+	output eDP-1 enable
+}

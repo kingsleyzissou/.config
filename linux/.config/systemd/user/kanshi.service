@@ -1,0 +1,14 @@
+[Unit]
+Description=Dynamic output configuration for Wayland compositors
+After=hyprland.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+; Environment=DISPLAY=:0
+Environment=XDG_RUNTIME_DIR=/run/user/%U
+ExecStart=/usr/bin/kanshi
+
+[Install]
+WantedBy=default.target

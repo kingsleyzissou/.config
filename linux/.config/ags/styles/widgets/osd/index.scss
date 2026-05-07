@@ -1,0 +1,65 @@
+@use '../../colors.scss';
+
+window.osd {
+  background: transparent;
+
+  box.osd {
+    background: rgba(colors.$base, 0.2);
+    padding: 1.2rem 1rem;
+    margin: 1rem 1rem 1rem 1rem;
+  }
+
+  icon {
+    font-size: 2rem;
+    padding-top: 1rem;
+  }
+
+  label {
+    font-size: 1.4rem;
+    padding-top: 1rem;
+  }
+
+  levelbar {
+    trough {
+      margin: 1 0.6rem;
+      border: none;
+      box-shadow: none;
+    }
+
+    block {
+      min-width: 2rem;
+      border: none;
+      box-shadow: none;
+    }
+
+    block.high {
+      background-color: colors.$green;
+    }
+    block.low {
+      background-color: colors.$green;
+    }
+    block.full {
+      background-color: colors.$green;
+    }
+  }
+
+  levelbar.brightness {
+    block {
+      &.high,
+      &.low,
+      &.full {
+        background-color: colors.$yellow;
+      }
+    }
+  }
+
+  levelbar.speaker {
+    block {
+      &.high,
+      &.low,
+      &.full {
+        background-color: colors.$green;
+      }
+    }
+  }
+}

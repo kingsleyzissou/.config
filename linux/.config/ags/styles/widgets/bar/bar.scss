@@ -1,0 +1,64 @@
+@use '../../colors.scss';
+
+window.bar {
+  all: unset;
+  background: transparent;
+  font-weight: 100;
+  font-family:
+    Roboto Mono,
+    Symbols Nerd Font Mono;
+  font-size: 18px;
+
+  > centerbox {
+    background: transparent;
+    margin-top: 25px;
+    margin-left: 25px;
+    margin-right: 25px;
+    margin-bottom: 0px;
+  }
+
+  button {
+    border-radius: 0;
+    margin: 0em 2px;
+    border: none;
+    box-shadow: none;
+    background: transparent;
+
+    .button {
+      .icon {
+        padding: 0 0.75em;
+      }
+    }
+
+    &:hover {
+      background: rgba(colors.$text, 0.2);
+    }
+  }
+
+  .box {
+    margin: 0 2px;
+
+    &.right {
+      .icon {
+        color: colors.$mantle;
+        font-weight: 100;
+
+        &.recording {
+          color: colors.$red;
+        }
+      }
+
+      .label {
+        color: colors.$mantle;
+        font-weight: 100;
+        margin-left: 0.5em;
+      }
+
+      .button {
+        &:hover {
+          background: rgba(colors.$base, 0.02);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "kingsley-shell",
+  "dependencies": {
+    "astal": "/usr/share/astal/gjs"
+  }
+}

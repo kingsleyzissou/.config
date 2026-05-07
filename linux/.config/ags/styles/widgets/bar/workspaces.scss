@@ -1,0 +1,42 @@
+@use '../../colors.scss';
+
+.workspace {
+  &.button {
+    // hack to get a transparent bottom border
+    border-bottom: rgba(colors.$text, 0) 5px solid;
+
+    .icon {
+      color: colors.$text;
+      padding: 0.2em 0.8em;
+      text-shadow: none;
+    }
+  }
+
+  &.active,
+  &:hover {
+    &.browser {
+      border-bottom: colors.$pink 5px solid;
+    }
+    &.code {
+      border-bottom: colors.$teal 5px solid;
+    }
+    &.notes {
+      border-bottom: colors.$red 5px solid;
+    }
+    &.chat {
+      border-bottom: colors.$purple 5px solid;
+    }
+    &.mail {
+      border-bottom: colors.$peach 5px solid;
+    }
+    &.calendar {
+      border-bottom: colors.$blue 5px solid;
+    }
+    &.spotify {
+      border-bottom: colors.$green 5px solid;
+    }
+    &.password {
+      border-bottom: colors.$blue 5px solid;
+    }
+  }
+}

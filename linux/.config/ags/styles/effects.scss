@@ -1,0 +1,11 @@
+@use './colors.scss';
+
+// more dramatic box shadow for the search box
+$search-box-shadow:
+  rgba(colors.$mantle, 0.25) 0px 54px 55px,
+  rgba(colors.$mantle, 0.12) 0px -12px 30px,
+  rgba(colors.$mantle, 0.12) 0px 4px 6px,
+  rgba(colors.$mantle, 0.17) 0px 12px 13px,
+  rgba(colors.$mantle, 0.09) 0px -3px 5px;
+
+$box-shadow: rgba(colors.$mantle, 0.24) 0px 3px 8px;

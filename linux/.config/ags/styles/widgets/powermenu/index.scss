@@ -1,0 +1,45 @@
+@use '../../colors.scss';
+
+window.powermenu,
+window.screencapture {
+  all: unset;
+
+  .container {
+    padding: 3rem;
+    background: rgba(colors.$base, 0.3);
+    border: rgba(colors.$base, 0.5) 3px solid;
+
+    button.item {
+      border-bottom: rgba(colors.$base, 0) 3px solid;
+      background: transparent;
+      border-radius: 0;
+
+      &:focus,
+      &:hover {
+        box-shadow: none;
+        border-bottom: colors.$teal 3px solid;
+        background: rgba(colors.$base, 0.5);
+      }
+
+      > box {
+        min-height: 250px;
+
+        > box {
+          min-width: 150px;
+          margin: 1rem;
+
+          > icon {
+            color: colors.$text;
+            font-size: 6em;
+          }
+
+          > label {
+            color: colors.$text;
+            font-size: 2em;
+            font-weight: 100;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@use 'sass:string';
+@use '../../colors.scss';
+
+window.controlcenter {
+  all: unset;
+
+  .container {
+    padding: 3rem 4rem;
+    background: rgba(colors.$text, 0.1);
+  }
+
+  .hidden {
+    opacity: 0;
+  }
+}
