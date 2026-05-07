@@ -66,3 +66,4 @@ setopt hist_find_no_dups
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
 eval "$(starship init zsh)"
+eval "$(direnv hook zsh)"

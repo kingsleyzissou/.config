@@ -7,12 +7,7 @@ alias ls="ls --color"
 
 # bat is installed with homebrew on mac
 [[ $(uname) == "Linux" ]] && alias cat="/usr/bin/bat"
-[[ $(uname) == "Darwin" ]] && alias cat="$(/opt/homebrew/bin/brew --prefix)/bin/bat"
-
-# yay
-alias ys="yay -S"
-alias yr="yay -R"
-alias yq="yay -Q"
+[[ $(uname) == "Darwin" ]] && alias cat="$(brew --prefix)/bin/bat"
 
 # suffix aliases
 alias -s md=nvim
@@ -44,8 +39,8 @@ export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
 [[ $(uname) == "Darwin" ]] && export PATH=$PATH:/opt/homebrew/bin
 
 # export go path
-export GO_PATH=$HOME/go
-export PATH=$PATH:$GO_PATH/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.local/bin
 
