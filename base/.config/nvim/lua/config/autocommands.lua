@@ -23,20 +23,6 @@ auto({ 'FileType' }, {
   end,
 })
 
-auto({ 'FileType' }, {
-  pattern = {
-    'TelescopePrompt',
-  },
-  callback = function()
-    vim.cmd([[
-          nnoremap <silent> <buffer> q :close!<cr>
-          nnoremap <silent> <buffer> <esc> :close!<cr>
-          nnoremap <silent> <buffer> <c-q> :close!<cr>
-          set nobuflisted
-        ]])
-  end,
-})
-
 auto({ 'BufEnter' }, {
   pattern = { 'term://*' },
   callback = function()

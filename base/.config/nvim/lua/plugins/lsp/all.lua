@@ -4,10 +4,11 @@ local function buf_keymap(bufnr, lhs, rhs, description, opts)
 end
 
 local function on_attach(client, buffer)
-  buf_keymap(buffer, '<leader>fd', '<cmd>Telescope lsp_definitions<cr>', 'Find definition')
-  buf_keymap(buffer, '<leader>fD', '<cmd>Telescope lsp_declarations<cr>', 'Find declaration')
-  buf_keymap(buffer, '<leader>fi', '<cmd>Telescope lsp_implementations<cr>', 'Find implementation')
-  buf_keymap(buffer, '<leader>fr', '<cmd>Telescope lsp_references<cr>', 'Find references')
+  buf_keymap(buffer, 'gd', function() Snacks.picker.lsp_definitions() end, 'Go to definition')
+  buf_keymap(buffer, 'gD', function() Snacks.picker.lsp_declarations() end, 'Go to declaration')
+  buf_keymap(buffer, 'gi', function() Snacks.picker.lsp_implementations() end, 'Go to implementation')
+  buf_keymap(buffer, 'gr', function() Snacks.picker.lsp_references() end, 'Go to references')
+  buf_keymap(buffer, 'gs', vim.lsp.buf.signature_help, 'Signature help')
 
   -- we'll let conform handle the formatting
   client.server_capabilities.documentFormattingProvider = false
@@ -69,19 +70,14 @@ return {
       { '<leader>lr', vim.lsp.buf.rename, desc = 'Rename' },
       {
         '<leader>lj',
-        function()
-          vim.diagnostic.jump({ count = 1 })
-        end,
+        function() vim.diagnostic.jump({ count = 1 }) end,
         desc = 'Next item',
       },
       {
         '<leader>lk',
-        function()
-          vim.diagnostic.jump({ count = -1 })
-        end,
+        function() vim.diagnostic.jump({ count = -1 }) end,
         desc = 'Previous item',
       },
-      { '<leader>ls', vim.lsp.buf.signature_help, desc = 'Signature help' },
       { '<leader>li', '<cmd>LspInfo<cr>', desc = 'Lsp info' },
     },
     opts = {

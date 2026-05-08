@@ -15,13 +15,10 @@ return {
 
   {
     'folke/todo-comments.nvim',
-    cmd = { 'TodoTrouble', 'TodoTelescope' },
+    cmd = { 'TodoTrouble' },
     event = { 'BufReadPost', 'BufNewFile' },
     config = true,
-    -- stylua: ignore
     keys = {
-      { '<leader>fx', '<cmd>TodoTelescope<cr>', desc = 'Find todos' },
-      { '<leader>fX', '<cmd>TodoTelescope keywords=TODO,FIX,FIXME<cr>', desc = 'Todo/Fix/Fixme' },
       { ']t', function() require('todo-comments').jump_next() end, desc = 'Next todo comment' },
       { '[t', function() require('todo-comments').jump_prev() end, desc = 'Previous todo comment' },
     },
