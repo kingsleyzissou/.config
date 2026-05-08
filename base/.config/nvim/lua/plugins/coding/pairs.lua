@@ -19,10 +19,4 @@ return {
       },
     },
   },
-
-  {
-    -- matching keywords, i.e. if/end
-    'tpope/vim-endwise',
-    event = 'VeryLazy',
-  },
 }
