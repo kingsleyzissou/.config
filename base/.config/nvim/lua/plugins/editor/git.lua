@@ -1,5 +1,13 @@
 return {
   {
+    -- use folke's lazygit for less deps
+    'folke/snacks.nvim',
+    opts = {
+      lazygit = { enabled = true },
+    },
+  },
+
+  {
     -- git signs
     'lewis6991/gitsigns.nvim',
     opts = {

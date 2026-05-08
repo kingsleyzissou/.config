@@ -3,12 +3,23 @@ return {
     -- terminal, just use the snacks terminal
     'folke/snacks.nvim',
     keys = {
-      {
-        '<leader>ca',
-        function()
-          Snacks.terminal.toggle()
-        end,
-        desc = 'Floating terminal',
+      { '<leader>ca', function() Snacks.terminal.toggle() end, desc = 'Floating terminal' },
+    },
+    opts = {
+      terminal = { enabled = true },
+      styles = {
+        terminal = {
+          position = 'float',
+          backdrop = 60,
+          height = 0.9,
+          width = 0.9,
+          zindex = 50,
+          border = false,
+          keys = {
+            q = 'hide',
+            esc = { '<esc>', 'hide', mode = 'n' },
+          },
+        },
       },
     },
   },
