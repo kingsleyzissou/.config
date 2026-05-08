@@ -10,9 +10,7 @@ return {
     'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
   },
-  deactivate = function()
-    vim.cmd([[Neotree close]])
-  end,
+  deactivate = function() vim.cmd([[Neotree close]]) end,
   opts = {
     enable_git_status = true,
     enable_diagnostics = true,
@@ -43,9 +41,7 @@ return {
     event_handlers = {
       {
         event = 'file_opened',
-        handler = function(_)
-          require('neo-tree.command').execute({ action = 'close' })
-        end,
+        handler = function(_) require('neo-tree.command').execute({ action = 'close' }) end,
       },
     },
   },
