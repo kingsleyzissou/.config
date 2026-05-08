@@ -21,6 +21,7 @@ return {
         { '<leader>gR', gs.reset_buffer, desc = 'Reset buffer' },
         { '<leader>gs', gs.stage_hunk, desc = '(Un)Stage hunk' },
         { '<leader>gx', gs.preview_hunk_inline, desc = 'Toggle deleted' },
+        { '<leader>gg', function() Snacks.lazygit() end, desc = 'Lazygit' },
         {
           '<leader>gj',
           function()
@@ -36,13 +37,6 @@ return {
             gs.nav_hunk('prev')
           end,
           desc = 'Previous hunk',
-        },
-        {
-          '<leader>gg',
-          function()
-            Snacks.lazygit()
-          end,
-          desc = 'Lazygit',
         },
         { '<leader>gdo', '<cmd>DiffviewOpen<cr>', desc = 'Diff view open' },
         { '<leader>gdc', '<cmd>DiffviewClose<cr>', desc = 'Diff view close' },
