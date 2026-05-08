@@ -1,3 +1,5 @@
+-- just keep this for consistency with other linters
+-- in this directory
 local linters = {}
 
 return {
