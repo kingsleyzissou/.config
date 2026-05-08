@@ -1,7 +1,13 @@
 local config = function()
+  local colorscheme = function()
+    if os.getenv('THEME') then return { os.getenv('THEME') } end
+    if vim.g.colors_name then return { vim.g.colors_name } end
+    return { 'rose-pine' }
+  end
+
   return {
     install = {
-      colorscheme = { require('theme.lazyvim').setup() },
+      colorscheme = colorscheme(),
     },
     change_detection = {
       notify = false,
