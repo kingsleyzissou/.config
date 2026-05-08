@@ -37,6 +37,8 @@ return {
         'bash',
         'markdown',
         'rust',
+        'swift',
+        'proto',
       })
     end,
   },
