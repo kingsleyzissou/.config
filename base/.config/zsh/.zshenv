@@ -17,7 +17,7 @@ alias -s gmi=nvim
 [[ $(uname) == "Linux" ]] && export WLR_NO_HARDWARE_CURSORS=1
 
 # Dump the cache elsewhere
-export ZSH_COMPDUMP=$ZSH/cache/.zcompdump-$HOST
+export ZSH_COMPDUMP="${XDG_CACHE_HOME:-$HOME/.cache}/zsh/.zcompdump-$HOST"
 
 # user environment variables
 # XDG Base Directories

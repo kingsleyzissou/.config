@@ -53,8 +53,10 @@ bindkey "^[[B" down-line-or-beginning-search
 SAVEHIST=5000
 HISTSIZE=5000
 HYPHEN_INSENSITIVE="true"
-HISTFILE=~/.config/zsh/.zsh_history
 HISTDUP=erase
+HISTFILE="${XDG_STATE_HOME:-$HOME/.local/state}/zsh/history"
+mkdir -p $(dirname $HISTFILE)
+
 setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
