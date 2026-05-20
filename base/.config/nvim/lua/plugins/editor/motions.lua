@@ -1,14 +1,5 @@
 return {
   {
-    'tris203/precognition.nvim',
-    opts = {
-      disabled_fts = {
-        'git',
-      },
-    },
-  },
-
-  {
     -- the idea here is to use this to punish bad habits and then remove
     -- should be able to remove precogition after this too
     'm4xshen/hardtime.nvim',

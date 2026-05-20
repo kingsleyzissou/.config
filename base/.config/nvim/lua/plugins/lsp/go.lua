@@ -1,4 +1,4 @@
-local servers = { 'golangci_lint_ls', 'gopls' }
+local servers = {}
 
 return {
   {

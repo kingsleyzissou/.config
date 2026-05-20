@@ -1,4 +1,5 @@
-local formatters = { 'goimports', 'gofumpt' }
+-- local formatters = { 'goimports', 'gofumpt' }
+local formatters = {}
 
 return {
   {
