@@ -1,0 +1,2 @@
+export OPENCODE_TOKEN=$(pass show opencode/token)
+export GH_TOKEN=$(pass show github/token)
