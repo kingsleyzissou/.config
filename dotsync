@@ -12,6 +12,18 @@ echo "Platform: ${PLATFORM}"
 echo "Stowing base configs..."
 stow --no-folding -d "$DOTFILES" -t "$HOME" base
 
+# In containers, base configs are all we need.
+if [ "$CONTAINER_ID" = "lima" ]; then
+  echo "Container detected (CONTAINER_ID=$CONTAINER_ID), skipping workstation configs."
+  echo "Done."
+  exit 0
+fi
+
+# workstation/ contains configs only needed on full workstations
+# (ghostty, tmux, ssh, gpg, gitconfig, etc.)
+echo "Stowing workstation configs..."
+stow --no-folding -d "$DOTFILES" -t "$HOME" workstation
+
 case "$PLATFORM" in
   darwin)
     echo "Stowing macOS configs..."
