@@ -95,6 +95,7 @@ return {
           init_options = settings.init_options,
           on_attach = on_attach,
         })
+        vim.lsp.enable(server)
       end
     end,
   },
