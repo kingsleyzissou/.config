@@ -44,4 +44,7 @@ vim.opt.foldlevelstart = 99
 vim.opt.foldenable = true
 vim.opt.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
+-- clipboard
+vim.g.clipboard = 'osc52'
+
 vim.g.mapleader = ' '
