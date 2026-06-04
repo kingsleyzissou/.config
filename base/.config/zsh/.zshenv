@@ -44,6 +44,9 @@ export PATH=$PATH:$GOPATH/bin
 export PATH=$PATH:$HOME/go/bin
 export PATH=$PATH:$HOME/.local/bin
 
+# export node path
+export PATH="/opt/homebrew/opt/node@22/bin:$PATH"
+
 # export python bin
 export PYTHON_PATH="$(python3 -c 'import sysconfig; print(sysconfig.get_path("scripts"))')"
 export PATH=$PATH:$PYTHON_PATH
