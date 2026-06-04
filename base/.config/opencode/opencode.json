@@ -1,54 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "default_agent": "think",
-  "agent": {
-    "plan": {
-      "disable": true
-    }
-  },
-  "mcp": {
-    "github": {
-      "type": "remote",
-      "oauth": false,
-      "url": "https://api.githubcopilot.com/mcp/",
-      "headers": {
-        "Authorization": "Bearer {env:GH_TOKEN}"
-      }
-    },
-    "context7": {
-      "type": "remote",
-      "url": "https://mcp.context7.com/mcp",
-      "enabled": true,
-      "headers": {
-        "CONTEXT7_API_KEY": "{env:CTX7_TOKEN}"
-      }
-    },
-    "sequential-thinking": {
-      "type": "local",
-      "command": [
-        "bunx",
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking"
-      ]
-    }
+  "permission": {
+    "bash": "allow",
+    "edit": "allow"
   },
   "plugin": [
-    "superpowers@git+https://github.com/obra/superpowers.git"
-  ],
-  "permission": {
-    "edit": "allow",
-    "bash": {
-      "*": "allow",
-      "git rebase *": "deny",
-      "git reset --hard*": "deny",
-      "git push --force*": "deny",
-      "git push -f*": "deny",
-      "git checkout main": "deny",
-      "git checkout master": "deny",
-      "git merge *": "deny",
-      "git cherry-pick *": "deny",
-      "git revert *": "deny",
-      "git tag *": "deny"
-    }
-  }
+    "@a5c-ai/babysitter-opencode"
+  ]
 }
