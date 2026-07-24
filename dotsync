@@ -33,6 +33,9 @@ case "$PLATFORM" in
   linux)
     echo "Stowing Linux configs..."
     stow --no-folding -d "$DOTFILES" -t "$HOME" linux
+    # we have some custom icons here, maybe symlinking isn't the best
+    # option, but it's what we did before. This maintains the same behaviour
+    ln -s /var/home/kingsley/.dotfiles/linux/.config/ags/assets ~/.local/share/icons
     PROJECTS_DIR="$HOME/projects"
     ;;
   *)
