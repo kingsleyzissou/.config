@@ -12,6 +12,12 @@ echo "Platform: ${PLATFORM}"
 echo "Stowing base configs..."
 stow --no-folding -d "$DOTFILES" -t "$HOME" base
 
+# Rebuild bat theme/syntax cache
+if command -v bat &>/dev/null; then
+  echo "Rebuilding bat cache..."
+  bat cache --build
+fi
+
 # In containers, base configs are all we need.
 if [ "$CONTAINER_ID" = "lima" ]; then
   echo "Container detected (CONTAINER_ID=$CONTAINER_ID), skipping workstation configs."

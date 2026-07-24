@@ -7,14 +7,10 @@
 [core]
   excludesFile = ~/.gitignore_global
   editor = nvim
-  pager = delta
+  pager = bat
 
-[interactive]
-  diffFilter = delta --color-only
-
-[delta]
-  navigate = true
-  side-by-side = true
+[diff]
+  external = difft
 
 [checkout]
   defaultRemote = upstream
