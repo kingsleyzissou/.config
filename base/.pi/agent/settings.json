@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.79.10",
+  "lastChangelogVersion": "0.82.0",
   "defaultProvider": "vertex-anthropic",
   "defaultModel": "claude-opus-4-6",
   "defaultThinkingLevel": "high",
@@ -7,7 +7,10 @@
   "editorPaddingX": 1,
   "packages": [
     "npm:@dreki-gg/pi-context7",
-    "git:git@github.com:kingsleyzissou/extensions"
+    "../../Projects/work/extensions/main/extensions/quorum",
+    "../../Projects/work/extensions/main/extensions/sandbox",
+    "../../Projects/work/extensions/main/extensions/pacifista",
+    "extensions/vertex-anthropic"
   ],
   "terminal": {
     "showTerminalProgress": true
@@ -15,3 +18,4 @@
   "enableInstallTelemetry": false,
   "theme": "rose-pine"
 }
+
