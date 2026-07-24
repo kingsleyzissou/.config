@@ -1,0 +1,17 @@
+{
+  "lastChangelogVersion": "0.79.10",
+  "defaultProvider": "vertex-anthropic",
+  "defaultModel": "claude-opus-4-6",
+  "defaultThinkingLevel": "high",
+  "quietStartup": true,
+  "editorPaddingX": 1,
+  "packages": [
+    "npm:@dreki-gg/pi-context7",
+    "git:git@github.com:kingsleyzissou/extensions"
+  ],
+  "terminal": {
+    "showTerminalProgress": true
+  },
+  "enableInstallTelemetry": false,
+  "theme": "rose-pine"
+}
