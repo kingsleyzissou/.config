@@ -1,0 +1,6 @@
+# Stow's default ignores (must be re-declared when using .stow-local-ignore)
+\.git
+\.gitignore
+
+# Runtime — installed by opencode, not config
+node_modules
