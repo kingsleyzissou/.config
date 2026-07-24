@@ -93,9 +93,11 @@ return {
           filetypes = settings.filetypes,
           handlers = settings.handlers,
           init_options = settings.init_options,
-          on_attach = on_attach,
+          on_attach = settings.on_attach and function(client, bufnr)
+            on_attach(client, bufnr)
+            settings.on_attach(client, bufnr)
+          end or on_attach,
         })
-        vim.lsp.enable(server)
       end
     end,
   },
