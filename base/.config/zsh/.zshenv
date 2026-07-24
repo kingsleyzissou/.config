@@ -32,6 +32,9 @@ export GTK_THEME=Catppuccin-Macchiato-Standard-Teal-Dark
 export GPG_TTY=$(tty)
 export PIN_ENTRY_DATA="curses"
 
+# set pi config directory
+export PI_CODING_AGENT_DIR="$HOME/.pi/agent"
+
 # pkg-config path
 export PKG_CONFIG_PATH=/usr/local/share/pkgconfig
 
@@ -60,6 +63,10 @@ if [[ $(uname) == "Darwin" ]]; then
   export CONTAINER_MACHINE_PROVIDER='applehv'
   export DOCKER_HOST='unix://'
 fi
+
+# Always use side-by-side view for git diffs
+export DFT_DISPLAY=inline
+export DFT_COLOR=always
 
 # fuzzy finder
 export FZF_DEFAULT_COMMAND="fd --hidden --strip-cwd-prefix --exclude=.git"
